@@ -21,4 +21,3 @@ export * from './ITiledMapWangTile';
 export * from './ITiledMapTileLayer';
 export { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 export * from './ITiledMap';
-// export { upgradeMapToNewest } from './utility';

@@ -2,7 +2,36 @@ import { z } from 'zod';
 import { ITiledMapProperty } from './ITiledMapProperty';
 import { ITiledMapChunk } from './ITiledMapChunk';
 
-export const ITiledMapTileLayer = z.object({
+export const ITiledMapInfiniteTileLayer = z.object({
+  chunks: ITiledMapChunk.array(),
+  id: z.number(),
+  type: z.literal('tilelayer'),
+  name: z.string(),
+
+  startx: z.number(),
+  starty: z.number(),
+  x: z.number().optional(),
+  y: z.number().optional(),
+  width: z.number(),
+  height: z.number(),
+
+  opacity: z.number(),
+  visible: z.boolean(),
+
+  // compression: z.string().optional(),
+  // encoding: z.enum(['csv', 'base64']).optional(),
+  // offsetx: z.number().optional(),
+  // offsety: z.number().optional(),
+  // parallaxx: z.number().optional(),
+  // parallaxy: z.number().optional(),
+  // properties: ITiledMapProperty.array().optional(),
+  // startx: z.number().optional(),
+  // starty: z.number().optional(),
+  // tintcolor: z.string().optional(),
+  // class: z.string().optional(),
+});
+
+export const ITiledMapRestrictedTileLayer = z.object({
   data: z.union([z.string(), z.number().array()]),
   height: z.number(),
   id: z.number(),
@@ -27,5 +56,10 @@ export const ITiledMapTileLayer = z.object({
   x: z.number().optional(),
   y: z.number().optional(),
 });
+
+export const ITiledMapTileLayer = z.union([
+  ITiledMapInfiniteTileLayer,
+  ITiledMapRestrictedTileLayer,
+]);
 
 export type ITiledMapTileLayer = z.infer<typeof ITiledMapTileLayer>;
