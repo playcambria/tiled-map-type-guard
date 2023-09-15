@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const ITiledMapChunk = z.object({
-  data: z.union([z.string(), z.number().array()]),
+  data: z.number().array(),
   height: z.number(),
   width: z.number(),
   x: z.number(),

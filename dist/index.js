@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -25,7 +29,6 @@ __exportStar(require("./ITiledMapTerrain"), exports);
 __exportStar(require("./ITiledMapText"), exports);
 __exportStar(require("./ITiledMapTile"), exports);
 __exportStar(require("./ITiledMapTileset"), exports);
-__exportStar(require("./ITiledMapEmbeddedTileset"), exports);
 __exportStar(require("./ITiledMapTilesetReference"), exports);
 __exportStar(require("./ITiledMapTransformations"), exports);
 __exportStar(require("./ITiledMapWangColor"), exports);

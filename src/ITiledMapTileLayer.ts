@@ -31,8 +31,10 @@ export const ITiledMapInfiniteTileLayer = z.object({
   // class: z.string().optional(),
 });
 
+export type ITiledMapInfiniteTileLayer = z.infer<typeof ITiledMapInfiniteTileLayer>;
+
 export const ITiledMapRestrictedTileLayer = z.object({
-  data: z.union([z.string(), z.number().array()]),
+  data: z.number().array(),
   height: z.number(),
   id: z.number(),
   name: z.string(),
@@ -41,21 +43,18 @@ export const ITiledMapRestrictedTileLayer = z.object({
   visible: z.boolean(),
   width: z.number(),
 
-  chunks: ITiledMapChunk.array().optional(),
   compression: z.string().optional(),
   encoding: z.enum(['csv', 'base64']).optional(),
-  offsetx: z.number().optional(),
-  offsety: z.number().optional(),
   parallaxx: z.number().optional(),
   parallaxy: z.number().optional(),
   properties: ITiledMapProperty.array().optional(),
-  startx: z.number().optional(),
-  starty: z.number().optional(),
   tintcolor: z.string().optional(),
   class: z.string().optional(),
   x: z.number().optional(),
   y: z.number().optional(),
 });
+
+export type ITiledMapRestrictedTileLayer = z.infer<typeof ITiledMapRestrictedTileLayer>;
 
 export const ITiledMapTileLayer = z.union([
   ITiledMapInfiniteTileLayer,

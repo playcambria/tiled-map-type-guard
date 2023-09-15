@@ -10,143 +10,143 @@ export declare const ITiledMapWangColor: z.ZodObject<{
         value: z.ZodOptional<z.ZodString>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: string | undefined;
-        propertytype?: string | undefined;
         type: "string" | "color" | "file";
         name: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: string | undefined;
-        propertytype?: string | undefined;
         type: "string" | "color" | "file";
         name: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "object" | "int";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "object" | "int";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodLiteral<"float">;
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "float";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "float";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodLiteral<"bool">;
         value: z.ZodOptional<z.ZodBoolean>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
         type: "bool";
         name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
         type: "bool";
         name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodLiteral<"class">;
         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
         type: "class";
         name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
         type: "class";
         name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
     }>]>, "many">>;
     type: z.ZodOptional<z.ZodString>;
     class: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    type?: string | undefined;
-    class?: string | undefined;
-    properties?: ({
-        value?: string | undefined;
-        propertytype?: string | undefined;
-        type: "string" | "color" | "file";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "object" | "int";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "float";
-        name: string;
-    } | {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
-        type: "bool";
-        name: string;
-    } | {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
-        type: "class";
-        name: string;
-    })[] | undefined;
-    color: string;
     name: string;
+    color: string;
     tile: number;
     probability: number;
+    properties?: ({
+        type: "string" | "color" | "file";
+        name: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "object" | "int";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "float";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "bool";
+        name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "class";
+        name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
+    })[] | undefined;
+    type?: string | undefined;
+    class?: string | undefined;
 }, {
-    type?: string | undefined;
-    class?: string | undefined;
-    properties?: ({
-        value?: string | undefined;
-        propertytype?: string | undefined;
-        type: "string" | "color" | "file";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "object" | "int";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "float";
-        name: string;
-    } | {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
-        type: "bool";
-        name: string;
-    } | {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
-        type: "class";
-        name: string;
-    })[] | undefined;
-    color: string;
     name: string;
+    color: string;
     tile: number;
     probability: number;
+    properties?: ({
+        type: "string" | "color" | "file";
+        name: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "object" | "int";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "float";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "bool";
+        name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "class";
+        name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
+    })[] | undefined;
+    type?: string | undefined;
+    class?: string | undefined;
 }>;
-export declare type ITiledMapWangColor = z.infer<typeof ITiledMapWangColor>;
+export type ITiledMapWangColor = z.infer<typeof ITiledMapWangColor>;

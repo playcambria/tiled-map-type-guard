@@ -9,4 +9,4 @@ export declare const ITiledMapFrame: z.ZodObject<{
     duration: number;
     tileid: number;
 }>;
-export declare type ITiledMapFrame = z.infer<typeof ITiledMapFrame>;
+export type ITiledMapFrame = z.infer<typeof ITiledMapFrame>;

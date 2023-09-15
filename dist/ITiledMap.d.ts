@@ -2,19 +2,19 @@ import { z } from 'zod';
 export declare const ITiledMap: z.ZodObject<{
     layers: z.ZodArray<z.ZodUnion<[z.ZodUnion<[z.ZodObject<{
         chunks: z.ZodArray<z.ZodObject<{
-            data: z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodNumber, "many">]>;
+            data: z.ZodArray<z.ZodNumber, "many">;
             height: z.ZodNumber;
             width: z.ZodNumber;
             x: z.ZodNumber;
             y: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            data: string | number[];
+            data: number[];
             height: number;
             width: number;
             x: number;
             y: number;
         }, {
-            data: string | number[];
+            data: number[];
             height: number;
             width: number;
             x: number;
@@ -32,14 +32,12 @@ export declare const ITiledMap: z.ZodObject<{
         opacity: z.ZodNumber;
         visible: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        x?: number | undefined;
-        y?: number | undefined;
         type: "tilelayer";
         name: string;
         height: number;
         width: number;
         chunks: {
-            data: string | number[];
+            data: number[];
             height: number;
             width: number;
             x: number;
@@ -50,15 +48,15 @@ export declare const ITiledMap: z.ZodObject<{
         starty: number;
         opacity: number;
         visible: boolean;
+        x?: number | undefined;
+        y?: number | undefined;
     }, {
-        x?: number | undefined;
-        y?: number | undefined;
         type: "tilelayer";
         name: string;
         height: number;
         width: number;
         chunks: {
-            data: string | number[];
+            data: number[];
             height: number;
             width: number;
             x: number;
@@ -69,8 +67,10 @@ export declare const ITiledMap: z.ZodObject<{
         starty: number;
         opacity: number;
         visible: boolean;
+        x?: number | undefined;
+        y?: number | undefined;
     }>, z.ZodObject<{
-        data: z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodNumber, "many">]>;
+        data: z.ZodArray<z.ZodNumber, "many">;
         height: z.ZodNumber;
         id: z.ZodNumber;
         name: z.ZodString;
@@ -78,29 +78,8 @@ export declare const ITiledMap: z.ZodObject<{
         type: z.ZodLiteral<"tilelayer">;
         visible: z.ZodBoolean;
         width: z.ZodNumber;
-        chunks: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            data: z.ZodUnion<[z.ZodString, z.ZodArray<z.ZodNumber, "many">]>;
-            height: z.ZodNumber;
-            width: z.ZodNumber;
-            x: z.ZodNumber;
-            y: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
-            data: string | number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }, {
-            data: string | number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }>, "many">>;
         compression: z.ZodOptional<z.ZodString>;
         encoding: z.ZodOptional<z.ZodEnum<["csv", "base64"]>>;
-        offsetx: z.ZodOptional<z.ZodNumber>;
-        offsety: z.ZodOptional<z.ZodNumber>;
         parallaxx: z.ZodOptional<z.ZodNumber>;
         parallaxy: z.ZodOptional<z.ZodNumber>;
         properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
@@ -109,190 +88,166 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "object" | "int";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "object" | "int";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"float">;
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "float";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "float";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"bool">;
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
             type: "bool";
             name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
             type: "bool";
             name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"class">;
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         }>]>, "many">>;
-        startx: z.ZodOptional<z.ZodNumber>;
-        starty: z.ZodOptional<z.ZodNumber>;
         tintcolor: z.ZodOptional<z.ZodString>;
         class: z.ZodOptional<z.ZodString>;
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        class?: string | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-        chunks?: {
-            data: string | number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[] | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        tintcolor?: string | undefined;
         type: "tilelayer";
+        data: number[];
         name: string;
-        data: string | number[];
         height: number;
         width: number;
         id: number;
         opacity: number;
         visible: boolean;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        tintcolor?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
     }, {
-        class?: string | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-        chunks?: {
-            data: string | number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[] | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        tintcolor?: string | undefined;
         type: "tilelayer";
+        data: number[];
         name: string;
-        data: string | number[];
         height: number;
         width: number;
         id: number;
         opacity: number;
         visible: boolean;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        tintcolor?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
     }>]>, z.ZodObject<{
         name: z.ZodString;
         objects: z.ZodArray<z.ZodObject<{
@@ -331,75 +286,75 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"float">;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"bool">;
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"class">;
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }>]>, "many">>;
             rotation: z.ZodOptional<z.ZodNumber>;
             template: z.ZodOptional<z.ZodString>;
@@ -417,8 +372,9 @@ export declare const ITiledMap: z.ZodObject<{
                 valign: z.ZodOptional<z.ZodEnum<["center", "bottom", "top"]>>;
                 wrap: z.ZodOptional<z.ZodBoolean>;
             }, "strip", z.ZodTypeAny, {
-                color?: string | undefined;
+                text: string;
                 bold?: boolean | undefined;
+                color?: string | undefined;
                 fontfamily?: string | undefined;
                 halign?: "center" | "right" | "justify" | "left" | undefined;
                 italic?: boolean | undefined;
@@ -428,10 +384,10 @@ export declare const ITiledMap: z.ZodObject<{
                 underline?: boolean | undefined;
                 valign?: "center" | "bottom" | "top" | undefined;
                 wrap?: boolean | undefined;
-                text: string;
             }, {
-                color?: string | undefined;
+                text: string;
                 bold?: boolean | undefined;
+                color?: string | undefined;
                 fontfamily?: string | undefined;
                 halign?: "center" | "right" | "justify" | "left" | undefined;
                 italic?: boolean | undefined;
@@ -441,58 +397,19 @@ export declare const ITiledMap: z.ZodObject<{
                 underline?: boolean | undefined;
                 valign?: "center" | "bottom" | "top" | undefined;
                 wrap?: boolean | undefined;
-                text: string;
             }>>;
             type: z.ZodOptional<z.ZodString>;
             class: z.ZodOptional<z.ZodString>;
             width: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            text?: {
-                color?: string | undefined;
-                bold?: boolean | undefined;
-                fontfamily?: string | undefined;
-                halign?: "center" | "right" | "justify" | "left" | undefined;
-                italic?: boolean | undefined;
-                kerning?: boolean | undefined;
-                pixelsize?: number | undefined;
-                strikeout?: boolean | undefined;
-                underline?: boolean | undefined;
-                valign?: "center" | "bottom" | "top" | undefined;
-                wrap?: boolean | undefined;
-                text: string;
-            } | undefined;
+            name: string;
+            x: number;
+            y: number;
+            id: number;
+            visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
+            height?: number | undefined;
             point?: boolean | undefined;
             polygon?: {
                 x: number;
@@ -502,60 +419,60 @@ export declare const ITiledMap: z.ZodObject<{
                 x: number;
                 y: number;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             rotation?: number | undefined;
             template?: string | undefined;
-            name: string;
-            x: number;
-            y: number;
-            id: number;
-            visible: boolean;
+            text?: {
+                text: string;
+                bold?: boolean | undefined;
+                color?: string | undefined;
+                fontfamily?: string | undefined;
+                halign?: "center" | "right" | "justify" | "left" | undefined;
+                italic?: boolean | undefined;
+                kerning?: boolean | undefined;
+                pixelsize?: number | undefined;
+                strikeout?: boolean | undefined;
+                underline?: boolean | undefined;
+                valign?: "center" | "bottom" | "top" | undefined;
+                wrap?: boolean | undefined;
+            } | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            width?: number | undefined;
         }, {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            text?: {
-                color?: string | undefined;
-                bold?: boolean | undefined;
-                fontfamily?: string | undefined;
-                halign?: "center" | "right" | "justify" | "left" | undefined;
-                italic?: boolean | undefined;
-                kerning?: boolean | undefined;
-                pixelsize?: number | undefined;
-                strikeout?: boolean | undefined;
-                underline?: boolean | undefined;
-                valign?: "center" | "bottom" | "top" | undefined;
-                wrap?: boolean | undefined;
-                text: string;
-            } | undefined;
+            name: string;
+            x: number;
+            y: number;
+            id: number;
+            visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
+            height?: number | undefined;
             point?: boolean | undefined;
             polygon?: {
                 x: number;
@@ -565,13 +482,51 @@ export declare const ITiledMap: z.ZodObject<{
                 x: number;
                 y: number;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             rotation?: number | undefined;
             template?: string | undefined;
-            name: string;
-            x: number;
-            y: number;
-            id: number;
-            visible: boolean;
+            text?: {
+                text: string;
+                bold?: boolean | undefined;
+                color?: string | undefined;
+                fontfamily?: string | undefined;
+                halign?: "center" | "right" | "justify" | "left" | undefined;
+                italic?: boolean | undefined;
+                kerning?: boolean | undefined;
+                pixelsize?: number | undefined;
+                strikeout?: boolean | undefined;
+                underline?: boolean | undefined;
+                valign?: "center" | "bottom" | "top" | undefined;
+                wrap?: boolean | undefined;
+            } | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            width?: number | undefined;
         }>, "many">;
         opacity: z.ZodNumber;
         type: z.ZodLiteral<"objectgroup">;
@@ -589,75 +544,75 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "object" | "int";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "object" | "int";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"float">;
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "float";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "float";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"bool">;
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
             type: "bool";
             name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
             type: "bool";
             name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"class">;
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         }>]>, "many">>;
         startx: z.ZodOptional<z.ZodNumber>;
         starty: z.ZodOptional<z.ZodNumber>;
@@ -667,97 +622,19 @@ export declare const ITiledMap: z.ZodObject<{
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        class?: string | undefined;
-        height?: number | undefined;
-        width?: number | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-        id?: number | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        tintcolor?: string | undefined;
-        draworder?: string | undefined;
         type: "objectgroup";
         name: string;
         opacity: number;
         visible: boolean;
         objects: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            text?: {
-                color?: string | undefined;
-                bold?: boolean | undefined;
-                fontfamily?: string | undefined;
-                halign?: "center" | "right" | "justify" | "left" | undefined;
-                italic?: boolean | undefined;
-                kerning?: boolean | undefined;
-                pixelsize?: number | undefined;
-                strikeout?: boolean | undefined;
-                underline?: boolean | undefined;
-                valign?: "center" | "bottom" | "top" | undefined;
-                wrap?: boolean | undefined;
-                text: string;
-            } | undefined;
+            name: string;
+            x: number;
+            y: number;
+            id: number;
+            visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
+            height?: number | undefined;
             point?: boolean | undefined;
             polygon?: {
                 x: number;
@@ -767,106 +644,106 @@ export declare const ITiledMap: z.ZodObject<{
                 x: number;
                 y: number;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             rotation?: number | undefined;
             template?: string | undefined;
-            name: string;
-            x: number;
-            y: number;
-            id: number;
-            visible: boolean;
+            text?: {
+                text: string;
+                bold?: boolean | undefined;
+                color?: string | undefined;
+                fontfamily?: string | undefined;
+                halign?: "center" | "right" | "justify" | "left" | undefined;
+                italic?: boolean | undefined;
+                kerning?: boolean | undefined;
+                pixelsize?: number | undefined;
+                strikeout?: boolean | undefined;
+                underline?: boolean | undefined;
+                valign?: "center" | "bottom" | "top" | undefined;
+                wrap?: boolean | undefined;
+            } | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            width?: number | undefined;
         }[];
+        draworder?: string | undefined;
+        height?: number | undefined;
+        id?: number | undefined;
+        offsetx?: number | undefined;
+        offsety?: number | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        startx?: number | undefined;
+        starty?: number | undefined;
+        tintcolor?: string | undefined;
+        width?: number | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
     }, {
-        class?: string | undefined;
-        height?: number | undefined;
-        width?: number | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-        id?: number | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        tintcolor?: string | undefined;
-        draworder?: string | undefined;
         type: "objectgroup";
         name: string;
         opacity: number;
         visible: boolean;
         objects: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            text?: {
-                color?: string | undefined;
-                bold?: boolean | undefined;
-                fontfamily?: string | undefined;
-                halign?: "center" | "right" | "justify" | "left" | undefined;
-                italic?: boolean | undefined;
-                kerning?: boolean | undefined;
-                pixelsize?: number | undefined;
-                strikeout?: boolean | undefined;
-                underline?: boolean | undefined;
-                valign?: "center" | "bottom" | "top" | undefined;
-                wrap?: boolean | undefined;
-                text: string;
-            } | undefined;
+            name: string;
+            x: number;
+            y: number;
+            id: number;
+            visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
+            height?: number | undefined;
             point?: boolean | undefined;
             polygon?: {
                 x: number;
@@ -876,23 +753,101 @@ export declare const ITiledMap: z.ZodObject<{
                 x: number;
                 y: number;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             rotation?: number | undefined;
             template?: string | undefined;
-            name: string;
-            x: number;
-            y: number;
-            id: number;
-            visible: boolean;
+            text?: {
+                text: string;
+                bold?: boolean | undefined;
+                color?: string | undefined;
+                fontfamily?: string | undefined;
+                halign?: "center" | "right" | "justify" | "left" | undefined;
+                italic?: boolean | undefined;
+                kerning?: boolean | undefined;
+                pixelsize?: number | undefined;
+                strikeout?: boolean | undefined;
+                underline?: boolean | undefined;
+                valign?: "center" | "bottom" | "top" | undefined;
+                wrap?: boolean | undefined;
+            } | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            width?: number | undefined;
         }[];
+        draworder?: string | undefined;
+        height?: number | undefined;
+        id?: number | undefined;
+        offsetx?: number | undefined;
+        offsety?: number | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        startx?: number | undefined;
+        starty?: number | undefined;
+        tintcolor?: string | undefined;
+        width?: number | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
     }>]>, "many">;
     tiledversion: z.ZodString;
-    tilesets: z.ZodArray<z.ZodUnion<[z.ZodObject<{
+    tilesets: z.ZodArray<z.ZodObject<{
         name: z.ZodString;
         image: z.ZodString;
         backgroundcolor: z.ZodOptional<z.ZodString>;
         columns: z.ZodOptional<z.ZodNumber>;
         fillmode: z.ZodOptional<z.ZodEnum<["stretch", "preserve-aspect-fit"]>>;
-        firstgid: z.ZodOptional<z.ZodNumber>;
+        firstgid: z.ZodNumber;
         grid: z.ZodOptional<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
@@ -917,75 +872,75 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "object" | "int";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "object" | "int";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"float">;
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "float";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: number | undefined;
-            propertytype?: string | undefined;
             type: "float";
             name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"bool">;
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
             type: "bool";
             name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
             type: "bool";
             name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
         }>, z.ZodObject<{
             name: z.ZodString;
             type: z.ZodLiteral<"class">;
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         }, {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         }>]>, "many">>;
         spacing: z.ZodOptional<z.ZodNumber>;
         terrains: z.ZodOptional<z.ZodArray<z.ZodObject<{
@@ -997,136 +952,136 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"float">;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"bool">;
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"class">;
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }>]>, "many">>;
         }, "strip", z.ZodTypeAny, {
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
             name: string;
             tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
         }, {
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
             name: string;
             tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
         }>, "many">>;
-        tilecount: z.ZodOptional<z.ZodNumber>;
+        tilecount: z.ZodNumber;
         tiledversion: z.ZodOptional<z.ZodString>;
         tileheight: z.ZodOptional<z.ZodNumber>;
         tileoffset: z.ZodOptional<z.ZodObject<{
@@ -1197,75 +1152,75 @@ export declare const ITiledMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodString>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
                         type: "string" | "color" | "file";
                         name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
                     }, {
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
                         type: "string" | "color" | "file";
                         name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
                     }>, z.ZodObject<{
                         name: z.ZodString;
                         type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
                         type: "object" | "int";
                         name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
                     }, {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
                         type: "object" | "int";
                         name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
                     }>, z.ZodObject<{
                         name: z.ZodString;
                         type: z.ZodLiteral<"float">;
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
                         type: "float";
                         name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
                     }, {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
                         type: "float";
                         name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
                     }>, z.ZodObject<{
                         name: z.ZodString;
                         type: z.ZodLiteral<"bool">;
                         value: z.ZodOptional<z.ZodBoolean>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
                         type: "bool";
                         name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
                     }, {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
                         type: "bool";
                         name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
                     }>, z.ZodObject<{
                         name: z.ZodString;
                         type: z.ZodLiteral<"class">;
                         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
                         type: "class";
                         name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
                     }, {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
                         type: "class";
                         name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
                     }>]>, "many">>;
                     rotation: z.ZodOptional<z.ZodNumber>;
                     template: z.ZodOptional<z.ZodString>;
@@ -1283,8 +1238,9 @@ export declare const ITiledMap: z.ZodObject<{
                         valign: z.ZodOptional<z.ZodEnum<["center", "bottom", "top"]>>;
                         wrap: z.ZodOptional<z.ZodBoolean>;
                     }, "strip", z.ZodTypeAny, {
-                        color?: string | undefined;
+                        text: string;
                         bold?: boolean | undefined;
+                        color?: string | undefined;
                         fontfamily?: string | undefined;
                         halign?: "center" | "right" | "justify" | "left" | undefined;
                         italic?: boolean | undefined;
@@ -1294,10 +1250,10 @@ export declare const ITiledMap: z.ZodObject<{
                         underline?: boolean | undefined;
                         valign?: "center" | "bottom" | "top" | undefined;
                         wrap?: boolean | undefined;
-                        text: string;
                     }, {
-                        color?: string | undefined;
+                        text: string;
                         bold?: boolean | undefined;
+                        color?: string | undefined;
                         fontfamily?: string | undefined;
                         halign?: "center" | "right" | "justify" | "left" | undefined;
                         italic?: boolean | undefined;
@@ -1307,58 +1263,19 @@ export declare const ITiledMap: z.ZodObject<{
                         underline?: boolean | undefined;
                         valign?: "center" | "bottom" | "top" | undefined;
                         wrap?: boolean | undefined;
-                        text: string;
                     }>>;
                     type: z.ZodOptional<z.ZodString>;
                     class: z.ZodOptional<z.ZodString>;
                     width: z.ZodOptional<z.ZodNumber>;
                 }, "strip", z.ZodTypeAny, {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -1368,60 +1285,60 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }, {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -1431,13 +1348,51 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }>, "many">;
                 opacity: z.ZodNumber;
                 type: z.ZodLiteral<"objectgroup">;
@@ -1455,75 +1410,75 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "object" | "int";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "object" | "int";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"float">;
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "float";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "float";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"bool">;
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
                     type: "bool";
                     name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
                     type: "bool";
                     name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"class">;
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 }>]>, "many">>;
                 startx: z.ZodOptional<z.ZodNumber>;
                 starty: z.ZodOptional<z.ZodNumber>;
@@ -1533,97 +1488,19 @@ export declare const ITiledMap: z.ZodObject<{
                 x: z.ZodOptional<z.ZodNumber>;
                 y: z.ZodOptional<z.ZodNumber>;
             }, "strip", z.ZodTypeAny, {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -1633,106 +1510,106 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
             }, {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -1742,14 +1619,92 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
             }>>;
             probability: z.ZodOptional<z.ZodNumber>;
             properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
@@ -1758,75 +1713,75 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"float">;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"bool">;
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"class">;
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }>]>, "many">>;
             class: z.ZodOptional<z.ZodString>;
             terrain: z.ZodOptional<z.ZodArray<z.ZodObject<{
@@ -1838,261 +1793,163 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "object" | "int";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "object" | "int";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"float">;
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "float";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "float";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"bool">;
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
                     type: "bool";
                     name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
                     type: "bool";
                     name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"class">;
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 }>]>, "many">>;
             }, "strip", z.ZodTypeAny, {
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }, {
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }>, "many">>;
             type: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
+            id: number;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            image?: string | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
             x?: number | undefined;
             y?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
             objectgroup?: {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -2102,179 +1959,179 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            image?: string | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
                 properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
-                } | {
-                    value?: number | undefined;
+                    value?: string | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "object" | "int";
                     name: string;
-                } | {
                     value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "float";
                     name: string;
-                } | {
-                    value?: boolean | undefined;
+                    value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "bool";
                     name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
+                    value?: boolean | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+            } | undefined;
+            probability?: number | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            class?: string | undefined;
+            terrain?: {
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }[] | undefined;
-            id: number;
+            type?: string | undefined;
         }, {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
+            id: number;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            image?: string | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
             x?: number | undefined;
             y?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
             objectgroup?: {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -2284,54 +2141,152 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            image?: string | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
                 properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
-                } | {
-                    value?: number | undefined;
+                    value?: string | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "object" | "int";
                     name: string;
-                } | {
                     value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "float";
                     name: string;
-                } | {
-                    value?: boolean | undefined;
+                    value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "bool";
                     name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
+                    value?: boolean | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+            } | undefined;
+            probability?: number | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            class?: string | undefined;
+            terrain?: {
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }[] | undefined;
-            id: number;
+            type?: string | undefined;
         }>, "many">>;
         tilewidth: z.ZodOptional<z.ZodNumber>;
         transformations: z.ZodOptional<z.ZodObject<{
@@ -2368,144 +2323,144 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "object" | "int";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "object" | "int";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"float">;
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "float";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
                     type: "float";
                     name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"bool">;
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
                     type: "bool";
                     name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
                     type: "bool";
                     name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
                 }>, z.ZodObject<{
                     name: z.ZodString;
                     type: z.ZodLiteral<"class">;
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 }, {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 }>]>, "many">>;
                 type: z.ZodOptional<z.ZodString>;
                 class: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }, {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }>, "many">>;
             properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
                 name: z.ZodString;
@@ -2513,75 +2468,75 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: string | undefined;
-                propertytype?: string | undefined;
                 type: "string" | "color" | "file";
                 name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "object" | "int";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"float">;
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: number | undefined;
-                propertytype?: string | undefined;
                 type: "float";
                 name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"bool">;
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
                 type: "bool";
                 name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
             }>, z.ZodObject<{
                 name: z.ZodString;
                 type: z.ZodLiteral<"class">;
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }, {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
                 type: "class";
                 name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
             }>]>, "many">>;
             wangtiles: z.ZodOptional<z.ZodArray<z.ZodObject<{
                 tileid: z.ZodNumber;
@@ -2596,219 +2551,219 @@ export declare const ITiledMap: z.ZodObject<{
             type: z.ZodEnum<["corner", "edge", "mixed"]>;
             class: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            class?: string | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
             colors?: {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             wangtiles?: {
                 tileid: number;
                 wangid: number[];
             }[] | undefined;
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
+            class?: string | undefined;
         }, {
-            class?: string | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
             colors?: {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             wangtiles?: {
                 tileid: number;
                 wangid: number[];
             }[] | undefined;
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
+            class?: string | undefined;
         }>, "many">>;
     }, "strip", z.ZodTypeAny, {
-        type?: "tileset" | undefined;
-        class?: string | undefined;
-        id?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        imageheight?: number | undefined;
-        imagewidth?: number | undefined;
+        name: string;
+        image: string;
+        firstgid: number;
+        tilecount: number;
+        backgroundcolor?: string | undefined;
+        columns?: number | undefined;
+        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
         grid?: {
             height: number;
             width: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
-        backgroundcolor?: string | undefined;
-        columns?: number | undefined;
-        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
-        firstgid?: number | undefined;
+        id?: number | undefined;
+        imageheight?: number | undefined;
+        imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
         spacing?: number | undefined;
         terrains?: {
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
             name: string;
             tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
         }[] | undefined;
-        tilecount?: number | undefined;
         tiledversion?: string | undefined;
         tileheight?: number | undefined;
         tileoffset?: {
@@ -2817,130 +2772,32 @@ export declare const ITiledMap: z.ZodObject<{
         } | undefined;
         tilerendersize?: "tile" | "grid" | undefined;
         tiles?: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
+            id: number;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            image?: string | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
             x?: number | undefined;
             y?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
             objectgroup?: {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -2950,330 +2807,38 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
-                    rotation?: number | undefined;
-                    template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
-                }[];
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            image?: string | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                name: string;
-                tile: number;
-            }[] | undefined;
-            id: number;
-        }[] | undefined;
-        tilewidth?: number | undefined;
-        transformations?: {
-            hflip?: boolean | undefined;
-            vflip?: boolean | undefined;
-            rotate?: boolean | undefined;
-            preferuntransformed?: boolean | undefined;
-        } | undefined;
-        transparentcolor?: string | undefined;
-        version?: string | number | undefined;
-        wangsets?: {
-            class?: string | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            colors?: {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
-                name: string;
-                tile: number;
-                probability: number;
-            }[] | undefined;
-            wangtiles?: {
-                tileid: number;
-                wangid: number[];
-            }[] | undefined;
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
-        }[] | undefined;
-        name: string;
-        image: string;
-    }, {
-        type?: "tileset" | undefined;
-        class?: string | undefined;
-        id?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        imageheight?: number | undefined;
-        imagewidth?: number | undefined;
-        grid?: {
-            height: number;
-            width: number;
-            orientation: "orthogonal" | "isometric";
-        } | undefined;
-        backgroundcolor?: string | undefined;
-        columns?: number | undefined;
-        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
-        firstgid?: number | undefined;
-        margin?: number | undefined;
-        objectalignment?: string | undefined;
-        spacing?: number | undefined;
-        terrains?: {
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            name: string;
-            tile: number;
-        }[] | undefined;
-        tilecount?: number | undefined;
-        tiledversion?: string | undefined;
-        tileheight?: number | undefined;
-        tileoffset?: {
-            x: number;
-            y: number;
-        } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
-        tiles?: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            x?: number | undefined;
-            y?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            objectgroup?: {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
-                type: "objectgroup";
-                name: string;
-                opacity: number;
-                visible: boolean;
-                objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
                     properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
                         type: "string" | "color" | "file";
                         name: string;
-                    } | {
-                        value?: number | undefined;
+                        value?: string | undefined;
                         propertytype?: string | undefined;
+                    } | {
                         type: "object" | "int";
                         name: string;
-                    } | {
                         value?: number | undefined;
                         propertytype?: string | undefined;
+                    } | {
                         type: "float";
                         name: string;
-                    } | {
-                        value?: boolean | undefined;
+                        value?: number | undefined;
                         propertytype?: string | undefined;
+                    } | {
                         type: "bool";
                         name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
+                        value?: boolean | undefined;
                         propertytype?: string | undefined;
+                    } | {
                         type: "class";
                         name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
                     })[] | undefined;
+                    rotation?: number | undefined;
+                    template?: string | undefined;
                     text?: {
-                        color?: string | undefined;
+                        text: string;
                         bold?: boolean | undefined;
+                        color?: string | undefined;
                         fontfamily?: string | undefined;
                         halign?: "center" | "right" | "justify" | "left" | undefined;
                         italic?: boolean | undefined;
@@ -3283,67 +2848,111 @@ export declare const ITiledMap: z.ZodObject<{
                         underline?: boolean | undefined;
                         valign?: "center" | "bottom" | "top" | undefined;
                         wrap?: boolean | undefined;
-                        text: string;
                     } | undefined;
-                    ellipse?: boolean | undefined;
-                    gid?: number | undefined;
-                    point?: boolean | undefined;
-                    polygon?: {
-                        x: number;
-                        y: number;
-                    }[] | undefined;
-                    polyline?: {
-                        x: number;
-                        y: number;
-                    }[] | undefined;
-                    rotation?: number | undefined;
-                    template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            image?: string | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
                 properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
-                } | {
-                    value?: number | undefined;
+                    value?: string | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "object" | "int";
                     name: string;
-                } | {
                     value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "float";
                     name: string;
-                } | {
-                    value?: boolean | undefined;
+                    value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "bool";
                     name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
+                    value?: boolean | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+            } | undefined;
+            probability?: number | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            class?: string | undefined;
+            terrain?: {
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }[] | undefined;
-            id: number;
+            type?: string | undefined;
         }[] | undefined;
         tilewidth?: number | undefined;
         transformations?: {
@@ -3353,93 +2962,429 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
+        type?: "tileset" | undefined;
+        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            class?: string | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
             colors?: {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             wangtiles?: {
                 tileid: number;
                 wangid: number[];
             }[] | undefined;
+            class?: string | undefined;
+        }[] | undefined;
+    }, {
+        name: string;
+        image: string;
+        firstgid: number;
+        tilecount: number;
+        backgroundcolor?: string | undefined;
+        columns?: number | undefined;
+        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        grid?: {
+            height: number;
+            width: number;
+            orientation: "orthogonal" | "isometric";
+        } | undefined;
+        id?: number | undefined;
+        imageheight?: number | undefined;
+        imagewidth?: number | undefined;
+        margin?: number | undefined;
+        objectalignment?: string | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        spacing?: number | undefined;
+        terrains?: {
+            name: string;
+            tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+        }[] | undefined;
+        tiledversion?: string | undefined;
+        tileheight?: number | undefined;
+        tileoffset?: {
+            x: number;
+            y: number;
+        } | undefined;
+        tilerendersize?: "tile" | "grid" | undefined;
+        tiles?: {
+            id: number;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            image?: string | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
+            x?: number | undefined;
+            y?: number | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
+            objectgroup?: {
+                type: "objectgroup";
+                name: string;
+                opacity: number;
+                visible: boolean;
+                objects: {
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
+                    ellipse?: boolean | undefined;
+                    gid?: number | undefined;
+                    height?: number | undefined;
+                    point?: boolean | undefined;
+                    polygon?: {
+                        x: number;
+                        y: number;
+                    }[] | undefined;
+                    polyline?: {
+                        x: number;
+                        y: number;
+                    }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
+                    rotation?: number | undefined;
+                    template?: string | undefined;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
+                }[];
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+            } | undefined;
+            probability?: number | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            class?: string | undefined;
+            terrain?: {
+                name: string;
+                tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+            }[] | undefined;
+            type?: string | undefined;
+        }[] | undefined;
+        tilewidth?: number | undefined;
+        transformations?: {
+            hflip?: boolean | undefined;
+            vflip?: boolean | undefined;
+            rotate?: boolean | undefined;
+            preferuntransformed?: boolean | undefined;
+        } | undefined;
+        transparentcolor?: string | undefined;
+        type?: "tileset" | undefined;
+        class?: string | undefined;
+        version?: string | number | undefined;
+        wangsets?: {
             type: "corner" | "edge" | "mixed";
             name: string;
             tile: number;
+            colors?: {
+                name: string;
+                color: string;
+                tile: number;
+                probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
+            }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            wangtiles?: {
+                tileid: number;
+                wangid: number[];
+            }[] | undefined;
+            class?: string | undefined;
         }[] | undefined;
-        name: string;
-        image: string;
-    }>, z.ZodObject<{
-        firstgid: z.ZodNumber;
-        source: z.ZodString;
-    }, "strict", z.ZodTypeAny, {
-        firstgid: number;
-        source: string;
-    }, {
-        firstgid: number;
-        source: string;
-    }>]>, "many">;
+    }>, "many">;
     type: z.ZodLiteral<"map">;
     backgroundcolor: z.ZodOptional<z.ZodString>;
     compressionlevel: z.ZodOptional<z.ZodNumber>;
-    height: z.ZodOptional<z.ZodNumber>;
     hexsidelength: z.ZodOptional<z.ZodNumber>;
     infinite: z.ZodOptional<z.ZodBoolean>;
     nextlayerid: z.ZodOptional<z.ZodNumber>;
@@ -3453,75 +3398,75 @@ export declare const ITiledMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodString>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: string | undefined;
-        propertytype?: string | undefined;
         type: "string" | "color" | "file";
         name: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: string | undefined;
-        propertytype?: string | undefined;
         type: "string" | "color" | "file";
         name: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodUnion<[z.ZodLiteral<"int">, z.ZodLiteral<"object">]>;
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "object" | "int";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "object" | "int";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodLiteral<"float">;
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "float";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: number | undefined;
-        propertytype?: string | undefined;
         type: "float";
         name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodLiteral<"bool">;
         value: z.ZodOptional<z.ZodBoolean>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
         type: "bool";
         name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
         type: "bool";
         name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
     }>, z.ZodObject<{
         name: z.ZodString;
         type: z.ZodLiteral<"class">;
         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
         type: "class";
         name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
     }, {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
         type: "class";
         name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
     }>]>, "many">>;
     renderorder: z.ZodOptional<z.ZodEnum<["right-down", "right-up", "left-down", "left-up"]>>;
     staggeraxis: z.ZodOptional<z.ZodEnum<["x", "y"]>>;
@@ -3530,63 +3475,20 @@ export declare const ITiledMap: z.ZodObject<{
     tilewidth: z.ZodOptional<z.ZodNumber>;
     class: z.ZodOptional<z.ZodString>;
     version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
-    width: z.ZodOptional<z.ZodNumber>;
+    width: z.ZodNumber;
+    height: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    class?: string | undefined;
-    height?: number | undefined;
-    width?: number | undefined;
-    properties?: ({
-        value?: string | undefined;
-        propertytype?: string | undefined;
-        type: "string" | "color" | "file";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "object" | "int";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "float";
-        name: string;
-    } | {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
-        type: "bool";
-        name: string;
-    } | {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
-        type: "class";
-        name: string;
-    })[] | undefined;
-    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
-    backgroundcolor?: string | undefined;
-    tileheight?: number | undefined;
-    tilewidth?: number | undefined;
-    version?: string | number | undefined;
-    compressionlevel?: number | undefined;
-    hexsidelength?: number | undefined;
-    infinite?: boolean | undefined;
-    nextlayerid?: number | undefined;
-    nextobjectid?: number | undefined;
-    parallaxoriginx?: number | undefined;
-    parallaxoriginy?: number | undefined;
-    renderorder?: "right-down" | "right-up" | "left-down" | "left-up" | undefined;
-    staggeraxis?: "x" | "y" | undefined;
-    staggerindex?: "odd" | "even" | undefined;
     type: "map";
+    height: number;
+    width: number;
     tiledversion: string;
     layers: ({
-        x?: number | undefined;
-        y?: number | undefined;
         type: "tilelayer";
         name: string;
         height: number;
         width: number;
         chunks: {
-            data: string | number[];
+            data: number[];
             height: number;
             width: number;
             x: number;
@@ -3597,152 +3499,65 @@ export declare const ITiledMap: z.ZodObject<{
         starty: number;
         opacity: number;
         visible: boolean;
-    } | {
-        class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
-        chunks?: {
-            data: string | number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[] | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        tintcolor?: string | undefined;
+    } | {
         type: "tilelayer";
+        data: number[];
         name: string;
-        data: string | number[];
         height: number;
         width: number;
         id: number;
         opacity: number;
         visible: boolean;
-    } | {
-        class?: string | undefined;
-        height?: number | undefined;
-        width?: number | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-        id?: number | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
-        } | {
-            value?: number | undefined;
+            value?: string | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "object" | "int";
             name: string;
-        } | {
             value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "float";
             name: string;
-        } | {
-            value?: boolean | undefined;
+            value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "bool";
             name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
+            value?: boolean | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         })[] | undefined;
         tintcolor?: string | undefined;
-        draworder?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
+    } | {
         type: "objectgroup";
         name: string;
         opacity: number;
         visible: boolean;
         objects: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            text?: {
-                color?: string | undefined;
-                bold?: boolean | undefined;
-                fontfamily?: string | undefined;
-                halign?: "center" | "right" | "justify" | "left" | undefined;
-                italic?: boolean | undefined;
-                kerning?: boolean | undefined;
-                pixelsize?: number | undefined;
-                strikeout?: boolean | undefined;
-                underline?: boolean | undefined;
-                valign?: "center" | "bottom" | "top" | undefined;
-                wrap?: boolean | undefined;
-                text: string;
-            } | undefined;
+            name: string;
+            x: number;
+            y: number;
+            id: number;
+            visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
+            height?: number | undefined;
             point?: boolean | undefined;
             polygon?: {
                 x: number;
@@ -3752,90 +3567,168 @@ export declare const ITiledMap: z.ZodObject<{
                 x: number;
                 y: number;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             rotation?: number | undefined;
             template?: string | undefined;
-            name: string;
-            x: number;
-            y: number;
-            id: number;
-            visible: boolean;
+            text?: {
+                text: string;
+                bold?: boolean | undefined;
+                color?: string | undefined;
+                fontfamily?: string | undefined;
+                halign?: "center" | "right" | "justify" | "left" | undefined;
+                italic?: boolean | undefined;
+                kerning?: boolean | undefined;
+                pixelsize?: number | undefined;
+                strikeout?: boolean | undefined;
+                underline?: boolean | undefined;
+                valign?: "center" | "bottom" | "top" | undefined;
+                wrap?: boolean | undefined;
+            } | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            width?: number | undefined;
         }[];
-    })[];
-    tilesets: ({
-        type?: "tileset" | undefined;
-        class?: string | undefined;
+        draworder?: string | undefined;
+        height?: number | undefined;
         id?: number | undefined;
+        offsetx?: number | undefined;
+        offsety?: number | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
         properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
-        } | {
-            value?: number | undefined;
+            value?: string | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "object" | "int";
             name: string;
-        } | {
             value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "float";
             name: string;
-        } | {
-            value?: boolean | undefined;
+            value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "bool";
             name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
+            value?: boolean | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         })[] | undefined;
-        imageheight?: number | undefined;
-        imagewidth?: number | undefined;
+        startx?: number | undefined;
+        starty?: number | undefined;
+        tintcolor?: string | undefined;
+        width?: number | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
+    })[];
+    tilesets: {
+        name: string;
+        image: string;
+        firstgid: number;
+        tilecount: number;
+        backgroundcolor?: string | undefined;
+        columns?: number | undefined;
+        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
         grid?: {
             height: number;
             width: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
-        backgroundcolor?: string | undefined;
-        columns?: number | undefined;
-        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
-        firstgid?: number | undefined;
+        id?: number | undefined;
+        imageheight?: number | undefined;
+        imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
         spacing?: number | undefined;
         terrains?: {
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
             name: string;
             tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
         }[] | undefined;
-        tilecount?: number | undefined;
         tiledversion?: string | undefined;
         tileheight?: number | undefined;
         tileoffset?: {
@@ -3844,130 +3737,32 @@ export declare const ITiledMap: z.ZodObject<{
         } | undefined;
         tilerendersize?: "tile" | "grid" | undefined;
         tiles?: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
+            id: number;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            image?: string | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
             x?: number | undefined;
             y?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
             objectgroup?: {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -3977,54 +3772,152 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            image?: string | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
                 properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
-                } | {
-                    value?: number | undefined;
+                    value?: string | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "object" | "int";
                     name: string;
-                } | {
                     value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "float";
                     name: string;
-                } | {
-                    value?: boolean | undefined;
+                    value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "bool";
                     name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
+                    value?: boolean | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+            } | undefined;
+            probability?: number | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            class?: string | undefined;
+            terrain?: {
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }[] | undefined;
-            id: number;
+            type?: string | undefined;
         }[] | undefined;
         tilewidth?: number | undefined;
         transformations?: {
@@ -4034,139 +3927,134 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
+        type?: "tileset" | undefined;
+        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            class?: string | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
             colors?: {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             wangtiles?: {
                 tileid: number;
                 wangid: number[];
             }[] | undefined;
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
+            class?: string | undefined;
         }[] | undefined;
+    }[];
+    backgroundcolor?: string | undefined;
+    compressionlevel?: number | undefined;
+    hexsidelength?: number | undefined;
+    infinite?: boolean | undefined;
+    nextlayerid?: number | undefined;
+    nextobjectid?: number | undefined;
+    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
+    parallaxoriginx?: number | undefined;
+    parallaxoriginy?: number | undefined;
+    properties?: ({
+        type: "string" | "color" | "file";
         name: string;
-        image: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
     } | {
-        firstgid: number;
-        source: string;
-    })[];
+        type: "object" | "int";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "float";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "bool";
+        name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "class";
+        name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
+    })[] | undefined;
+    renderorder?: "right-down" | "right-up" | "left-down" | "left-up" | undefined;
+    staggeraxis?: "x" | "y" | undefined;
+    staggerindex?: "odd" | "even" | undefined;
+    tileheight?: number | undefined;
+    tilewidth?: number | undefined;
+    class?: string | undefined;
+    version?: string | number | undefined;
 }, {
-    class?: string | undefined;
-    height?: number | undefined;
-    width?: number | undefined;
-    properties?: ({
-        value?: string | undefined;
-        propertytype?: string | undefined;
-        type: "string" | "color" | "file";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "object" | "int";
-        name: string;
-    } | {
-        value?: number | undefined;
-        propertytype?: string | undefined;
-        type: "float";
-        name: string;
-    } | {
-        value?: boolean | undefined;
-        propertytype?: string | undefined;
-        type: "bool";
-        name: string;
-    } | {
-        value?: import("./ITiledMapProperty").Json | undefined;
-        propertytype?: string | undefined;
-        type: "class";
-        name: string;
-    })[] | undefined;
-    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
-    backgroundcolor?: string | undefined;
-    tileheight?: number | undefined;
-    tilewidth?: number | undefined;
-    version?: string | number | undefined;
-    compressionlevel?: number | undefined;
-    hexsidelength?: number | undefined;
-    infinite?: boolean | undefined;
-    nextlayerid?: number | undefined;
-    nextobjectid?: number | undefined;
-    parallaxoriginx?: number | undefined;
-    parallaxoriginy?: number | undefined;
-    renderorder?: "right-down" | "right-up" | "left-down" | "left-up" | undefined;
-    staggeraxis?: "x" | "y" | undefined;
-    staggerindex?: "odd" | "even" | undefined;
     type: "map";
+    height: number;
+    width: number;
     tiledversion: string;
     layers: ({
-        x?: number | undefined;
-        y?: number | undefined;
         type: "tilelayer";
         name: string;
         height: number;
         width: number;
         chunks: {
-            data: string | number[];
+            data: number[];
             height: number;
             width: number;
             x: number;
@@ -4177,152 +4065,65 @@ export declare const ITiledMap: z.ZodObject<{
         starty: number;
         opacity: number;
         visible: boolean;
-    } | {
-        class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
-        chunks?: {
-            data: string | number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[] | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
-            type: "string" | "color" | "file";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "object" | "int";
-            name: string;
-        } | {
-            value?: number | undefined;
-            propertytype?: string | undefined;
-            type: "float";
-            name: string;
-        } | {
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-            type: "bool";
-            name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-            type: "class";
-            name: string;
-        })[] | undefined;
-        tintcolor?: string | undefined;
+    } | {
         type: "tilelayer";
+        data: number[];
         name: string;
-        data: string | number[];
         height: number;
         width: number;
         id: number;
         opacity: number;
         visible: boolean;
-    } | {
-        class?: string | undefined;
-        height?: number | undefined;
-        width?: number | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-        id?: number | undefined;
-        startx?: number | undefined;
-        starty?: number | undefined;
-        offsetx?: number | undefined;
-        offsety?: number | undefined;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
-        } | {
-            value?: number | undefined;
+            value?: string | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "object" | "int";
             name: string;
-        } | {
             value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "float";
             name: string;
-        } | {
-            value?: boolean | undefined;
+            value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "bool";
             name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
+            value?: boolean | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         })[] | undefined;
         tintcolor?: string | undefined;
-        draworder?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
+    } | {
         type: "objectgroup";
         name: string;
         opacity: number;
         visible: boolean;
         objects: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
-            text?: {
-                color?: string | undefined;
-                bold?: boolean | undefined;
-                fontfamily?: string | undefined;
-                halign?: "center" | "right" | "justify" | "left" | undefined;
-                italic?: boolean | undefined;
-                kerning?: boolean | undefined;
-                pixelsize?: number | undefined;
-                strikeout?: boolean | undefined;
-                underline?: boolean | undefined;
-                valign?: "center" | "bottom" | "top" | undefined;
-                wrap?: boolean | undefined;
-                text: string;
-            } | undefined;
+            name: string;
+            x: number;
+            y: number;
+            id: number;
+            visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
+            height?: number | undefined;
             point?: boolean | undefined;
             polygon?: {
                 x: number;
@@ -4332,90 +4133,168 @@ export declare const ITiledMap: z.ZodObject<{
                 x: number;
                 y: number;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             rotation?: number | undefined;
             template?: string | undefined;
-            name: string;
-            x: number;
-            y: number;
-            id: number;
-            visible: boolean;
+            text?: {
+                text: string;
+                bold?: boolean | undefined;
+                color?: string | undefined;
+                fontfamily?: string | undefined;
+                halign?: "center" | "right" | "justify" | "left" | undefined;
+                italic?: boolean | undefined;
+                kerning?: boolean | undefined;
+                pixelsize?: number | undefined;
+                strikeout?: boolean | undefined;
+                underline?: boolean | undefined;
+                valign?: "center" | "bottom" | "top" | undefined;
+                wrap?: boolean | undefined;
+            } | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            width?: number | undefined;
         }[];
-    })[];
-    tilesets: ({
-        type?: "tileset" | undefined;
-        class?: string | undefined;
+        draworder?: string | undefined;
+        height?: number | undefined;
         id?: number | undefined;
+        offsetx?: number | undefined;
+        offsety?: number | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
         properties?: ({
-            value?: string | undefined;
-            propertytype?: string | undefined;
             type: "string" | "color" | "file";
             name: string;
-        } | {
-            value?: number | undefined;
+            value?: string | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "object" | "int";
             name: string;
-        } | {
             value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "float";
             name: string;
-        } | {
-            value?: boolean | undefined;
+            value?: number | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "bool";
             name: string;
-        } | {
-            value?: import("./ITiledMapProperty").Json | undefined;
+            value?: boolean | undefined;
             propertytype?: string | undefined;
+        } | {
             type: "class";
             name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
         })[] | undefined;
-        imageheight?: number | undefined;
-        imagewidth?: number | undefined;
+        startx?: number | undefined;
+        starty?: number | undefined;
+        tintcolor?: string | undefined;
+        width?: number | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
+    })[];
+    tilesets: {
+        name: string;
+        image: string;
+        firstgid: number;
+        tilecount: number;
+        backgroundcolor?: string | undefined;
+        columns?: number | undefined;
+        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
         grid?: {
             height: number;
             width: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
-        backgroundcolor?: string | undefined;
-        columns?: number | undefined;
-        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
-        firstgid?: number | undefined;
+        id?: number | undefined;
+        imageheight?: number | undefined;
+        imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
         spacing?: number | undefined;
         terrains?: {
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
             name: string;
             tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
         }[] | undefined;
-        tilecount?: number | undefined;
         tiledversion?: string | undefined;
         tileheight?: number | undefined;
         tileoffset?: {
@@ -4424,130 +4303,32 @@ export declare const ITiledMap: z.ZodObject<{
         } | undefined;
         tilerendersize?: "tile" | "grid" | undefined;
         tiles?: {
-            type?: string | undefined;
-            class?: string | undefined;
-            height?: number | undefined;
-            width?: number | undefined;
+            id: number;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            image?: string | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
             x?: number | undefined;
             y?: number | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
             objectgroup?: {
-                class?: string | undefined;
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                id?: number | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
                 type: "objectgroup";
                 name: string;
                 opacity: number;
                 visible: boolean;
                 objects: {
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    properties?: ({
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                        type: "string" | "color" | "file";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "object" | "int";
-                        name: string;
-                    } | {
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                        type: "float";
-                        name: string;
-                    } | {
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                        type: "bool";
-                        name: string;
-                    } | {
-                        value?: import("./ITiledMapProperty").Json | undefined;
-                        propertytype?: string | undefined;
-                        type: "class";
-                        name: string;
-                    })[] | undefined;
-                    text?: {
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                        text: string;
-                    } | undefined;
+                    name: string;
+                    x: number;
+                    y: number;
+                    id: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
+                    height?: number | undefined;
                     point?: boolean | undefined;
                     polygon?: {
                         x: number;
@@ -4557,54 +4338,152 @@ export declare const ITiledMap: z.ZodObject<{
                         x: number;
                         y: number;
                     }[] | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: import("./ITiledMapProperty").Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
                     rotation?: number | undefined;
                     template?: string | undefined;
-                    name: string;
-                    x: number;
-                    y: number;
-                    id: number;
-                    visible: boolean;
+                    text?: {
+                        text: string;
+                        bold?: boolean | undefined;
+                        color?: string | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    width?: number | undefined;
                 }[];
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            image?: string | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
+                draworder?: string | undefined;
+                height?: number | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
                 properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
                     type: "string" | "color" | "file";
                     name: string;
-                } | {
-                    value?: number | undefined;
+                    value?: string | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "object" | "int";
                     name: string;
-                } | {
                     value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "float";
                     name: string;
-                } | {
-                    value?: boolean | undefined;
+                    value?: number | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "bool";
                     name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
+                    value?: boolean | undefined;
                     propertytype?: string | undefined;
+                } | {
                     type: "class";
                     name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
                 })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                width?: number | undefined;
+                class?: string | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+            } | undefined;
+            probability?: number | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            class?: string | undefined;
+            terrain?: {
                 name: string;
                 tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
             }[] | undefined;
-            id: number;
+            type?: string | undefined;
         }[] | undefined;
         tilewidth?: number | undefined;
         transformations?: {
@@ -4614,82 +4493,121 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
+        type?: "tileset" | undefined;
+        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            class?: string | undefined;
-            properties?: ({
-                value?: string | undefined;
-                propertytype?: string | undefined;
-                type: "string" | "color" | "file";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "object" | "int";
-                name: string;
-            } | {
-                value?: number | undefined;
-                propertytype?: string | undefined;
-                type: "float";
-                name: string;
-            } | {
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-                type: "bool";
-                name: string;
-            } | {
-                value?: import("./ITiledMapProperty").Json | undefined;
-                propertytype?: string | undefined;
-                type: "class";
-                name: string;
-            })[] | undefined;
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
             colors?: {
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                    type: "string" | "color" | "file";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "object" | "int";
-                    name: string;
-                } | {
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                    type: "float";
-                    name: string;
-                } | {
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                    type: "bool";
-                    name: string;
-                } | {
-                    value?: import("./ITiledMapProperty").Json | undefined;
-                    propertytype?: string | undefined;
-                    type: "class";
-                    name: string;
-                })[] | undefined;
-                color: string;
                 name: string;
+                color: string;
                 tile: number;
                 probability: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: import("./ITiledMapProperty").Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                type?: string | undefined;
+                class?: string | undefined;
             }[] | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: import("./ITiledMapProperty").Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
             wangtiles?: {
                 tileid: number;
                 wangid: number[];
             }[] | undefined;
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
+            class?: string | undefined;
         }[] | undefined;
+    }[];
+    backgroundcolor?: string | undefined;
+    compressionlevel?: number | undefined;
+    hexsidelength?: number | undefined;
+    infinite?: boolean | undefined;
+    nextlayerid?: number | undefined;
+    nextobjectid?: number | undefined;
+    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
+    parallaxoriginx?: number | undefined;
+    parallaxoriginy?: number | undefined;
+    properties?: ({
+        type: "string" | "color" | "file";
         name: string;
-        image: string;
+        value?: string | undefined;
+        propertytype?: string | undefined;
     } | {
-        firstgid: number;
-        source: string;
-    })[];
+        type: "object" | "int";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "float";
+        name: string;
+        value?: number | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "bool";
+        name: string;
+        value?: boolean | undefined;
+        propertytype?: string | undefined;
+    } | {
+        type: "class";
+        name: string;
+        value?: import("./ITiledMapProperty").Json | undefined;
+        propertytype?: string | undefined;
+    })[] | undefined;
+    renderorder?: "right-down" | "right-up" | "left-down" | "left-up" | undefined;
+    staggeraxis?: "x" | "y" | undefined;
+    staggerindex?: "odd" | "even" | undefined;
+    tileheight?: number | undefined;
+    tilewidth?: number | undefined;
+    class?: string | undefined;
+    version?: string | number | undefined;
 }>;
-export declare type ITiledMap = z.infer<typeof ITiledMap>;
+export type ITiledMap = z.infer<typeof ITiledMap>;

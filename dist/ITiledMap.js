@@ -12,7 +12,6 @@ exports.ITiledMap = zod_1.z.object({
     type: zod_1.z.literal('map'),
     backgroundcolor: zod_1.z.string().optional(),
     compressionlevel: zod_1.z.number().optional(),
-    height: zod_1.z.number().optional(),
     hexsidelength: zod_1.z.number().optional(),
     infinite: zod_1.z.boolean().optional(),
     nextlayerid: zod_1.z.number().optional(),
@@ -28,6 +27,7 @@ exports.ITiledMap = zod_1.z.object({
     tilewidth: zod_1.z.number().optional(),
     class: zod_1.z.string().optional(),
     version: zod_1.z.union([zod_1.z.string(), zod_1.z.number()]).optional(),
-    width: zod_1.z.number().optional(),
+    width: zod_1.z.number(),
+    height: zod_1.z.number(),
 });
 //# sourceMappingURL=ITiledMap.js.map

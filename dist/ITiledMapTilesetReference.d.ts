@@ -9,4 +9,4 @@ export declare const ITiledMapTilesetReference: z.ZodObject<{
     firstgid: number;
     source: string;
 }>;
-export declare type ITiledMapTilesetReference = z.infer<typeof ITiledMapTilesetReference>;
+export type ITiledMapTilesetReference = z.infer<typeof ITiledMapTilesetReference>;

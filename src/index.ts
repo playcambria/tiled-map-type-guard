@@ -12,7 +12,6 @@ export * from './ITiledMapTerrain';
 export * from './ITiledMapText';
 export * from './ITiledMapTile';
 export * from './ITiledMapTileset';
-export * from './ITiledMapEmbeddedTileset';
 export * from './ITiledMapTilesetReference';
 export * from './ITiledMapTransformations';
 export * from './ITiledMapWangColor';

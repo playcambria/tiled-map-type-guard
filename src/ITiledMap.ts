@@ -10,7 +10,6 @@ export const ITiledMap = z.object({
   type: z.literal('map'),
   backgroundcolor: z.string().optional(),
   compressionlevel: z.number().optional(),
-  height: z.number().optional(),
   hexsidelength: z.number().optional(),
   infinite: z.boolean().optional(),
   nextlayerid: z.number().optional(),
@@ -26,7 +25,8 @@ export const ITiledMap = z.object({
   tilewidth: z.number().optional(),
   class: z.string().optional(),
   version: z.union([z.string(), z.number()]).optional(),
-  width: z.number().optional(),
+  width: z.number(),
+  height: z.number(),
 });
 
 export type ITiledMap = z.infer<typeof ITiledMap>;

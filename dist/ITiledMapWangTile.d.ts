@@ -9,4 +9,4 @@ export declare const ITiledMapWangTile: z.ZodObject<{
     tileid: number;
     wangid: number[];
 }>;
-export declare type ITiledMapWangTile = z.infer<typeof ITiledMapWangTile>;
+export type ITiledMapWangTile = z.infer<typeof ITiledMapWangTile>;

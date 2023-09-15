@@ -26,5 +26,5 @@ export interface TiledMapGroupLayer extends Partial<TiledMapGroupLayerOptional> 
     layers: ITiledMapLayer[];
 }
 export declare const ITiledMapGroupLayer: z.ZodType<TiledMapGroupLayer>;
-export declare type ITiledMapGroupLayer = z.infer<typeof ITiledMapGroupLayer>;
+export type ITiledMapGroupLayer = z.infer<typeof ITiledMapGroupLayer>;
 export {};

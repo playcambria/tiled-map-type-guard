@@ -15,4 +15,4 @@ export declare const ITiledMapTransformations: z.ZodObject<{
     rotate?: boolean | undefined;
     preferuntransformed?: boolean | undefined;
 }>;
-export declare type ITiledMapTransformations = z.infer<typeof ITiledMapTransformations>;
+export type ITiledMapTransformations = z.infer<typeof ITiledMapTransformations>;

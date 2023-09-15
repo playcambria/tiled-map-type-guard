@@ -13,8 +13,9 @@ export declare const ITiledMapText: z.ZodObject<{
     valign: z.ZodOptional<z.ZodEnum<["center", "bottom", "top"]>>;
     wrap: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
-    color?: string | undefined;
+    text: string;
     bold?: boolean | undefined;
+    color?: string | undefined;
     fontfamily?: string | undefined;
     halign?: "center" | "right" | "justify" | "left" | undefined;
     italic?: boolean | undefined;
@@ -24,10 +25,10 @@ export declare const ITiledMapText: z.ZodObject<{
     underline?: boolean | undefined;
     valign?: "center" | "bottom" | "top" | undefined;
     wrap?: boolean | undefined;
-    text: string;
 }, {
-    color?: string | undefined;
+    text: string;
     bold?: boolean | undefined;
+    color?: string | undefined;
     fontfamily?: string | undefined;
     halign?: "center" | "right" | "justify" | "left" | undefined;
     italic?: boolean | undefined;
@@ -37,6 +38,5 @@ export declare const ITiledMapText: z.ZodObject<{
     underline?: boolean | undefined;
     valign?: "center" | "bottom" | "top" | undefined;
     wrap?: boolean | undefined;
-    text: string;
 }>;
-export declare type ITiledMapText = z.infer<typeof ITiledMapText>;
+export type ITiledMapText = z.infer<typeof ITiledMapText>;

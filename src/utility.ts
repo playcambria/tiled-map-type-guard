@@ -1,3 +1,4 @@
+export {};
 // import { ITiledMap } from './ITiledMap';
 // import { ITiledMapLayer } from './ITiledMapLayer';
 

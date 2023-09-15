@@ -12,4 +12,4 @@ export declare const ITiledMapGrid: z.ZodObject<{
     width: number;
     orientation: "orthogonal" | "isometric";
 }>;
-export declare type ITiledMapGrid = z.infer<typeof ITiledMapGrid>;
+export type ITiledMapGrid = z.infer<typeof ITiledMapGrid>;

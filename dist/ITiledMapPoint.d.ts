@@ -9,4 +9,4 @@ export declare const ITiledMapPoint: z.ZodObject<{
     x: number;
     y: number;
 }>;
-export declare type ITiledMapPoint = z.infer<typeof ITiledMapPoint>;
+export type ITiledMapPoint = z.infer<typeof ITiledMapPoint>;
