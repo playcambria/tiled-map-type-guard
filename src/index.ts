@@ -20,4 +20,7 @@ export * from './ITiledMapWangTile';
 export * from './ITiledMapTileLayer';
 export { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 export * from './ITiledMap';
-// export { upgradeMapToNewest } from './utility';
+export * from './IMapConfig';
+export * from './ITiledWorld';
+export * from './UtilityTypes';
+export * from './TypeGuards';

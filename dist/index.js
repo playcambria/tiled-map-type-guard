@@ -38,4 +38,8 @@ __exportStar(require("./ITiledMapTileLayer"), exports);
 var ITiledMapGroupLayer_1 = require("./ITiledMapGroupLayer");
 Object.defineProperty(exports, "ITiledMapGroupLayer", { enumerable: true, get: function () { return ITiledMapGroupLayer_1.ITiledMapGroupLayer; } });
 __exportStar(require("./ITiledMap"), exports);
+__exportStar(require("./IMapConfig"), exports);
+__exportStar(require("./ITiledWorld"), exports);
+__exportStar(require("./UtilityTypes"), exports);
+__exportStar(require("./TypeGuards"), exports);
 //# sourceMappingURL=index.js.map
