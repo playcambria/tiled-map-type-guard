@@ -2,6 +2,8 @@ import { ITiledMapProperty } from './ITiledMapProperty';
 import { ITiledMapLayer } from './ITiledMapLayer';
 import { ITiledMapTileset } from './ITiledMapTileset';
 import { z } from 'zod';
+import { ITiledMapInfiniteTileLayer, ITiledMapRestrictedTileLayer } from './ITiledMapTileLayer';
+import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
 
 export const ITiledMap = z.object({
   layers: ITiledMapLayer.array(),
@@ -29,4 +31,16 @@ export const ITiledMap = z.object({
   height: z.number(),
 });
 
+export const ITiledInfiniteMap = ITiledMap.extend({
+  layers: z.union([ITiledMapInfiniteTileLayer, ITiledMapObjectLayer]).array(),
+  infinite: z.literal(true),
+});
+
+export const ITiledRestrictedMap = ITiledMap.extend({
+  layers: z.union([ITiledMapRestrictedTileLayer, ITiledMapObjectLayer]).array(),
+  infinite: z.literal(false),
+});
+
 export type ITiledMap = z.infer<typeof ITiledMap>;
+export type ITiledInfiniteMap = z.infer<typeof ITiledInfiniteMap>;
+export type ITiledRestrictedMap = z.infer<typeof ITiledRestrictedMap>;

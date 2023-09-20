@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ITiledMap = void 0;
+exports.ITiledRestrictedMap = exports.ITiledInfiniteMap = exports.ITiledMap = void 0;
 const ITiledMapProperty_1 = require("./ITiledMapProperty");
 const ITiledMapLayer_1 = require("./ITiledMapLayer");
 const ITiledMapTileset_1 = require("./ITiledMapTileset");
 const zod_1 = require("zod");
+const ITiledMapTileLayer_1 = require("./ITiledMapTileLayer");
+const ITiledMapObjectLayer_1 = require("./ITiledMapObjectLayer");
 exports.ITiledMap = zod_1.z.object({
     layers: ITiledMapLayer_1.ITiledMapLayer.array(),
     tiledversion: zod_1.z.string(),
@@ -29,5 +31,13 @@ exports.ITiledMap = zod_1.z.object({
     version: zod_1.z.union([zod_1.z.string(), zod_1.z.number()]).optional(),
     width: zod_1.z.number(),
     height: zod_1.z.number(),
+});
+exports.ITiledInfiniteMap = exports.ITiledMap.extend({
+    layers: zod_1.z.union([ITiledMapTileLayer_1.ITiledMapInfiniteTileLayer, ITiledMapObjectLayer_1.ITiledMapObjectLayer]).array(),
+    infinite: zod_1.z.literal(true),
+});
+exports.ITiledRestrictedMap = exports.ITiledMap.extend({
+    layers: zod_1.z.union([ITiledMapTileLayer_1.ITiledMapRestrictedTileLayer, ITiledMapObjectLayer_1.ITiledMapObjectLayer]).array(),
+    infinite: zod_1.z.literal(false),
 });
 //# sourceMappingURL=ITiledMap.js.map
