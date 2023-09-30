@@ -2,12 +2,13 @@ import { z } from 'zod';
 import { ITiledMapTileLayer } from './ITiledMapTileLayer';
 // import { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
+import { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 // import { ITiledMapImageLayer } from './ITiledMapImageLayer';
 
 export const ITiledMapLayer = z.union([
   ITiledMapTileLayer,
   ITiledMapObjectLayer,
-  // ITiledMapGroupLayer,
+  ITiledMapGroupLayer,
   // ITiledMapImageLayer,
 ]);
 

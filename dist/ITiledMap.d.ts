@@ -32,9 +32,15 @@ export declare const ITiledMap: z.ZodObject<{
         opacity: z.ZodNumber;
         visible: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -42,18 +48,18 @@ export declare const ITiledMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     }, {
-        height: number;
-        width: number;
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -61,12 +67,6 @@ export declare const ITiledMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     }>, z.ZodObject<{
@@ -88,13 +88,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -103,13 +103,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -118,13 +118,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -133,13 +133,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -148,13 +148,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -163,12 +163,12 @@ export declare const ITiledMap: z.ZodObject<{
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -176,28 +176,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -206,12 +206,12 @@ export declare const ITiledMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     }, {
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -219,28 +219,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -286,13 +286,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -301,13 +301,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -316,13 +316,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -331,13 +331,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -346,13 +346,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -402,10 +402,10 @@ export declare const ITiledMap: z.ZodObject<{
             class: z.ZodOptional<z.ZodString>;
             width: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -420,28 +420,28 @@ export declare const ITiledMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -465,10 +465,10 @@ export declare const ITiledMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }, {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -483,28 +483,28 @@ export declare const ITiledMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -544,13 +544,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -559,13 +559,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -574,13 +574,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -589,13 +589,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -604,13 +604,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -622,15 +622,15 @@ export declare const ITiledMap: z.ZodObject<{
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -645,28 +645,28 @@ export declare const ITiledMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -698,28 +698,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -731,15 +731,15 @@ export declare const ITiledMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     }, {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -754,28 +754,28 @@ export declare const ITiledMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -807,28 +807,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -839,7 +839,7 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
-    }>]>, "many">;
+    }>, z.ZodType<import("./ITiledMapGroupLayer").TiledMapGroupLayer, z.ZodTypeDef, import("./ITiledMapGroupLayer").TiledMapGroupLayer>]>, "many">;
     tiledversion: z.ZodString;
     tilesets: z.ZodArray<z.ZodObject<{
         name: z.ZodString;
@@ -872,13 +872,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -887,13 +887,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -902,13 +902,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -917,13 +917,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -932,13 +932,13 @@ export declare const ITiledMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -952,13 +952,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -967,13 +967,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -982,13 +982,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -997,13 +997,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -1012,13 +1012,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -1026,28 +1026,28 @@ export declare const ITiledMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -1055,28 +1055,28 @@ export declare const ITiledMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -1152,13 +1152,13 @@ export declare const ITiledMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodString>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -1167,13 +1167,13 @@ export declare const ITiledMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "object" | "int";
                         name: string;
+                        type: "object" | "int";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "object" | "int";
                         name: string;
+                        type: "object" | "int";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -1182,13 +1182,13 @@ export declare const ITiledMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "float";
                         name: string;
+                        type: "float";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "float";
                         name: string;
+                        type: "float";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -1197,13 +1197,13 @@ export declare const ITiledMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodBoolean>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -1212,13 +1212,13 @@ export declare const ITiledMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     }>]>, "many">>;
@@ -1268,10 +1268,10 @@ export declare const ITiledMap: z.ZodObject<{
                     class: z.ZodOptional<z.ZodString>;
                     width: z.ZodOptional<z.ZodNumber>;
                 }, "strip", z.ZodTypeAny, {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -1286,28 +1286,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -1331,10 +1331,10 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }, {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -1349,28 +1349,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -1410,13 +1410,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1425,13 +1425,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1440,13 +1440,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1455,13 +1455,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1470,13 +1470,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -1488,15 +1488,15 @@ export declare const ITiledMap: z.ZodObject<{
                 x: z.ZodOptional<z.ZodNumber>;
                 y: z.ZodOptional<z.ZodNumber>;
             }, "strip", z.ZodTypeAny, {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -1511,28 +1511,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -1564,28 +1564,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -1597,15 +1597,15 @@ export declare const ITiledMap: z.ZodObject<{
                 x?: number | undefined;
                 y?: number | undefined;
             }, {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -1620,28 +1620,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -1673,28 +1673,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -1713,13 +1713,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -1728,13 +1728,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -1743,13 +1743,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -1758,13 +1758,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -1773,13 +1773,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -1793,13 +1793,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1808,13 +1808,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1823,13 +1823,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1838,13 +1838,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -1853,13 +1853,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -1867,28 +1867,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -1896,28 +1896,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -1937,15 +1937,15 @@ export declare const ITiledMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -1960,28 +1960,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -2013,28 +2013,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2048,28 +2048,28 @@ export declare const ITiledMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -2078,28 +2078,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2119,15 +2119,15 @@ export declare const ITiledMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -2142,28 +2142,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -2195,28 +2195,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2230,28 +2230,28 @@ export declare const ITiledMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -2260,28 +2260,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2323,13 +2323,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -2338,13 +2338,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -2353,13 +2353,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -2368,13 +2368,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -2383,13 +2383,13 @@ export declare const ITiledMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -2401,28 +2401,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2434,28 +2434,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2468,13 +2468,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -2483,13 +2483,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -2498,13 +2498,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -2513,13 +2513,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -2528,13 +2528,13 @@ export declare const ITiledMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -2551,8 +2551,8 @@ export declare const ITiledMap: z.ZodObject<{
             type: z.ZodEnum<["corner", "edge", "mixed"]>;
             class: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -2560,28 +2560,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2589,28 +2589,28 @@ export declare const ITiledMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -2620,8 +2620,8 @@ export declare const ITiledMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }, {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -2629,28 +2629,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2658,28 +2658,28 @@ export declare const ITiledMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -2708,28 +2708,28 @@ export declare const ITiledMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -2738,28 +2738,28 @@ export declare const ITiledMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -2785,15 +2785,15 @@ export declare const ITiledMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -2808,28 +2808,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -2861,28 +2861,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2896,28 +2896,28 @@ export declare const ITiledMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -2926,28 +2926,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -2966,8 +2966,8 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -2975,28 +2975,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3004,28 +3004,28 @@ export declare const ITiledMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3054,28 +3054,28 @@ export declare const ITiledMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -3084,28 +3084,28 @@ export declare const ITiledMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3131,15 +3131,15 @@ export declare const ITiledMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -3154,28 +3154,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -3207,28 +3207,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3242,28 +3242,28 @@ export declare const ITiledMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3272,28 +3272,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3312,8 +3312,8 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -3321,28 +3321,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3350,28 +3350,28 @@ export declare const ITiledMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3398,13 +3398,13 @@ export declare const ITiledMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodString>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -3413,13 +3413,13 @@ export declare const ITiledMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "object" | "int";
         name: string;
+        type: "object" | "int";
         value?: number | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "object" | "int";
         name: string;
+        type: "object" | "int";
         value?: number | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -3428,13 +3428,13 @@ export declare const ITiledMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "float";
         name: string;
+        type: "float";
         value?: number | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "float";
         name: string;
+        type: "float";
         value?: number | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -3443,13 +3443,13 @@ export declare const ITiledMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodBoolean>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -3458,13 +3458,13 @@ export declare const ITiledMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }>]>, "many">>;
@@ -3478,13 +3478,19 @@ export declare const ITiledMap: z.ZodObject<{
     width: z.ZodNumber;
     height: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
+    type: "map";
     height: number;
     width: number;
-    type: "map";
-    layers: ({
-        height: number;
-        width: number;
+    layers: (import("./ITiledMapGroupLayer").TiledMapGroupLayer | {
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -3492,21 +3498,15 @@ export declare const ITiledMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     } | {
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -3514,28 +3514,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -3544,15 +3544,15 @@ export declare const ITiledMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     } | {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -3567,28 +3567,28 @@ export declare const ITiledMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3620,28 +3620,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -3673,28 +3673,28 @@ export declare const ITiledMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -3703,28 +3703,28 @@ export declare const ITiledMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3750,15 +3750,15 @@ export declare const ITiledMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -3773,28 +3773,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -3826,28 +3826,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3861,28 +3861,28 @@ export declare const ITiledMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -3891,28 +3891,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3931,8 +3931,8 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -3940,28 +3940,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -3969,28 +3969,28 @@ export declare const ITiledMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -4011,28 +4011,28 @@ export declare const ITiledMap: z.ZodObject<{
     parallaxoriginx?: number | undefined;
     parallaxoriginy?: number | undefined;
     properties?: ({
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "object" | "int";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "float";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
@@ -4044,13 +4044,19 @@ export declare const ITiledMap: z.ZodObject<{
     class?: string | undefined;
     version?: string | number | undefined;
 }, {
+    type: "map";
     height: number;
     width: number;
-    type: "map";
-    layers: ({
-        height: number;
-        width: number;
+    layers: (import("./ITiledMapGroupLayer").TiledMapGroupLayer | {
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -4058,21 +4064,15 @@ export declare const ITiledMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     } | {
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -4080,28 +4080,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -4110,15 +4110,15 @@ export declare const ITiledMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     } | {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -4133,28 +4133,28 @@ export declare const ITiledMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -4186,28 +4186,28 @@ export declare const ITiledMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -4239,28 +4239,28 @@ export declare const ITiledMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -4269,28 +4269,28 @@ export declare const ITiledMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -4316,15 +4316,15 @@ export declare const ITiledMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -4339,28 +4339,28 @@ export declare const ITiledMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -4392,28 +4392,28 @@ export declare const ITiledMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -4427,28 +4427,28 @@ export declare const ITiledMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -4457,28 +4457,28 @@ export declare const ITiledMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -4497,8 +4497,8 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -4506,28 +4506,28 @@ export declare const ITiledMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -4535,28 +4535,28 @@ export declare const ITiledMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -4577,28 +4577,28 @@ export declare const ITiledMap: z.ZodObject<{
     parallaxoriginx?: number | undefined;
     parallaxoriginy?: number | undefined;
     properties?: ({
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "object" | "int";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "float";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
@@ -4611,23 +4611,22 @@ export declare const ITiledMap: z.ZodObject<{
     version?: string | number | undefined;
 }>;
 export declare const ITiledInfiniteMap: z.ZodObject<{
-    height: z.ZodNumber;
-    width: z.ZodNumber;
     type: z.ZodLiteral<"map">;
     class: z.ZodOptional<z.ZodString>;
+    height: z.ZodNumber;
     properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
         value: z.ZodOptional<z.ZodString>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -4636,13 +4635,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "object" | "int";
         name: string;
+        type: "object" | "int";
         value?: number | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "object" | "int";
         name: string;
+        type: "object" | "int";
         value?: number | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -4651,13 +4650,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "float";
         name: string;
+        type: "float";
         value?: number | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "float";
         name: string;
+        type: "float";
         value?: number | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -4666,13 +4665,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodBoolean>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -4681,16 +4680,17 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }>]>, "many">>;
+    width: z.ZodNumber;
     tiledversion: z.ZodString;
     backgroundcolor: z.ZodOptional<z.ZodString>;
     orientation: z.ZodOptional<z.ZodEnum<["orthogonal", "isometric", "staggered", "hexagonal"]>>;
@@ -4728,13 +4728,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -4743,13 +4743,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -4758,13 +4758,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -4773,13 +4773,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -4788,13 +4788,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -4808,13 +4808,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -4823,13 +4823,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -4838,13 +4838,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -4853,13 +4853,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -4868,13 +4868,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -4882,28 +4882,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -4911,28 +4911,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -5008,13 +5008,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodString>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -5023,13 +5023,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "object" | "int";
                         name: string;
+                        type: "object" | "int";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "object" | "int";
                         name: string;
+                        type: "object" | "int";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -5038,13 +5038,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "float";
                         name: string;
+                        type: "float";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "float";
                         name: string;
+                        type: "float";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -5053,13 +5053,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodBoolean>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -5068,13 +5068,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     }>]>, "many">>;
@@ -5124,10 +5124,10 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class: z.ZodOptional<z.ZodString>;
                     width: z.ZodOptional<z.ZodNumber>;
                 }, "strip", z.ZodTypeAny, {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -5142,28 +5142,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -5187,10 +5187,10 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }, {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -5205,28 +5205,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -5266,13 +5266,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5281,13 +5281,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5296,13 +5296,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5311,13 +5311,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5326,13 +5326,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -5344,15 +5344,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 x: z.ZodOptional<z.ZodNumber>;
                 y: z.ZodOptional<z.ZodNumber>;
             }, "strip", z.ZodTypeAny, {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -5367,28 +5367,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -5420,28 +5420,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -5453,15 +5453,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 x?: number | undefined;
                 y?: number | undefined;
             }, {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -5476,28 +5476,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -5529,28 +5529,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -5569,13 +5569,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -5584,13 +5584,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -5599,13 +5599,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -5614,13 +5614,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -5629,13 +5629,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -5649,13 +5649,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5664,13 +5664,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5679,13 +5679,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5694,13 +5694,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -5709,13 +5709,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -5723,28 +5723,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -5752,28 +5752,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -5793,15 +5793,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -5816,28 +5816,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -5869,28 +5869,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -5904,28 +5904,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -5934,28 +5934,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -5975,15 +5975,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -5998,28 +5998,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -6051,28 +6051,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6086,28 +6086,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6116,28 +6116,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6179,13 +6179,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -6194,13 +6194,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -6209,13 +6209,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -6224,13 +6224,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -6239,13 +6239,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -6257,28 +6257,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6290,28 +6290,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6324,13 +6324,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -6339,13 +6339,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -6354,13 +6354,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -6369,13 +6369,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -6384,13 +6384,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -6407,8 +6407,8 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             type: z.ZodEnum<["corner", "edge", "mixed"]>;
             class: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -6416,28 +6416,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6445,28 +6445,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6476,8 +6476,8 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }, {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -6485,28 +6485,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6514,28 +6514,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6564,28 +6564,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -6594,28 +6594,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6641,15 +6641,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -6664,28 +6664,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -6717,28 +6717,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6752,28 +6752,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6782,28 +6782,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6822,8 +6822,8 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -6831,28 +6831,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -6860,28 +6860,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6910,28 +6910,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -6940,28 +6940,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -6987,15 +6987,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -7010,28 +7010,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -7063,28 +7063,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -7098,28 +7098,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -7128,28 +7128,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -7168,8 +7168,8 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -7177,28 +7177,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -7206,28 +7206,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -7279,9 +7279,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         opacity: z.ZodNumber;
         visible: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -7289,18 +7295,18 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     }, {
-        height: number;
-        width: number;
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -7308,12 +7314,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     }>, z.ZodObject<{
@@ -7354,13 +7354,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -7369,13 +7369,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -7384,13 +7384,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -7399,13 +7399,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -7414,13 +7414,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -7470,10 +7470,10 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             class: z.ZodOptional<z.ZodString>;
             width: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -7488,28 +7488,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -7533,10 +7533,10 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }, {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -7551,28 +7551,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -7612,13 +7612,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -7627,13 +7627,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -7642,13 +7642,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -7657,13 +7657,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -7672,13 +7672,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -7690,15 +7690,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -7713,28 +7713,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -7766,28 +7766,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -7799,15 +7799,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     }, {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -7822,28 +7822,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -7875,28 +7875,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -7910,13 +7910,19 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     }>]>, "many">;
     infinite: z.ZodLiteral<true>;
 }, "strip", z.ZodTypeAny, {
+    type: "map";
     height: number;
     width: number;
-    type: "map";
     layers: ({
-        height: number;
-        width: number;
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -7924,24 +7930,18 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     } | {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -7956,28 +7956,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8009,28 +8009,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -8062,28 +8062,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -8092,28 +8092,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8139,15 +8139,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -8162,28 +8162,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -8215,28 +8215,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -8250,28 +8250,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8280,28 +8280,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -8320,8 +8320,8 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -8329,28 +8329,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -8358,28 +8358,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8395,28 +8395,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     nextobjectid: number;
     class?: string | undefined;
     properties?: ({
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "object" | "int";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "float";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
@@ -8433,13 +8433,19 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     staggeraxis?: "x" | "y" | undefined;
     staggerindex?: "odd" | "even" | undefined;
 }, {
+    type: "map";
     height: number;
     width: number;
-    type: "map";
     layers: ({
-        height: number;
-        width: number;
+        name: string;
         type: "tilelayer";
+        height: number;
+        id: number;
+        startx: number;
+        starty: number;
+        width: number;
+        opacity: number;
+        visible: boolean;
         chunks: {
             data: number[];
             height: number;
@@ -8447,24 +8453,18 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             x: number;
             y: number;
         }[];
-        id: number;
-        name: string;
-        startx: number;
-        starty: number;
-        opacity: number;
-        visible: boolean;
         x?: number | undefined;
         y?: number | undefined;
     } | {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -8479,28 +8479,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8532,28 +8532,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -8585,28 +8585,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -8615,28 +8615,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8662,15 +8662,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -8685,28 +8685,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -8738,28 +8738,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -8773,28 +8773,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8803,28 +8803,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -8843,8 +8843,8 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -8852,28 +8852,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -8881,28 +8881,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -8918,28 +8918,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     nextobjectid: number;
     class?: string | undefined;
     properties?: ({
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "object" | "int";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "float";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
@@ -8957,23 +8957,22 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     staggerindex?: "odd" | "even" | undefined;
 }>;
 export declare const ITiledRestrictedMap: z.ZodObject<{
-    height: z.ZodNumber;
-    width: z.ZodNumber;
     type: z.ZodLiteral<"map">;
     class: z.ZodOptional<z.ZodString>;
+    height: z.ZodNumber;
     properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
         value: z.ZodOptional<z.ZodString>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -8982,13 +8981,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "object" | "int";
         name: string;
+        type: "object" | "int";
         value?: number | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "object" | "int";
         name: string;
+        type: "object" | "int";
         value?: number | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -8997,13 +8996,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodNumber>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "float";
         name: string;
+        type: "float";
         value?: number | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "float";
         name: string;
+        type: "float";
         value?: number | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -9012,13 +9011,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodBoolean>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     }>, z.ZodObject<{
@@ -9027,16 +9026,17 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
         propertytype: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }, {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }>]>, "many">>;
+    width: z.ZodNumber;
     tiledversion: z.ZodString;
     backgroundcolor: z.ZodOptional<z.ZodString>;
     orientation: z.ZodOptional<z.ZodEnum<["orthogonal", "isometric", "staggered", "hexagonal"]>>;
@@ -9074,13 +9074,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -9089,13 +9089,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -9104,13 +9104,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -9119,13 +9119,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -9134,13 +9134,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -9154,13 +9154,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9169,13 +9169,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9184,13 +9184,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9199,13 +9199,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9214,13 +9214,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -9228,28 +9228,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -9257,28 +9257,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -9354,13 +9354,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodString>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -9369,13 +9369,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "object" | "int";
                         name: string;
+                        type: "object" | "int";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "object" | "int";
                         name: string;
+                        type: "object" | "int";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -9384,13 +9384,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodNumber>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "float";
                         name: string;
+                        type: "float";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "float";
                         name: string;
+                        type: "float";
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -9399,13 +9399,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodBoolean>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     }>, z.ZodObject<{
@@ -9414,13 +9414,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                         propertytype: z.ZodOptional<z.ZodString>;
                     }, "strip", z.ZodTypeAny, {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     }, {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     }>]>, "many">>;
@@ -9470,10 +9470,10 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class: z.ZodOptional<z.ZodString>;
                     width: z.ZodOptional<z.ZodNumber>;
                 }, "strip", z.ZodTypeAny, {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -9488,28 +9488,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -9533,10 +9533,10 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }, {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -9551,28 +9551,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -9612,13 +9612,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -9627,13 +9627,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -9642,13 +9642,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -9657,13 +9657,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -9672,13 +9672,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -9690,15 +9690,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 x: z.ZodOptional<z.ZodNumber>;
                 y: z.ZodOptional<z.ZodNumber>;
             }, "strip", z.ZodTypeAny, {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -9713,28 +9713,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -9766,28 +9766,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -9799,15 +9799,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 x?: number | undefined;
                 y?: number | undefined;
             }, {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -9822,28 +9822,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -9875,28 +9875,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -9915,13 +9915,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9930,13 +9930,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9945,13 +9945,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9960,13 +9960,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -9975,13 +9975,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -9995,13 +9995,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10010,13 +10010,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10025,13 +10025,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10040,13 +10040,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10055,13 +10055,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -10069,28 +10069,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10098,28 +10098,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10139,15 +10139,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -10162,28 +10162,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -10215,28 +10215,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10250,28 +10250,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -10280,28 +10280,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10321,15 +10321,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -10344,28 +10344,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -10397,28 +10397,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10432,28 +10432,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -10462,28 +10462,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10525,13 +10525,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodString>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10540,13 +10540,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "object" | "int";
                     name: string;
+                    type: "object" | "int";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10555,13 +10555,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodNumber>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "float";
                     name: string;
+                    type: "float";
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10570,13 +10570,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodBoolean>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 }>, z.ZodObject<{
@@ -10585,13 +10585,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                     propertytype: z.ZodOptional<z.ZodString>;
                 }, "strip", z.ZodTypeAny, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }, {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 }>]>, "many">>;
@@ -10603,28 +10603,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10636,28 +10636,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10670,13 +10670,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -10685,13 +10685,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -10700,13 +10700,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -10715,13 +10715,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -10730,13 +10730,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -10753,8 +10753,8 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             type: z.ZodEnum<["corner", "edge", "mixed"]>;
             class: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -10762,28 +10762,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10791,28 +10791,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -10822,8 +10822,8 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }, {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -10831,28 +10831,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -10860,28 +10860,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -10910,28 +10910,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -10940,28 +10940,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -10987,15 +10987,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -11010,28 +11010,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -11063,28 +11063,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -11098,28 +11098,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -11128,28 +11128,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -11168,8 +11168,8 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -11177,28 +11177,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -11206,28 +11206,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -11256,28 +11256,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -11286,28 +11286,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -11333,15 +11333,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -11356,28 +11356,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -11409,28 +11409,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -11444,28 +11444,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -11474,28 +11474,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -11514,8 +11514,8 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -11523,28 +11523,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -11552,28 +11552,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -11612,13 +11612,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -11627,13 +11627,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -11642,13 +11642,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -11657,13 +11657,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -11672,13 +11672,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -11687,12 +11687,12 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -11700,28 +11700,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -11730,12 +11730,12 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     }, {
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -11743,28 +11743,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -11810,13 +11810,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodString>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -11825,13 +11825,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "object" | "int";
                 name: string;
+                type: "object" | "int";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -11840,13 +11840,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodNumber>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "float";
                 name: string;
+                type: "float";
                 value?: number | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -11855,13 +11855,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodBoolean>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             }>, z.ZodObject<{
@@ -11870,13 +11870,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
                 propertytype: z.ZodOptional<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }, {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             }>]>, "many">>;
@@ -11926,10 +11926,10 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             class: z.ZodOptional<z.ZodString>;
             width: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -11944,28 +11944,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -11989,10 +11989,10 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }, {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -12007,28 +12007,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12068,13 +12068,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodString>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -12083,13 +12083,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "object" | "int";
             name: string;
+            type: "object" | "int";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -12098,13 +12098,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodNumber>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "float";
             name: string;
+            type: "float";
             value?: number | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -12113,13 +12113,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodBoolean>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         }>, z.ZodObject<{
@@ -12128,13 +12128,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             value: z.ZodOptional<z.ZodType<import("./ITiledMapProperty").Json, z.ZodTypeDef, import("./ITiledMapProperty").Json>>;
             propertytype: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }, {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         }>]>, "many">>;
@@ -12146,15 +12146,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         x: z.ZodOptional<z.ZodNumber>;
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -12169,28 +12169,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12222,28 +12222,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -12255,15 +12255,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     }, {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -12278,28 +12278,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12331,28 +12331,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -12366,16 +12366,16 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     }>]>, "many">;
     infinite: z.ZodLiteral<false>;
 }, "strip", z.ZodTypeAny, {
+    type: "map";
     height: number;
     width: number;
-    type: "map";
     layers: ({
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -12383,28 +12383,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -12413,15 +12413,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     } | {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -12436,28 +12436,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12489,28 +12489,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -12542,28 +12542,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -12572,28 +12572,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12619,15 +12619,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -12642,28 +12642,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -12695,28 +12695,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -12730,28 +12730,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12760,28 +12760,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -12800,8 +12800,8 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -12809,28 +12809,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -12838,28 +12838,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -12875,28 +12875,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     nextobjectid: number;
     class?: string | undefined;
     properties?: ({
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "object" | "int";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "float";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
@@ -12913,16 +12913,16 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     staggeraxis?: "x" | "y" | undefined;
     staggerindex?: "odd" | "even" | undefined;
 }, {
+    type: "map";
     height: number;
     width: number;
-    type: "map";
     layers: ({
+        name: string;
+        type: "tilelayer";
         data: number[];
         height: number;
-        width: number;
-        type: "tilelayer";
         id: number;
-        name: string;
+        width: number;
         opacity: number;
         visible: boolean;
         compression?: string | undefined;
@@ -12930,28 +12930,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -12960,15 +12960,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         x?: number | undefined;
         y?: number | undefined;
     } | {
-        type: "objectgroup";
         name: string;
+        type: "objectgroup";
         opacity: number;
         visible: boolean;
         objects: {
+            name: string;
+            id: number;
             x: number;
             y: number;
-            id: number;
-            name: string;
             visible: boolean;
             ellipse?: boolean | undefined;
             gid?: number | undefined;
@@ -12983,28 +12983,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 y: number;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -13036,28 +13036,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         parallaxx?: number | undefined;
         parallaxy?: number | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -13089,28 +13089,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         margin?: number | undefined;
         objectalignment?: string | undefined;
         properties?: ({
-            type: "string" | "color" | "file";
             name: string;
+            type: "string" | "color" | "file";
             value?: string | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "object" | "int";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
+            name: string;
             type: "float";
-            name: string;
             value?: number | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "bool";
             name: string;
+            type: "bool";
             value?: boolean | undefined;
             propertytype?: string | undefined;
         } | {
-            type: "class";
             name: string;
+            type: "class";
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
@@ -13119,28 +13119,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             name: string;
             tile: number;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -13166,15 +13166,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             width?: number | undefined;
             height?: number | undefined;
             objectgroup?: {
-                type: "objectgroup";
                 name: string;
+                type: "objectgroup";
                 opacity: number;
                 visible: boolean;
                 objects: {
+                    name: string;
+                    id: number;
                     x: number;
                     y: number;
-                    id: number;
-                    name: string;
                     visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
@@ -13189,28 +13189,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                         y: number;
                     }[] | undefined;
                     properties?: ({
-                        type: "string" | "color" | "file";
                         name: string;
+                        type: "string" | "color" | "file";
                         value?: string | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "object" | "int";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
+                        name: string;
                         type: "float";
-                        name: string;
                         value?: number | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "bool";
                         name: string;
+                        type: "bool";
                         value?: boolean | undefined;
                         propertytype?: string | undefined;
                     } | {
-                        type: "class";
                         name: string;
+                        type: "class";
                         value?: import("./ITiledMapProperty").Json | undefined;
                         propertytype?: string | undefined;
                     })[] | undefined;
@@ -13242,28 +13242,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 parallaxx?: number | undefined;
                 parallaxy?: number | undefined;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -13277,28 +13277,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             } | undefined;
             probability?: number | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -13307,28 +13307,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 name: string;
                 tile: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -13347,8 +13347,8 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
-            type: "corner" | "edge" | "mixed";
             name: string;
+            type: "corner" | "edge" | "mixed";
             tile: number;
             colors?: {
                 name: string;
@@ -13356,28 +13356,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 tile: number;
                 probability: number;
                 properties?: ({
-                    type: "string" | "color" | "file";
                     name: string;
+                    type: "string" | "color" | "file";
                     value?: string | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "object" | "int";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
+                    name: string;
                     type: "float";
-                    name: string;
                     value?: number | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "bool";
                     name: string;
+                    type: "bool";
                     value?: boolean | undefined;
                     propertytype?: string | undefined;
                 } | {
-                    type: "class";
                     name: string;
+                    type: "class";
                     value?: import("./ITiledMapProperty").Json | undefined;
                     propertytype?: string | undefined;
                 })[] | undefined;
@@ -13385,28 +13385,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                 class?: string | undefined;
             }[] | undefined;
             properties?: ({
-                type: "string" | "color" | "file";
                 name: string;
+                type: "string" | "color" | "file";
                 value?: string | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "object" | "int";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
+                name: string;
                 type: "float";
-                name: string;
                 value?: number | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "bool";
                 name: string;
+                type: "bool";
                 value?: boolean | undefined;
                 propertytype?: string | undefined;
             } | {
-                type: "class";
                 name: string;
+                type: "class";
                 value?: import("./ITiledMapProperty").Json | undefined;
                 propertytype?: string | undefined;
             })[] | undefined;
@@ -13422,28 +13422,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     nextobjectid: number;
     class?: string | undefined;
     properties?: ({
-        type: "string" | "color" | "file";
         name: string;
+        type: "string" | "color" | "file";
         value?: string | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "object" | "int";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
+        name: string;
         type: "float";
-        name: string;
         value?: number | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "bool";
         name: string;
+        type: "bool";
         value?: boolean | undefined;
         propertytype?: string | undefined;
     } | {
-        type: "class";
         name: string;
+        type: "class";
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;

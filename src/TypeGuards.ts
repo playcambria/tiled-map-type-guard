@@ -1,4 +1,5 @@
 import { ITiledInfiniteMap, ITiledMap } from './ITiledMap';
+import { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
 import { ITiledMapLayer } from './ITiledMapLayer';
 import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
 import { ITiledMapInfiniteTileLayer, ITiledMapTileLayer } from './ITiledMapTileLayer';
@@ -11,13 +12,19 @@ export function isObjectLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLa
   return layer.type === 'objectgroup';
 }
 
+export function isGroupLayer(layer: ITiledMapLayer): layer is ITiledMapGroupLayer {
+  return layer.type === 'group';
+}
+
 export function isTileLayer(layer: ITiledMapLayer): layer is ITiledMapTileLayer {
   return layer.type === 'tilelayer';
 }
 
-export function isInfiniteLayer(layer: ITiledMapTileLayer): layer is ITiledMapInfiniteTileLayer {
+export function isInfiniteTileLayer(
+  layer: ITiledMapTileLayer,
+): layer is ITiledMapInfiniteTileLayer {
   const isInfinite =
-    layer.type === 'tilelayer' &&
+    isTileLayer(layer) &&
     layer.hasOwnProperty('chunks') &&
     layer.hasOwnProperty('startx') &&
     layer.hasOwnProperty('starty');

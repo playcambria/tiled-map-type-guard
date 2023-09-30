@@ -24,3 +24,4 @@ export * from './IMapConfig';
 export * from './ITiledWorld';
 export * from './UtilityTypes';
 export * from './TypeGuards';
+export * from './ITiledLayer.types';

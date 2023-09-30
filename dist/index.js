@@ -42,4 +42,5 @@ __exportStar(require("./IMapConfig"), exports);
 __exportStar(require("./ITiledWorld"), exports);
 __exportStar(require("./UtilityTypes"), exports);
 __exportStar(require("./TypeGuards"), exports);
+__exportStar(require("./ITiledLayer.types"), exports);
 //# sourceMappingURL=index.js.map
