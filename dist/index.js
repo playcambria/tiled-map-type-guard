@@ -43,5 +43,4 @@ __exportStar(require("./ITiledWorld"), exports);
 __exportStar(require("./UtilityTypes"), exports);
 __exportStar(require("./TypeGuards"), exports);
 __exportStar(require("./ITiledLayer.types"), exports);
-__exportStar(require("./TilesetComparator"), exports);
 //# sourceMappingURL=index.js.map
