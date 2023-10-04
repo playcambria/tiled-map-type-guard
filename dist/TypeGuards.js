@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isInfiniteMap = exports.isInfiniteTileLayer = exports.isTileLayer = exports.isGroupLayer = exports.isObjectLayer = exports.isFloorLayer = void 0;
 function isFloorLayer(layer) {
-    return isObjectLayer(layer) && layer.name === 'floorLayer';
+    return isObjectLayer(layer) && layer.name.includes('floorLayer');
 }
 exports.isFloorLayer = isFloorLayer;
 function isObjectLayer(layer) {

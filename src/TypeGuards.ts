@@ -5,7 +5,7 @@ import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
 import { ITiledMapInfiniteTileLayer, ITiledMapTileLayer } from './ITiledMapTileLayer';
 
 export function isFloorLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer {
-  return isObjectLayer(layer) && layer.name === 'floorLayer';
+  return isObjectLayer(layer) && layer.name.includes('floorLayer');
 }
 
 export function isObjectLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer {
