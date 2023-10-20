@@ -5,7 +5,7 @@ const zod_1 = require("zod");
 const ITiledMapTileset_1 = require("./ITiledMapTileset");
 const UtilityTypes_1 = require("./UtilityTypes");
 exports.MapConfigSchema = zod_1.z.object({
-    tilesets: zod_1.z.array(ITiledMapTileset_1.ITiledMapTileset),
+    tilesets: zod_1.z.array(ITiledMapTileset_1.ITiledMapEmbeddedTileset),
     nbChunks: UtilityTypes_1.Position,
     chunkSize: UtilityTypes_1.Size,
     mapSize: UtilityTypes_1.Size,

@@ -8,15 +8,15 @@ export declare const ITiledMap: z.ZodObject<{
             x: z.ZodNumber;
             y: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }, {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }>, "many">;
@@ -33,18 +33,18 @@ export declare const ITiledMap: z.ZodObject<{
         visible: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
         name: string;
-        type: "tilelayer";
+        width: number;
         height: number;
+        type: "tilelayer";
         id: number;
+        visible: boolean;
+        opacity: number;
         startx: number;
         starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
         chunks: {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }[];
@@ -52,18 +52,18 @@ export declare const ITiledMap: z.ZodObject<{
         y?: number | undefined;
     }, {
         name: string;
-        type: "tilelayer";
+        width: number;
         height: number;
+        type: "tilelayer";
         id: number;
+        visible: boolean;
+        opacity: number;
         startx: number;
         starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
         chunks: {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }[];
@@ -164,13 +164,13 @@ export declare const ITiledMap: z.ZodObject<{
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
         name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
         width: number;
-        opacity: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
         visible: boolean;
+        opacity: number;
         compression?: string | undefined;
         encoding?: "csv" | "base64" | undefined;
         parallaxx?: number | undefined;
@@ -207,13 +207,13 @@ export declare const ITiledMap: z.ZodObject<{
         y?: number | undefined;
     }, {
         name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
         width: number;
-        opacity: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
         visible: boolean;
+        opacity: number;
         compression?: string | undefined;
         encoding?: "csv" | "base64" | undefined;
         parallaxx?: number | undefined;
@@ -624,7 +624,6 @@ export declare const ITiledMap: z.ZodObject<{
     }, "strip", z.ZodTypeAny, {
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -690,6 +689,7 @@ export declare const ITiledMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -733,7 +733,6 @@ export declare const ITiledMap: z.ZodObject<{
     }, {
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -799,6 +798,7 @@ export declare const ITiledMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -841,24 +841,24 @@ export declare const ITiledMap: z.ZodObject<{
         y?: number | undefined;
     }>, z.ZodType<import("./ITiledMapGroupLayer").TiledMapGroupLayer, z.ZodTypeDef, import("./ITiledMapGroupLayer").TiledMapGroupLayer>]>, "many">;
     tiledversion: z.ZodString;
-    tilesets: z.ZodArray<z.ZodObject<{
+    tilesets: z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         image: z.ZodString;
         backgroundcolor: z.ZodOptional<z.ZodString>;
         columns: z.ZodOptional<z.ZodNumber>;
         fillmode: z.ZodOptional<z.ZodEnum<["stretch", "preserve-aspect-fit"]>>;
-        firstgid: z.ZodNumber;
+        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
         grid: z.ZodOptional<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
             orientation: z.ZodEnum<["orthogonal", "isometric"]>;
         }, "strip", z.ZodTypeAny, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }>>;
         id: z.ZodOptional<z.ZodNumber>;
@@ -866,6 +866,7 @@ export declare const ITiledMap: z.ZodObject<{
         imagewidth: z.ZodOptional<z.ZodNumber>;
         margin: z.ZodOptional<z.ZodNumber>;
         objectalignment: z.ZodOptional<z.ZodString>;
+        class: z.ZodOptional<z.ZodString>;
         properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
@@ -1490,7 +1491,6 @@ export declare const ITiledMap: z.ZodObject<{
             }, "strip", z.ZodTypeAny, {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -1556,6 +1556,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -1599,7 +1600,6 @@ export declare const ITiledMap: z.ZodObject<{
             }, {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -1665,6 +1665,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -1939,7 +1940,6 @@ export declare const ITiledMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -2005,6 +2005,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -2121,7 +2122,6 @@ export declare const ITiledMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -2187,6 +2187,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -2306,8 +2307,6 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         }>>;
         transparentcolor: z.ZodOptional<z.ZodString>;
-        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
-        class: z.ZodOptional<z.ZodString>;
         version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
         wangsets: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodString;
@@ -2689,17 +2688,19 @@ export declare const ITiledMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }>, "many">>;
+        firstgid: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -2707,6 +2708,7 @@ export declare const ITiledMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -2787,7 +2789,6 @@ export declare const ITiledMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -2853,6 +2854,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -2962,8 +2964,6 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -3038,14 +3038,15 @@ export declare const ITiledMap: z.ZodObject<{
     }, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -3053,6 +3054,7 @@ export declare const ITiledMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -3133,7 +3135,6 @@ export declare const ITiledMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -3199,6 +3200,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -3308,8 +3310,6 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -3381,7 +3381,16 @@ export declare const ITiledMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }>, "many">;
+    }>, z.ZodObject<{
+        firstgid: z.ZodNumber;
+        source: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        firstgid: number;
+        source: string;
+    }, {
+        firstgid: number;
+        source: string;
+    }>]>, "many">;
     type: z.ZodLiteral<"map">;
     backgroundcolor: z.ZodOptional<z.ZodString>;
     compressionlevel: z.ZodOptional<z.ZodNumber>;
@@ -3478,75 +3487,13 @@ export declare const ITiledMap: z.ZodObject<{
     width: z.ZodNumber;
     height: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    type: "map";
-    height: number;
     width: number;
-    layers: (import("./ITiledMapGroupLayer").TiledMapGroupLayer | {
-        name: string;
-        type: "tilelayer";
-        height: number;
-        id: number;
-        startx: number;
-        starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        chunks: {
-            data: number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[];
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
-        name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            name: string;
-            type: "string" | "color" | "file";
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "object" | "int";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "float";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "bool";
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "class";
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        tintcolor?: string | undefined;
-        class?: string | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
+    height: number;
+    type: "map";
+    tiledversion: string;
+    layers: ({
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -3612,6 +3559,7 @@ export declare const ITiledMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -3652,19 +3600,81 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
-    })[];
-    tiledversion: string;
-    tilesets: {
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        startx: number;
+        starty: number;
+        chunks: {
+            width: number;
+            height: number;
+            data: number[];
+            x: number;
+            y: number;
+        }[];
+        x?: number | undefined;
+        y?: number | undefined;
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            name: string;
+            type: "string" | "color" | "file";
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "object" | "int";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "float";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "bool";
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "class";
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        tintcolor?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
+    } | import("./ITiledMapGroupLayer").TiledMapGroupLayer)[];
+    tilesets: ({
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -3672,6 +3682,7 @@ export declare const ITiledMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -3752,7 +3763,6 @@ export declare const ITiledMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -3818,6 +3828,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -3927,8 +3938,6 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -4000,7 +4009,10 @@ export declare const ITiledMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }[];
+    } | {
+        firstgid: number;
+        source: string;
+    })[];
     nextlayerid: number;
     nextobjectid: number;
     backgroundcolor?: string | undefined;
@@ -4044,75 +4056,13 @@ export declare const ITiledMap: z.ZodObject<{
     class?: string | undefined;
     version?: string | number | undefined;
 }, {
-    type: "map";
-    height: number;
     width: number;
-    layers: (import("./ITiledMapGroupLayer").TiledMapGroupLayer | {
-        name: string;
-        type: "tilelayer";
-        height: number;
-        id: number;
-        startx: number;
-        starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        chunks: {
-            data: number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[];
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
-        name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            name: string;
-            type: "string" | "color" | "file";
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "object" | "int";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "float";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "bool";
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "class";
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        tintcolor?: string | undefined;
-        class?: string | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
+    height: number;
+    type: "map";
+    tiledversion: string;
+    layers: ({
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -4178,6 +4128,7 @@ export declare const ITiledMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -4218,19 +4169,81 @@ export declare const ITiledMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
-    })[];
-    tiledversion: string;
-    tilesets: {
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        startx: number;
+        starty: number;
+        chunks: {
+            width: number;
+            height: number;
+            data: number[];
+            x: number;
+            y: number;
+        }[];
+        x?: number | undefined;
+        y?: number | undefined;
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            name: string;
+            type: "string" | "color" | "file";
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "object" | "int";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "float";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "bool";
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "class";
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        tintcolor?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
+    } | import("./ITiledMapGroupLayer").TiledMapGroupLayer)[];
+    tilesets: ({
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -4238,6 +4251,7 @@ export declare const ITiledMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -4318,7 +4332,6 @@ export declare const ITiledMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -4384,6 +4397,7 @@ export declare const ITiledMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -4493,8 +4507,6 @@ export declare const ITiledMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -4566,7 +4578,10 @@ export declare const ITiledMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }[];
+    } | {
+        firstgid: number;
+        source: string;
+    })[];
     nextlayerid: number;
     nextobjectid: number;
     backgroundcolor?: string | undefined;
@@ -4611,9 +4626,12 @@ export declare const ITiledMap: z.ZodObject<{
     version?: string | number | undefined;
 }>;
 export declare const ITiledInfiniteMap: z.ZodObject<{
+    backgroundcolor: z.ZodOptional<z.ZodString>;
+    width: z.ZodNumber;
+    height: z.ZodNumber;
+    orientation: z.ZodOptional<z.ZodEnum<["orthogonal", "isometric", "staggered", "hexagonal"]>>;
     type: z.ZodLiteral<"map">;
     class: z.ZodOptional<z.ZodString>;
-    height: z.ZodNumber;
     properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
@@ -4690,31 +4708,28 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }>]>, "many">>;
-    width: z.ZodNumber;
     tiledversion: z.ZodString;
-    backgroundcolor: z.ZodOptional<z.ZodString>;
-    orientation: z.ZodOptional<z.ZodEnum<["orthogonal", "isometric", "staggered", "hexagonal"]>>;
     tileheight: z.ZodOptional<z.ZodNumber>;
     tilewidth: z.ZodOptional<z.ZodNumber>;
     version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
-    tilesets: z.ZodArray<z.ZodObject<{
+    tilesets: z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         image: z.ZodString;
         backgroundcolor: z.ZodOptional<z.ZodString>;
         columns: z.ZodOptional<z.ZodNumber>;
         fillmode: z.ZodOptional<z.ZodEnum<["stretch", "preserve-aspect-fit"]>>;
-        firstgid: z.ZodNumber;
+        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
         grid: z.ZodOptional<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
             orientation: z.ZodEnum<["orthogonal", "isometric"]>;
         }, "strip", z.ZodTypeAny, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }>>;
         id: z.ZodOptional<z.ZodNumber>;
@@ -4722,6 +4737,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         imagewidth: z.ZodOptional<z.ZodNumber>;
         margin: z.ZodOptional<z.ZodNumber>;
         objectalignment: z.ZodOptional<z.ZodString>;
+        class: z.ZodOptional<z.ZodString>;
         properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
@@ -5346,7 +5362,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }, "strip", z.ZodTypeAny, {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -5412,6 +5427,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -5455,7 +5471,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }, {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -5521,6 +5536,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -5795,7 +5811,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -5861,6 +5876,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -5977,7 +5993,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -6043,6 +6058,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -6162,8 +6178,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         }>>;
         transparentcolor: z.ZodOptional<z.ZodString>;
-        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
-        class: z.ZodOptional<z.ZodString>;
         version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
         wangsets: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodString;
@@ -6545,17 +6559,19 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }>, "many">>;
+        firstgid: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -6563,6 +6579,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -6643,7 +6660,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -6709,6 +6725,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -6818,8 +6835,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -6894,14 +6909,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     }, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -6909,6 +6925,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -6989,7 +7006,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -7055,6 +7071,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -7164,8 +7181,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -7237,7 +7252,16 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }>, "many">;
+    }>, z.ZodObject<{
+        firstgid: z.ZodNumber;
+        source: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        firstgid: number;
+        source: string;
+    }, {
+        firstgid: number;
+        source: string;
+    }>]>, "many">;
     compressionlevel: z.ZodOptional<z.ZodNumber>;
     hexsidelength: z.ZodOptional<z.ZodNumber>;
     nextlayerid: z.ZodNumber;
@@ -7255,15 +7279,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             x: z.ZodNumber;
             y: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }, {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }>, "many">;
@@ -7280,18 +7304,18 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         visible: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
         name: string;
-        type: "tilelayer";
+        width: number;
         height: number;
+        type: "tilelayer";
         id: number;
+        visible: boolean;
+        opacity: number;
         startx: number;
         starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
         chunks: {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }[];
@@ -7299,18 +7323,18 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         y?: number | undefined;
     }, {
         name: string;
-        type: "tilelayer";
+        width: number;
         height: number;
+        type: "tilelayer";
         id: number;
+        visible: boolean;
+        opacity: number;
         startx: number;
         starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
         chunks: {
-            data: number[];
-            height: number;
             width: number;
+            height: number;
+            data: number[];
             x: number;
             y: number;
         }[];
@@ -7692,7 +7716,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     }, "strip", z.ZodTypeAny, {
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -7758,6 +7781,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -7801,7 +7825,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     }, {
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -7867,6 +7890,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -7910,32 +7934,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     }>]>, "many">;
     infinite: z.ZodLiteral<true>;
 }, "strip", z.ZodTypeAny, {
-    type: "map";
-    height: number;
     width: number;
+    height: number;
+    type: "map";
+    tiledversion: string;
     layers: ({
         name: string;
-        type: "tilelayer";
-        height: number;
-        id: number;
-        startx: number;
-        starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        chunks: {
-            data: number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[];
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
-        name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -8001,6 +8006,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -8041,19 +8047,38 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        startx: number;
+        starty: number;
+        chunks: {
+            width: number;
+            height: number;
+            data: number[];
+            x: number;
+            y: number;
+        }[];
+        x?: number | undefined;
+        y?: number | undefined;
     })[];
-    tiledversion: string;
-    tilesets: {
+    tilesets: ({
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -8061,6 +8086,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -8141,7 +8167,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -8207,6 +8232,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -8316,8 +8342,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -8389,10 +8413,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }[];
+    } | {
+        firstgid: number;
+        source: string;
+    })[];
     infinite: true;
     nextlayerid: number;
     nextobjectid: number;
+    backgroundcolor?: string | undefined;
+    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     class?: string | undefined;
     properties?: ({
         name: string;
@@ -8420,8 +8449,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    backgroundcolor?: string | undefined;
-    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     tileheight?: number | undefined;
     tilewidth?: number | undefined;
     version?: string | number | undefined;
@@ -8433,32 +8460,13 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     staggeraxis?: "x" | "y" | undefined;
     staggerindex?: "odd" | "even" | undefined;
 }, {
-    type: "map";
-    height: number;
     width: number;
+    height: number;
+    type: "map";
+    tiledversion: string;
     layers: ({
         name: string;
-        type: "tilelayer";
-        height: number;
-        id: number;
-        startx: number;
-        starty: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        chunks: {
-            data: number[];
-            height: number;
-            width: number;
-            x: number;
-            y: number;
-        }[];
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
-        name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -8524,6 +8532,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -8564,19 +8573,38 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        startx: number;
+        starty: number;
+        chunks: {
+            width: number;
+            height: number;
+            data: number[];
+            x: number;
+            y: number;
+        }[];
+        x?: number | undefined;
+        y?: number | undefined;
     })[];
-    tiledversion: string;
-    tilesets: {
+    tilesets: ({
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -8584,6 +8612,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -8664,7 +8693,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -8730,6 +8758,7 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -8839,8 +8868,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -8912,10 +8939,15 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }[];
+    } | {
+        firstgid: number;
+        source: string;
+    })[];
     infinite: true;
     nextlayerid: number;
     nextobjectid: number;
+    backgroundcolor?: string | undefined;
+    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     class?: string | undefined;
     properties?: ({
         name: string;
@@ -8943,8 +8975,6 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    backgroundcolor?: string | undefined;
-    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     tileheight?: number | undefined;
     tilewidth?: number | undefined;
     version?: string | number | undefined;
@@ -8957,9 +8987,12 @@ export declare const ITiledInfiniteMap: z.ZodObject<{
     staggerindex?: "odd" | "even" | undefined;
 }>;
 export declare const ITiledRestrictedMap: z.ZodObject<{
+    backgroundcolor: z.ZodOptional<z.ZodString>;
+    width: z.ZodNumber;
+    height: z.ZodNumber;
+    orientation: z.ZodOptional<z.ZodEnum<["orthogonal", "isometric", "staggered", "hexagonal"]>>;
     type: z.ZodLiteral<"map">;
     class: z.ZodOptional<z.ZodString>;
-    height: z.ZodNumber;
     properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
@@ -9036,31 +9069,28 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     }>]>, "many">>;
-    width: z.ZodNumber;
     tiledversion: z.ZodString;
-    backgroundcolor: z.ZodOptional<z.ZodString>;
-    orientation: z.ZodOptional<z.ZodEnum<["orthogonal", "isometric", "staggered", "hexagonal"]>>;
     tileheight: z.ZodOptional<z.ZodNumber>;
     tilewidth: z.ZodOptional<z.ZodNumber>;
     version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
-    tilesets: z.ZodArray<z.ZodObject<{
+    tilesets: z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
         image: z.ZodString;
         backgroundcolor: z.ZodOptional<z.ZodString>;
         columns: z.ZodOptional<z.ZodNumber>;
         fillmode: z.ZodOptional<z.ZodEnum<["stretch", "preserve-aspect-fit"]>>;
-        firstgid: z.ZodNumber;
+        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
         grid: z.ZodOptional<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
             orientation: z.ZodEnum<["orthogonal", "isometric"]>;
         }, "strip", z.ZodTypeAny, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }>>;
         id: z.ZodOptional<z.ZodNumber>;
@@ -9068,6 +9098,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         imagewidth: z.ZodOptional<z.ZodNumber>;
         margin: z.ZodOptional<z.ZodNumber>;
         objectalignment: z.ZodOptional<z.ZodString>;
+        class: z.ZodOptional<z.ZodString>;
         properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
@@ -9692,7 +9723,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }, "strip", z.ZodTypeAny, {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -9758,6 +9788,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -9801,7 +9832,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }, {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -9867,6 +9897,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -10141,7 +10172,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -10207,6 +10237,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -10323,7 +10354,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -10389,6 +10419,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -10508,8 +10539,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         }>>;
         transparentcolor: z.ZodOptional<z.ZodString>;
-        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
-        class: z.ZodOptional<z.ZodString>;
         version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
         wangsets: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodString;
@@ -10891,17 +10920,19 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }>, "many">>;
+        firstgid: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -10909,6 +10940,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -10989,7 +11021,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -11055,6 +11086,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -11164,8 +11196,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -11240,14 +11270,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     }, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -11255,6 +11286,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -11335,7 +11367,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -11401,6 +11432,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -11510,8 +11542,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -11583,7 +11613,16 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }>, "many">;
+    }>, z.ZodObject<{
+        firstgid: z.ZodNumber;
+        source: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        firstgid: number;
+        source: string;
+    }, {
+        firstgid: number;
+        source: string;
+    }>]>, "many">;
     compressionlevel: z.ZodOptional<z.ZodNumber>;
     hexsidelength: z.ZodOptional<z.ZodNumber>;
     nextlayerid: z.ZodNumber;
@@ -11688,13 +11727,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         y: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
         name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
         width: number;
-        opacity: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
         visible: boolean;
+        opacity: number;
         compression?: string | undefined;
         encoding?: "csv" | "base64" | undefined;
         parallaxx?: number | undefined;
@@ -11731,13 +11770,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         y?: number | undefined;
     }, {
         name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
         width: number;
-        opacity: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
         visible: boolean;
+        opacity: number;
         compression?: string | undefined;
         encoding?: "csv" | "base64" | undefined;
         parallaxx?: number | undefined;
@@ -12148,7 +12187,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     }, "strip", z.ZodTypeAny, {
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -12214,6 +12252,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -12257,7 +12296,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     }, {
         name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -12323,6 +12361,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -12366,56 +12405,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     }>]>, "many">;
     infinite: z.ZodLiteral<false>;
 }, "strip", z.ZodTypeAny, {
-    type: "map";
-    height: number;
     width: number;
+    height: number;
+    type: "map";
+    tiledversion: string;
     layers: ({
         name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            name: string;
-            type: "string" | "color" | "file";
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "object" | "int";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "float";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "bool";
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "class";
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        tintcolor?: string | undefined;
-        class?: string | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
-        name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -12481,6 +12477,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -12521,19 +12518,62 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            name: string;
+            type: "string" | "color" | "file";
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "object" | "int";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "float";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "bool";
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "class";
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        tintcolor?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
     })[];
-    tiledversion: string;
-    tilesets: {
+    tilesets: ({
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -12541,6 +12581,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -12621,7 +12662,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -12687,6 +12727,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -12796,8 +12837,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -12869,10 +12908,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }[];
+    } | {
+        firstgid: number;
+        source: string;
+    })[];
     infinite: false;
     nextlayerid: number;
     nextobjectid: number;
+    backgroundcolor?: string | undefined;
+    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     class?: string | undefined;
     properties?: ({
         name: string;
@@ -12900,8 +12944,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    backgroundcolor?: string | undefined;
-    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     tileheight?: number | undefined;
     tilewidth?: number | undefined;
     version?: string | number | undefined;
@@ -12913,56 +12955,13 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
     staggeraxis?: "x" | "y" | undefined;
     staggerindex?: "odd" | "even" | undefined;
 }, {
-    type: "map";
-    height: number;
     width: number;
+    height: number;
+    type: "map";
+    tiledversion: string;
     layers: ({
         name: string;
-        type: "tilelayer";
-        data: number[];
-        height: number;
-        id: number;
-        width: number;
-        opacity: number;
-        visible: boolean;
-        compression?: string | undefined;
-        encoding?: "csv" | "base64" | undefined;
-        parallaxx?: number | undefined;
-        parallaxy?: number | undefined;
-        properties?: ({
-            name: string;
-            type: "string" | "color" | "file";
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "object" | "int";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "float";
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "bool";
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            name: string;
-            type: "class";
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        tintcolor?: string | undefined;
-        class?: string | undefined;
-        x?: number | undefined;
-        y?: number | undefined;
-    } | {
-        name: string;
         type: "objectgroup";
-        opacity: number;
         visible: boolean;
         objects: {
             name: string;
@@ -13028,6 +13027,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             class?: string | undefined;
             width?: number | undefined;
         }[];
+        opacity: number;
         draworder?: string | undefined;
         height?: number | undefined;
         id?: number | undefined;
@@ -13068,19 +13068,62 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         class?: string | undefined;
         x?: number | undefined;
         y?: number | undefined;
+    } | {
+        name: string;
+        width: number;
+        height: number;
+        data: number[];
+        type: "tilelayer";
+        id: number;
+        visible: boolean;
+        opacity: number;
+        compression?: string | undefined;
+        encoding?: "csv" | "base64" | undefined;
+        parallaxx?: number | undefined;
+        parallaxy?: number | undefined;
+        properties?: ({
+            name: string;
+            type: "string" | "color" | "file";
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "object" | "int";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "float";
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "bool";
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            name: string;
+            type: "class";
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        tintcolor?: string | undefined;
+        class?: string | undefined;
+        x?: number | undefined;
+        y?: number | undefined;
     })[];
-    tiledversion: string;
-    tilesets: {
+    tilesets: ({
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -13088,6 +13131,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -13168,7 +13212,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             objectgroup?: {
                 name: string;
                 type: "objectgroup";
-                opacity: number;
                 visible: boolean;
                 objects: {
                     name: string;
@@ -13234,6 +13277,7 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
                     class?: string | undefined;
                     width?: number | undefined;
                 }[];
+                opacity: number;
                 draworder?: string | undefined;
                 height?: number | undefined;
                 id?: number | undefined;
@@ -13343,8 +13387,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -13416,10 +13458,15 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }[] | undefined;
-    }[];
+    } | {
+        firstgid: number;
+        source: string;
+    })[];
     infinite: false;
     nextlayerid: number;
     nextobjectid: number;
+    backgroundcolor?: string | undefined;
+    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     class?: string | undefined;
     properties?: ({
         name: string;
@@ -13447,8 +13494,6 @@ export declare const ITiledRestrictedMap: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    backgroundcolor?: string | undefined;
-    orientation?: "orthogonal" | "isometric" | "staggered" | "hexagonal" | undefined;
     tileheight?: number | undefined;
     tilewidth?: number | undefined;
     version?: string | number | undefined;

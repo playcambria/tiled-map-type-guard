@@ -1,9 +1,9 @@
 import { ITiledMapProperty } from './ITiledMapProperty';
 import { ITiledMapLayer } from './ITiledMapLayer';
-import { ITiledMapTileset } from './ITiledMapTileset';
 import { z } from 'zod';
 import { ITiledMapInfiniteTileLayer, ITiledMapRestrictedTileLayer } from './ITiledMapTileLayer';
 import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
+import { ITiledMapTileset } from './ITiledMapTileset';
 
 export const ITiledMap = z.object({
   layers: ITiledMapLayer.array(),

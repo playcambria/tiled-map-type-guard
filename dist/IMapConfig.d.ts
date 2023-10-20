@@ -7,18 +7,18 @@ export declare const MapConfigSchema: z.ZodObject<{
         backgroundcolor: z.ZodOptional<z.ZodString>;
         columns: z.ZodOptional<z.ZodNumber>;
         fillmode: z.ZodOptional<z.ZodEnum<["stretch", "preserve-aspect-fit"]>>;
-        firstgid: z.ZodNumber;
+        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
         grid: z.ZodOptional<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
             orientation: z.ZodEnum<["orthogonal", "isometric"]>;
         }, "strip", z.ZodTypeAny, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }, {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         }>>;
         id: z.ZodOptional<z.ZodNumber>;
@@ -26,6 +26,7 @@ export declare const MapConfigSchema: z.ZodObject<{
         imagewidth: z.ZodOptional<z.ZodNumber>;
         margin: z.ZodOptional<z.ZodNumber>;
         objectalignment: z.ZodOptional<z.ZodString>;
+        class: z.ZodOptional<z.ZodString>;
         properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
             name: z.ZodString;
             type: z.ZodUnion<[z.ZodLiteral<"string">, z.ZodLiteral<"color">, z.ZodLiteral<"file">]>;
@@ -430,9 +431,9 @@ export declare const MapConfigSchema: z.ZodObject<{
                 }, "strip", z.ZodTypeAny, {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -493,9 +494,9 @@ export declare const MapConfigSchema: z.ZodObject<{
                 }, {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -649,14 +650,14 @@ export declare const MapConfigSchema: z.ZodObject<{
                 y: z.ZodOptional<z.ZodNumber>;
             }, "strip", z.ZodTypeAny, {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -758,14 +759,14 @@ export declare const MapConfigSchema: z.ZodObject<{
                 y?: number | undefined;
             }, {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -1098,14 +1099,14 @@ export declare const MapConfigSchema: z.ZodObject<{
             height?: number | undefined;
             objectgroup?: {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -1280,14 +1281,14 @@ export declare const MapConfigSchema: z.ZodObject<{
             height?: number | undefined;
             objectgroup?: {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -1466,8 +1467,6 @@ export declare const MapConfigSchema: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         }>>;
         transparentcolor: z.ZodOptional<z.ZodString>;
-        type: z.ZodOptional<z.ZodLiteral<"tileset">>;
-        class: z.ZodOptional<z.ZodString>;
         version: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodNumber]>>;
         wangsets: z.ZodOptional<z.ZodArray<z.ZodObject<{
             name: z.ZodString;
@@ -1558,8 +1557,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             }, "strip", z.ZodTypeAny, {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -1591,8 +1590,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             }, {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -1717,8 +1716,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             colors?: {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -1786,8 +1785,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             colors?: {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -1849,17 +1848,19 @@ export declare const MapConfigSchema: z.ZodObject<{
             }[] | undefined;
             class?: string | undefined;
         }>, "many">>;
+        firstgid: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -1867,6 +1868,7 @@ export declare const MapConfigSchema: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -1930,7 +1932,7 @@ export declare const MapConfigSchema: z.ZodObject<{
             x: number;
             y: number;
         } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
+        tilerendersize?: "grid" | "tile" | undefined;
         tiles?: {
             id: number;
             animation?: {
@@ -1946,14 +1948,14 @@ export declare const MapConfigSchema: z.ZodObject<{
             height?: number | undefined;
             objectgroup?: {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -2122,8 +2124,6 @@ export declare const MapConfigSchema: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -2132,8 +2132,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             colors?: {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -2198,14 +2198,15 @@ export declare const MapConfigSchema: z.ZodObject<{
     }, {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -2213,6 +2214,7 @@ export declare const MapConfigSchema: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -2276,7 +2278,7 @@ export declare const MapConfigSchema: z.ZodObject<{
             x: number;
             y: number;
         } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
+        tilerendersize?: "grid" | "tile" | undefined;
         tiles?: {
             id: number;
             animation?: {
@@ -2292,14 +2294,14 @@ export declare const MapConfigSchema: z.ZodObject<{
             height?: number | undefined;
             objectgroup?: {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -2468,8 +2470,6 @@ export declare const MapConfigSchema: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -2478,8 +2478,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             colors?: {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -2556,21 +2556,21 @@ export declare const MapConfigSchema: z.ZodObject<{
         width: z.ZodNumber;
         height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        height: number;
         width: number;
+        height: number;
     }, {
-        height: number;
         width: number;
+        height: number;
     }>;
     mapSize: z.ZodObject<{
         width: z.ZodNumber;
         height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        height: number;
         width: number;
+        height: number;
     }, {
-        height: number;
         width: number;
+        height: number;
     }>;
     objectTypes: z.ZodArray<z.ZodString, "many">;
     tileLayersDepth: z.ZodRecord<z.ZodString, z.ZodNativeEnum<typeof LayerDepth>>;
@@ -2578,14 +2578,15 @@ export declare const MapConfigSchema: z.ZodObject<{
     tilesets: {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -2593,6 +2594,7 @@ export declare const MapConfigSchema: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -2656,7 +2658,7 @@ export declare const MapConfigSchema: z.ZodObject<{
             x: number;
             y: number;
         } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
+        tilerendersize?: "grid" | "tile" | undefined;
         tiles?: {
             id: number;
             animation?: {
@@ -2672,14 +2674,14 @@ export declare const MapConfigSchema: z.ZodObject<{
             height?: number | undefined;
             objectgroup?: {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -2848,8 +2850,6 @@ export declare const MapConfigSchema: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -2858,8 +2858,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             colors?: {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -2927,12 +2927,12 @@ export declare const MapConfigSchema: z.ZodObject<{
         y: number;
     };
     chunkSize: {
-        height: number;
         width: number;
+        height: number;
     };
     mapSize: {
-        height: number;
         width: number;
+        height: number;
     };
     objectTypes: string[];
     tileLayersDepth: Record<string, LayerDepth>;
@@ -2940,14 +2940,15 @@ export declare const MapConfigSchema: z.ZodObject<{
     tilesets: {
         name: string;
         image: string;
-        firstgid: number;
         tilecount: number;
+        firstgid: number;
         backgroundcolor?: string | undefined;
         columns?: number | undefined;
         fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        type?: "tileset" | undefined;
         grid?: {
-            height: number;
             width: number;
+            height: number;
             orientation: "orthogonal" | "isometric";
         } | undefined;
         id?: number | undefined;
@@ -2955,6 +2956,7 @@ export declare const MapConfigSchema: z.ZodObject<{
         imagewidth?: number | undefined;
         margin?: number | undefined;
         objectalignment?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             name: string;
             type: "string" | "color" | "file";
@@ -3018,7 +3020,7 @@ export declare const MapConfigSchema: z.ZodObject<{
             x: number;
             y: number;
         } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
+        tilerendersize?: "grid" | "tile" | undefined;
         tiles?: {
             id: number;
             animation?: {
@@ -3034,14 +3036,14 @@ export declare const MapConfigSchema: z.ZodObject<{
             height?: number | undefined;
             objectgroup?: {
                 name: string;
-                visible: boolean;
                 type: "objectgroup";
+                visible: boolean;
                 objects: {
                     name: string;
                     id: number;
-                    visible: boolean;
                     x: number;
                     y: number;
+                    visible: boolean;
                     ellipse?: boolean | undefined;
                     gid?: number | undefined;
                     height?: number | undefined;
@@ -3210,8 +3212,6 @@ export declare const MapConfigSchema: z.ZodObject<{
             preferuntransformed?: boolean | undefined;
         } | undefined;
         transparentcolor?: string | undefined;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
         version?: string | number | undefined;
         wangsets?: {
             name: string;
@@ -3220,8 +3220,8 @@ export declare const MapConfigSchema: z.ZodObject<{
             colors?: {
                 name: string;
                 color: string;
-                probability: number;
                 tile: number;
+                probability: number;
                 properties?: ({
                     name: string;
                     type: "string" | "color" | "file";
@@ -3289,12 +3289,12 @@ export declare const MapConfigSchema: z.ZodObject<{
         y: number;
     };
     chunkSize: {
-        height: number;
         width: number;
+        height: number;
     };
     mapSize: {
-        height: number;
         width: number;
+        height: number;
     };
     objectTypes: string[];
     tileLayersDepth: Record<string, LayerDepth>;

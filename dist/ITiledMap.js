@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ITiledRestrictedMap = exports.ITiledInfiniteMap = exports.ITiledMap = void 0;
 const ITiledMapProperty_1 = require("./ITiledMapProperty");
 const ITiledMapLayer_1 = require("./ITiledMapLayer");
-const ITiledMapTileset_1 = require("./ITiledMapTileset");
 const zod_1 = require("zod");
 const ITiledMapTileLayer_1 = require("./ITiledMapTileLayer");
 const ITiledMapObjectLayer_1 = require("./ITiledMapObjectLayer");
+const ITiledMapTileset_1 = require("./ITiledMapTileset");
 exports.ITiledMap = zod_1.z.object({
     layers: ITiledMapLayer_1.ITiledMapLayer.array(),
     tiledversion: zod_1.z.string(),

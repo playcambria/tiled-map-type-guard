@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { ITiledMapTileset } from './ITiledMapTileset';
+import { ITiledMapEmbeddedTileset } from './ITiledMapTileset';
 import { LayerDepth, Position, Size } from './UtilityTypes';
 
 export const MapConfigSchema = z.object({
-  tilesets: z.array(ITiledMapTileset),
+  tilesets: z.array(ITiledMapEmbeddedTileset),
   nbChunks: Position,
   chunkSize: Size,
   mapSize: Size,

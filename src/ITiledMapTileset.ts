@@ -7,14 +7,13 @@ import { ITiledMapTile } from './ITiledMapTile';
 import { ITiledMapTransformations } from './ITiledMapTransformations';
 import { ITiledMapWangSet } from './ITiledMapWangSet';
 
-export const ITiledMapTileset = z.object({
+export const ITiledMapExternalTileset = z.object({
   name: z.string(),
   image: z.string(),
 
   backgroundcolor: z.string().optional(),
   columns: z.number().optional(),
   fillmode: z.enum(['stretch', 'preserve-aspect-fit']).optional(),
-  firstgid: z.number(),
   grid: ITiledMapGrid.optional(),
   id: z.number().optional(),
   imageheight: z.number().optional(),
@@ -39,5 +38,25 @@ export const ITiledMapTileset = z.object({
   version: z.union([z.string(), z.number()]).optional(),
   wangsets: ITiledMapWangSet.array().optional(),
 });
+
+export type ITiledMapExternalTileset = z.infer<typeof ITiledMapExternalTileset>;
+
+export const ITiledMapEmbeddedTileset = ITiledMapExternalTileset.extend({
+  firstgid: z.number(),
+});
+
+export type ITiledMapEmbeddedTileset = z.infer<typeof ITiledMapEmbeddedTileset>;
+
+export const ITiledMapExternalTilesetReference = z.object({
+  firstgid: z.number(),
+  source: z.string(),
+});
+
+export type ITiledMapExternalTilesetReference = z.infer<typeof ITiledMapExternalTilesetReference>;
+
+export const ITiledMapTileset = z.union([
+  ITiledMapEmbeddedTileset,
+  ITiledMapExternalTilesetReference,
+]);
 
 export type ITiledMapTileset = z.infer<typeof ITiledMapTileset>;

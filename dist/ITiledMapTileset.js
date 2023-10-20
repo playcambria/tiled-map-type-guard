@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ITiledMapTileset = void 0;
+exports.ITiledMapTileset = exports.ITiledMapExternalTilesetReference = exports.ITiledMapEmbeddedTileset = exports.ITiledMapExternalTileset = void 0;
 const zod_1 = require("zod");
 const ITiledMapProperty_1 = require("./ITiledMapProperty");
 const ITiledMapTerrain_1 = require("./ITiledMapTerrain");
@@ -9,13 +9,12 @@ const ITiledMapOffset_1 = require("./ITiledMapOffset");
 const ITiledMapTile_1 = require("./ITiledMapTile");
 const ITiledMapTransformations_1 = require("./ITiledMapTransformations");
 const ITiledMapWangSet_1 = require("./ITiledMapWangSet");
-exports.ITiledMapTileset = zod_1.z.object({
+exports.ITiledMapExternalTileset = zod_1.z.object({
     name: zod_1.z.string(),
     image: zod_1.z.string(),
     backgroundcolor: zod_1.z.string().optional(),
     columns: zod_1.z.number().optional(),
     fillmode: zod_1.z.enum(['stretch', 'preserve-aspect-fit']).optional(),
-    firstgid: zod_1.z.number(),
     grid: ITiledMapGrid_1.ITiledMapGrid.optional(),
     id: zod_1.z.number().optional(),
     imageheight: zod_1.z.number().optional(),
@@ -39,4 +38,15 @@ exports.ITiledMapTileset = zod_1.z.object({
     version: zod_1.z.union([zod_1.z.string(), zod_1.z.number()]).optional(),
     wangsets: ITiledMapWangSet_1.ITiledMapWangSet.array().optional(),
 });
+exports.ITiledMapEmbeddedTileset = exports.ITiledMapExternalTileset.extend({
+    firstgid: zod_1.z.number(),
+});
+exports.ITiledMapExternalTilesetReference = zod_1.z.object({
+    firstgid: zod_1.z.number(),
+    source: zod_1.z.string(),
+});
+exports.ITiledMapTileset = zod_1.z.union([
+    exports.ITiledMapEmbeddedTileset,
+    exports.ITiledMapExternalTilesetReference,
+]);
 //# sourceMappingURL=ITiledMapTileset.js.map

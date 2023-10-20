@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isInfiniteMap = exports.isInfiniteTileLayer = exports.isTileLayer = exports.isGroupLayer = exports.isObjectLayer = exports.isFloorLayer = void 0;
+exports.isEmbeddedTileset = exports.isExternalTilesetReference = exports.isInfiniteMap = exports.isInfiniteTileLayer = exports.isTileLayer = exports.isGroupLayer = exports.isObjectLayer = exports.isFloorLayer = void 0;
 function isFloorLayer(layer) {
     return isObjectLayer(layer) && layer.name.includes('floorLayer');
 }
@@ -29,4 +29,12 @@ function isInfiniteMap(map) {
     return !!map.infinite;
 }
 exports.isInfiniteMap = isInfiniteMap;
+function isExternalTilesetReference(tileset) {
+    return tileset.hasOwnProperty('source');
+}
+exports.isExternalTilesetReference = isExternalTilesetReference;
+function isEmbeddedTileset(tileset) {
+    return !isExternalTilesetReference(tileset);
+}
+exports.isEmbeddedTileset = isEmbeddedTileset;
 //# sourceMappingURL=TypeGuards.js.map
