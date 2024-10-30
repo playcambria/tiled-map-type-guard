@@ -7,17 +7,17 @@ export declare const ITiledMapInfiniteTileLayer: z.ZodObject<{
         x: z.ZodNumber;
         y: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        data: number[];
-        height: number;
         width: number;
+        height: number;
         x: number;
         y: number;
+        data: number[];
     }, {
-        data: number[];
-        height: number;
         width: number;
+        height: number;
         x: number;
         y: number;
+        data: number[];
     }>, "many">;
     id: z.ZodNumber;
     type: z.ZodLiteral<"tilelayer">;
@@ -33,39 +33,39 @@ export declare const ITiledMapInfiniteTileLayer: z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     type: "tilelayer";
     name: string;
-    height: number;
     width: number;
-    chunks: {
-        data: number[];
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }[];
+    height: number;
     id: number;
+    visible: boolean;
+    opacity: number;
     startx: number;
     starty: number;
-    opacity: number;
-    visible: boolean;
+    chunks: {
+        width: number;
+        height: number;
+        x: number;
+        y: number;
+        data: number[];
+    }[];
     x?: number | undefined;
     y?: number | undefined;
 }, {
     type: "tilelayer";
     name: string;
-    height: number;
     width: number;
-    chunks: {
-        data: number[];
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }[];
+    height: number;
     id: number;
+    visible: boolean;
+    opacity: number;
     startx: number;
     starty: number;
-    opacity: number;
-    visible: boolean;
+    chunks: {
+        width: number;
+        height: number;
+        x: number;
+        y: number;
+        data: number[];
+    }[];
     x?: number | undefined;
     y?: number | undefined;
 }>;
@@ -165,17 +165,14 @@ export declare const ITiledMapRestrictedTileLayer: z.ZodObject<{
     y: z.ZodOptional<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
     type: "tilelayer";
-    data: number[];
     name: string;
-    height: number;
     width: number;
+    height: number;
     id: number;
-    opacity: number;
     visible: boolean;
-    compression?: string | undefined;
-    encoding?: "csv" | "base64" | undefined;
-    parallaxx?: number | undefined;
-    parallaxy?: number | undefined;
+    opacity: number;
+    data: number[];
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -202,23 +199,23 @@ export declare const ITiledMapRestrictedTileLayer: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    tintcolor?: string | undefined;
-    class?: string | undefined;
     x?: number | undefined;
     y?: number | undefined;
+    parallaxx?: number | undefined;
+    parallaxy?: number | undefined;
+    tintcolor?: string | undefined;
+    compression?: string | undefined;
+    encoding?: "csv" | "base64" | undefined;
 }, {
     type: "tilelayer";
-    data: number[];
     name: string;
-    height: number;
     width: number;
+    height: number;
     id: number;
-    opacity: number;
     visible: boolean;
-    compression?: string | undefined;
-    encoding?: "csv" | "base64" | undefined;
-    parallaxx?: number | undefined;
-    parallaxy?: number | undefined;
+    opacity: number;
+    data: number[];
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -245,10 +242,13 @@ export declare const ITiledMapRestrictedTileLayer: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    tintcolor?: string | undefined;
-    class?: string | undefined;
     x?: number | undefined;
     y?: number | undefined;
+    parallaxx?: number | undefined;
+    parallaxy?: number | undefined;
+    tintcolor?: string | undefined;
+    compression?: string | undefined;
+    encoding?: "csv" | "base64" | undefined;
 }>;
 export type ITiledMapRestrictedTileLayer = z.infer<typeof ITiledMapRestrictedTileLayer>;
 export declare const ITiledMapTileLayer: z.ZodUnion<[z.ZodObject<{
@@ -259,17 +259,17 @@ export declare const ITiledMapTileLayer: z.ZodUnion<[z.ZodObject<{
         x: z.ZodNumber;
         y: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        data: number[];
-        height: number;
         width: number;
+        height: number;
         x: number;
         y: number;
+        data: number[];
     }, {
-        data: number[];
-        height: number;
         width: number;
+        height: number;
         x: number;
         y: number;
+        data: number[];
     }>, "many">;
     id: z.ZodNumber;
     type: z.ZodLiteral<"tilelayer">;
@@ -285,39 +285,39 @@ export declare const ITiledMapTileLayer: z.ZodUnion<[z.ZodObject<{
 }, "strip", z.ZodTypeAny, {
     type: "tilelayer";
     name: string;
-    height: number;
     width: number;
-    chunks: {
-        data: number[];
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }[];
+    height: number;
     id: number;
+    visible: boolean;
+    opacity: number;
     startx: number;
     starty: number;
-    opacity: number;
-    visible: boolean;
+    chunks: {
+        width: number;
+        height: number;
+        x: number;
+        y: number;
+        data: number[];
+    }[];
     x?: number | undefined;
     y?: number | undefined;
 }, {
     type: "tilelayer";
     name: string;
-    height: number;
     width: number;
-    chunks: {
-        data: number[];
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }[];
+    height: number;
     id: number;
+    visible: boolean;
+    opacity: number;
     startx: number;
     starty: number;
-    opacity: number;
-    visible: boolean;
+    chunks: {
+        width: number;
+        height: number;
+        x: number;
+        y: number;
+        data: number[];
+    }[];
     x?: number | undefined;
     y?: number | undefined;
 }>, z.ZodObject<{
@@ -415,17 +415,14 @@ export declare const ITiledMapTileLayer: z.ZodUnion<[z.ZodObject<{
     y: z.ZodOptional<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
     type: "tilelayer";
-    data: number[];
     name: string;
-    height: number;
     width: number;
+    height: number;
     id: number;
-    opacity: number;
     visible: boolean;
-    compression?: string | undefined;
-    encoding?: "csv" | "base64" | undefined;
-    parallaxx?: number | undefined;
-    parallaxy?: number | undefined;
+    opacity: number;
+    data: number[];
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -452,23 +449,23 @@ export declare const ITiledMapTileLayer: z.ZodUnion<[z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    tintcolor?: string | undefined;
-    class?: string | undefined;
     x?: number | undefined;
     y?: number | undefined;
+    parallaxx?: number | undefined;
+    parallaxy?: number | undefined;
+    tintcolor?: string | undefined;
+    compression?: string | undefined;
+    encoding?: "csv" | "base64" | undefined;
 }, {
     type: "tilelayer";
-    data: number[];
     name: string;
-    height: number;
     width: number;
+    height: number;
     id: number;
-    opacity: number;
     visible: boolean;
-    compression?: string | undefined;
-    encoding?: "csv" | "base64" | undefined;
-    parallaxx?: number | undefined;
-    parallaxy?: number | undefined;
+    opacity: number;
+    data: number[];
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -495,9 +492,12 @@ export declare const ITiledMapTileLayer: z.ZodUnion<[z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    tintcolor?: string | undefined;
-    class?: string | undefined;
     x?: number | undefined;
     y?: number | undefined;
+    parallaxx?: number | undefined;
+    parallaxy?: number | undefined;
+    tintcolor?: string | undefined;
+    compression?: string | undefined;
+    encoding?: "csv" | "base64" | undefined;
 }>]>;
 export type ITiledMapTileLayer = z.infer<typeof ITiledMapTileLayer>;

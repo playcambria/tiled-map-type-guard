@@ -87,6 +87,8 @@ export declare const ITiledMapWangColor: z.ZodObject<{
     color: string;
     tile: number;
     probability: number;
+    type?: string | undefined;
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -113,13 +115,13 @@ export declare const ITiledMapWangColor: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    type?: string | undefined;
-    class?: string | undefined;
 }, {
     name: string;
     color: string;
     tile: number;
     probability: number;
+    type?: string | undefined;
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -146,7 +148,5 @@ export declare const ITiledMapWangColor: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    type?: string | undefined;
-    class?: string | undefined;
 }>;
 export type ITiledMapWangColor = z.infer<typeof ITiledMapWangColor>;

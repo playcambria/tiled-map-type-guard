@@ -90,6 +90,8 @@ export declare const ITiledMapWangSet: z.ZodObject<{
         color: string;
         tile: number;
         probability: number;
+        type?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             type: "string" | "color" | "file";
             name: string;
@@ -116,13 +118,13 @@ export declare const ITiledMapWangSet: z.ZodObject<{
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
-        type?: string | undefined;
-        class?: string | undefined;
     }, {
         name: string;
         color: string;
         tile: number;
         probability: number;
+        type?: string | undefined;
+        class?: string | undefined;
         properties?: ({
             type: "string" | "color" | "file";
             name: string;
@@ -149,8 +151,6 @@ export declare const ITiledMapWangSet: z.ZodObject<{
             value?: import("./ITiledMapProperty").Json | undefined;
             propertytype?: string | undefined;
         })[] | undefined;
-        type?: string | undefined;
-        class?: string | undefined;
     }>, "many">>;
     properties: z.ZodOptional<z.ZodArray<z.ZodUnion<[z.ZodObject<{
         name: z.ZodString;
@@ -244,40 +244,7 @@ export declare const ITiledMapWangSet: z.ZodObject<{
     type: "corner" | "edge" | "mixed";
     name: string;
     tile: number;
-    colors?: {
-        name: string;
-        color: string;
-        tile: number;
-        probability: number;
-        properties?: ({
-            type: "string" | "color" | "file";
-            name: string;
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "object" | "int";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "float";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "bool";
-            name: string;
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "class";
-            name: string;
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        type?: string | undefined;
-        class?: string | undefined;
-    }[] | undefined;
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -304,49 +271,49 @@ export declare const ITiledMapWangSet: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
+    colors?: {
+        name: string;
+        color: string;
+        tile: number;
+        probability: number;
+        type?: string | undefined;
+        class?: string | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+    }[] | undefined;
     wangtiles?: {
         tileid: number;
         wangid: number[];
     }[] | undefined;
-    class?: string | undefined;
 }, {
     type: "corner" | "edge" | "mixed";
     name: string;
     tile: number;
-    colors?: {
-        name: string;
-        color: string;
-        tile: number;
-        probability: number;
-        properties?: ({
-            type: "string" | "color" | "file";
-            name: string;
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "object" | "int";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "float";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "bool";
-            name: string;
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "class";
-            name: string;
-            value?: import("./ITiledMapProperty").Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        type?: string | undefined;
-        class?: string | undefined;
-    }[] | undefined;
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -373,10 +340,43 @@ export declare const ITiledMapWangSet: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
+    colors?: {
+        name: string;
+        color: string;
+        tile: number;
+        probability: number;
+        type?: string | undefined;
+        class?: string | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: import("./ITiledMapProperty").Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+    }[] | undefined;
     wangtiles?: {
         tileid: number;
         wangid: number[];
     }[] | undefined;
-    class?: string | undefined;
 }>;
 export type ITiledMapWangSet = z.infer<typeof ITiledMapWangSet>;

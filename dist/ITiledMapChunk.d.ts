@@ -6,16 +6,16 @@ export declare const ITiledMapChunk: z.ZodObject<{
     x: z.ZodNumber;
     y: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    data: number[];
-    height: number;
     width: number;
+    height: number;
     x: number;
     y: number;
+    data: number[];
 }, {
-    data: number[];
-    height: number;
     width: number;
+    height: number;
     x: number;
     y: number;
+    data: number[];
 }>;
 export type ITiledMapChunk = z.infer<typeof ITiledMapChunk>;

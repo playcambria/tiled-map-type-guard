@@ -122,8 +122,8 @@ export declare const ITiledMapObject: z.ZodObject<{
         wrap: z.ZodOptional<z.ZodBoolean>;
     }, "strip", z.ZodTypeAny, {
         text: string;
-        bold?: boolean | undefined;
         color?: string | undefined;
+        bold?: boolean | undefined;
         fontfamily?: string | undefined;
         halign?: "center" | "right" | "justify" | "left" | undefined;
         italic?: boolean | undefined;
@@ -135,8 +135,8 @@ export declare const ITiledMapObject: z.ZodObject<{
         wrap?: boolean | undefined;
     }, {
         text: string;
-        bold?: boolean | undefined;
         color?: string | undefined;
+        bold?: boolean | undefined;
         fontfamily?: string | undefined;
         halign?: "center" | "right" | "justify" | "left" | undefined;
         italic?: boolean | undefined;
@@ -156,18 +156,8 @@ export declare const ITiledMapObject: z.ZodObject<{
     y: number;
     id: number;
     visible: boolean;
-    ellipse?: boolean | undefined;
-    gid?: number | undefined;
-    height?: number | undefined;
-    point?: boolean | undefined;
-    polygon?: {
-        x: number;
-        y: number;
-    }[] | undefined;
-    polyline?: {
-        x: number;
-        y: number;
-    }[] | undefined;
+    type?: string | undefined;
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -194,12 +184,12 @@ export declare const ITiledMapObject: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    rotation?: number | undefined;
-    template?: string | undefined;
+    width?: number | undefined;
+    height?: number | undefined;
     text?: {
         text: string;
-        bold?: boolean | undefined;
         color?: string | undefined;
+        bold?: boolean | undefined;
         fontfamily?: string | undefined;
         halign?: "center" | "right" | "justify" | "left" | undefined;
         italic?: boolean | undefined;
@@ -210,27 +200,27 @@ export declare const ITiledMapObject: z.ZodObject<{
         valign?: "center" | "bottom" | "top" | undefined;
         wrap?: boolean | undefined;
     } | undefined;
-    type?: string | undefined;
-    class?: string | undefined;
-    width?: number | undefined;
+    ellipse?: boolean | undefined;
+    gid?: number | undefined;
+    point?: boolean | undefined;
+    polygon?: {
+        x: number;
+        y: number;
+    }[] | undefined;
+    polyline?: {
+        x: number;
+        y: number;
+    }[] | undefined;
+    rotation?: number | undefined;
+    template?: string | undefined;
 }, {
     name: string;
     x: number;
     y: number;
     id: number;
     visible: boolean;
-    ellipse?: boolean | undefined;
-    gid?: number | undefined;
-    height?: number | undefined;
-    point?: boolean | undefined;
-    polygon?: {
-        x: number;
-        y: number;
-    }[] | undefined;
-    polyline?: {
-        x: number;
-        y: number;
-    }[] | undefined;
+    type?: string | undefined;
+    class?: string | undefined;
     properties?: ({
         type: "string" | "color" | "file";
         name: string;
@@ -257,12 +247,12 @@ export declare const ITiledMapObject: z.ZodObject<{
         value?: import("./ITiledMapProperty").Json | undefined;
         propertytype?: string | undefined;
     })[] | undefined;
-    rotation?: number | undefined;
-    template?: string | undefined;
+    width?: number | undefined;
+    height?: number | undefined;
     text?: {
         text: string;
-        bold?: boolean | undefined;
         color?: string | undefined;
+        bold?: boolean | undefined;
         fontfamily?: string | undefined;
         halign?: "center" | "right" | "justify" | "left" | undefined;
         italic?: boolean | undefined;
@@ -273,8 +263,18 @@ export declare const ITiledMapObject: z.ZodObject<{
         valign?: "center" | "bottom" | "top" | undefined;
         wrap?: boolean | undefined;
     } | undefined;
-    type?: string | undefined;
-    class?: string | undefined;
-    width?: number | undefined;
+    ellipse?: boolean | undefined;
+    gid?: number | undefined;
+    point?: boolean | undefined;
+    polygon?: {
+        x: number;
+        y: number;
+    }[] | undefined;
+    polyline?: {
+        x: number;
+        y: number;
+    }[] | undefined;
+    rotation?: number | undefined;
+    template?: string | undefined;
 }>;
 export type ITiledMapObject = z.infer<typeof ITiledMapObject>;

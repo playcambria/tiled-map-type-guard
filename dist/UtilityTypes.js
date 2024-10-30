@@ -6,7 +6,7 @@ var LayerDepth;
 (function (LayerDepth) {
     LayerDepth["AbovePlayer"] = "abovePlayer";
     LayerDepth["BelowPlayer"] = "belowPlayer";
-})(LayerDepth = exports.LayerDepth || (exports.LayerDepth = {}));
+})(LayerDepth || (exports.LayerDepth = LayerDepth = {}));
 exports.Size = zod_1.z.object({
     width: zod_1.z.number(),
     height: zod_1.z.number(),

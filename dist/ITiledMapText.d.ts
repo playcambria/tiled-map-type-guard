@@ -14,8 +14,8 @@ export declare const ITiledMapText: z.ZodObject<{
     wrap: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     text: string;
-    bold?: boolean | undefined;
     color?: string | undefined;
+    bold?: boolean | undefined;
     fontfamily?: string | undefined;
     halign?: "center" | "right" | "justify" | "left" | undefined;
     italic?: boolean | undefined;
@@ -27,8 +27,8 @@ export declare const ITiledMapText: z.ZodObject<{
     wrap?: boolean | undefined;
 }, {
     text: string;
-    bold?: boolean | undefined;
     color?: string | undefined;
+    bold?: boolean | undefined;
     fontfamily?: string | undefined;
     halign?: "center" | "right" | "justify" | "left" | undefined;
     italic?: boolean | undefined;
