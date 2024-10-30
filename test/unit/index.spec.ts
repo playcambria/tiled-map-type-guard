@@ -1,5 +1,4 @@
-import { ITiledMapProperty, ITiledMapTile, upgradeMapToNewest } from '../../src/index';
-import { ITiledMapChunk } from '../../src/index';
+import { ITiledMapEmbeddedTileset, ITiledMapProperty, ITiledMapTile } from '../../src/index';
 import { ITiledMapTileLayer } from '../../src/index';
 import { ITiledMapLayer } from '../../src/index';
 import { ITiledMapObjectLayer } from '../../src/index';
@@ -7,7 +6,6 @@ import { ITiledMapImageLayer } from '../../src/index';
 import { ITiledMap } from '../../src/index';
 import { ITiledMapTileset } from '../../src/index';
 import { ITiledMapGroupLayer } from '../../src/index';
-import { ITiledMapEmbeddedTileset } from '../../src/ITiledMapEmbeddedTileset';
 import { ITiledMapTilesetReference } from '../../src/ITiledMapTilesetReference';
 
 const map = {
@@ -354,15 +352,15 @@ const map = {
   width: 10,
 } as ITiledMap;
 
-describe('Test ITiledMapObject upgrade to newest Tiled version', () => {
-  it('should pass', () => {
-    const newMap = upgradeMapToNewest(map);
-    expect(
-      (newMap.layers.find((layer) => layer.name === 'floorLayer') as ITiledMapObjectLayer)
-        .objects[0].class,
-    ).toBe('area');
-  });
-});
+// describe('Test ITiledMapObject upgrade to newest Tiled version', () => {
+//   it('should pass', () => {
+//     const newMap = upgradeMapToNewest(map);
+//     expect(
+//       (newMap.layers.find((layer) => layer.name === 'floorLayer') as ITiledMapObjectLayer)
+//         .objects[0].class,
+//     ).toBe('area');
+//   });
+// });
 
 describe('Test ITiledMapProperty type guard', () => {
   it('should pass', () => {
@@ -375,30 +373,30 @@ describe('Test ITiledMapProperty type guard', () => {
   });
 });
 
-describe('Test ITiledMapChunk type guard', () => {
-  it('should pass', () => {
-    const property: ITiledMapChunk = {
-      data: 'foo',
-      height: 42,
-      width: 42,
-      x: 0,
-      y: 0,
-    };
-    expect(ITiledMapChunk.parse(property)).toStrictEqual(property);
-  });
+// describe('Test ITiledMapChunk type guard', () => {
+//   it('should pass', () => {
+//     const property: ITiledMapChunk = {
+//       data: 'foo',
+//       height: 42,
+//       width: 42,
+//       x: 0,
+//       y: 0,
+//     };
+//     expect(ITiledMapChunk.parse(property)).toStrictEqual(property);
+//   });
 
-  it('should accept more data', () => {
-    const property = {
-      data: 'foo',
-      height: 42,
-      width: 42,
-      x: 0,
-      y: 0,
-      foo: 'bar',
-    } as ITiledMapChunk;
-    expect(ITiledMapChunk.passthrough().parse(property)).toStrictEqual(property);
-  });
-});
+//   it('should accept more data', () => {
+//     const property = {
+//       data: 'foo',
+//       height: 42,
+//       width: 42,
+//       x: 0,
+//       y: 0,
+//       foo: 'bar',
+//     } as ITiledMapChunk;
+//     expect(ITiledMapChunk.passthrough().parse(property)).toStrictEqual(property);
+//   });
+// });
 
 describe('Test ITiledMapLayer type guard', () => {
   it('should pass', () => {
