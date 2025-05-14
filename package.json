@@ -1,8 +1,8 @@
 {
-  "name": "@cambria/tiled-map-type-guard",
+  "name": "@playcambria/tiled-map-type-guard",
   "author": "Forked From: workadventure/tiled-map-type-guard",
   "license": "MIT",
-  "version": "2.1.1",
+  "version": "1.0.0",
   "description": "",
   "engines": {
     "node": "22.6"
