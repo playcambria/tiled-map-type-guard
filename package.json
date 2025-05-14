@@ -1,69 +1,56 @@
 {
-  "name": "@workadventure/tiled-map-type-guard",
-  "version": "2.1.1",
-  "description": "Typescript package boilerplate template",
+  "name": "@playcambria/tiled-map-type-guard",
+  "author": "Forked From: workadventure/tiled-map-type-guard",
+  "license": "MIT",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "./node_modules/typescript/bin/tsc -p ./tsconfig.build.json",
-    "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "npm run lint && jest ./test/*",
-    "dev": "ts-node src/index.ts",
-    "semantic-release": "semantic-release"
+  "description": "",
+  "engines": {
+    "node": "22.6"
   },
+  "engineStrict": true,
+  "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/workadventure/tiled-map-type-guard.git"
+    "url": "git+https://github.com/playcambria/tiled-map-type-guard.git"
   },
-  "keywords": [
-    "typescript",
-    "tiled",
-    "type-guard"
-  ],
-  "author": "Abhishek <abhishek.rpidanny@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/workadventure/tiled-map-type-guard/issues"
-  },
-  "homepage": "https://github.com/workadventure/tiled-map-type-guard#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "npm run lint"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "npm run lint"
-    ]
+  "scripts": {
+    "build": "node ./node_modules/.bin/pkgroll",
+    "dev": "tsx src/index.ts",
+    "test": "jest ./test/*",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "precommit": "yarn tsc & yarn fix & yarn pretty",
+    "pretty": "yarn prettier --write \"src/**/*.{ts,tsx}\"",
+    "pretty-check": "yarn prettier --check \"src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.8.4",
-    "eslint": "^9.13.0",
-    "globals": "^15.11.0",
-    "husky": "^9.1.6",
+    "@types/node": "22.8.1",
+    "@typescript-eslint/eslint-plugin": "8.17.0",
+    "@typescript-eslint/parser": "8.17.0",
+    "eslint": "9.16.0",
     "jest": "^29.7.0",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "semantic-release": "^24.2.0",
+    "pkgroll": "2.0.1",
+    "prettier": "3.4.2",
     "ts-jest": "^29.2.5",
-    "ts-node": "^10.9.2",
-    "tsc": "^2.0.4",
-    "typescript": "^5.6.3",
-    "typescript-eslint": "^8.12.2"
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
   },
-  "files": [
-    "dist/**/*"
-  ],
+  "dependencies": {
+    "zod": "3.23.8"
+  },
+  "exports": {
+    "default": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "zod": "^3.23.8"
-  },
-  "packageManager": "yarn@4.5.0+sha512.837566d24eec14ec0f5f1411adb544e892b3454255e61fdef8fd05f3429480102806bac7446bc9daff3896b01ae4b62d00096c7e989f1596f2af10b927532f39"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

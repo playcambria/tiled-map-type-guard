@@ -1,9 +1,9 @@
-import { ITiledInfiniteMap, ITiledMap } from './ITiledMap';
-import { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
-import { ITiledMapLayer } from './ITiledMapLayer';
-import { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
-import { ITiledMapInfiniteTileLayer, ITiledMapTileLayer } from './ITiledMapTileLayer';
-import {
+import type { ITiledInfiniteMap, ITiledMap } from './ITiledMap';
+import type { ITiledMapGroupLayer } from './ITiledMapGroupLayer';
+import type { ITiledMapLayer } from './ITiledMapLayer';
+import type { ITiledMapObjectLayer } from './ITiledMapObjectLayer';
+import type { ITiledMapInfiniteTileLayer, ITiledMapTileLayer } from './ITiledMapTileLayer';
+import type {
   ITiledMapTileset,
   ITiledMapEmbeddedTileset,
   ITiledMapExternalTilesetReference,
