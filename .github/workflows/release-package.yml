@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.6
-      - run: yarn install --frozen-lockfile
-      - run: yarn test
+      - run: npm ci
+      - run: npm test
 
   publish-gpr:
     needs: build
@@ -28,8 +28,7 @@ jobs:
           node-version: 22.6
           registry-url: 'https://registry.npmjs.org'
           scope: '@playcambria'
-
-      - run: yarn install --frozen-lockfile
-      - run: yarn publish
+      - run: npm ci
+      - run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
