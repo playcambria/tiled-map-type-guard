@@ -10,6 +10,9 @@
   },
   "engineStrict": true,
   "type": "module",
+  "publishConfig": {
+    "@playcambria:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "node ./node_modules/.bin/pkgroll",
     "dev": "ts-node src/index.ts",
@@ -19,7 +22,6 @@
     "precommit": "yarn tsc & yarn fix & yarn pretty",
     "pretty": "yarn prettier --write \"src/**/*.{ts,tsx}\"",
     "pretty-check": "yarn prettier --check \"src/**/*.{ts,tsx}\""
-
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
