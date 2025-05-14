@@ -13,10 +13,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:playcambria/tiled-map-type-guard.git"
-  },
-  "publishConfig": {
-    "@playcambria:registry": "https://npm.pkg.github.com"
+    "url": "git+https://github.com/playcambria/tiled-map-type-guard.git"
   },
   "scripts": {
     "build": "node ./node_modules/.bin/pkgroll",
