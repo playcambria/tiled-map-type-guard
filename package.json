@@ -2,7 +2,7 @@
   "name": "@playcambria/tiled-map-type-guard",
   "author": "Forked From: workadventure/tiled-map-type-guard",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "",
@@ -11,6 +11,10 @@
   },
   "engineStrict": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:playcambria/tiled-map-type-guard.git"
+  },
   "publishConfig": {
     "@playcambria:registry": "https://npm.pkg.github.com"
   },
@@ -31,9 +35,9 @@
     "@typescript-eslint/parser": "8.17.0",
     "eslint": "9.16.0",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
     "pkgroll": "2.0.1",
     "prettier": "3.4.2",
+    "ts-jest": "^29.2.5",
     "tsx": "4.19.2",
     "typescript": "5.7.2"
   },
