@@ -4,6 +4,7 @@ on:
   release:
     types: [created]
 
+# Need to use npm here to publish to github package registry
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,8 +13,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.6
-      - run: yarn install --frozen-lockfile
-      - run: yarn test
+      - run: npm ci
+      - run: npm test
 
   publish-gpr:
     needs: build
@@ -27,7 +28,7 @@ jobs:
         with:
           node-version: 22.6
           registry-url: https://npm.pkg.github.com/
-      - run: yarn install --frozen-lockfile
-      - run: yarn publish
+      - run: npm ci
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
