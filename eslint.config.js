@@ -27,7 +27,7 @@ export default [
     }),
 
     {
-        ignores: ["dist/**", "tests/**", "scripts/**", ".yarn/**", "build/**", "node_modules/**", "eslint.config.js"],
+        ignores: ["dist/**", "test/**", "scripts/**", ".yarn/**", "build/**", "node_modules/**", "eslint.config.js", "jest-base.cjs", "jest.config.cjs", 'coverage/'],
     },
     {
         languageOptions: {
