@@ -2,7 +2,7 @@
   "name": "@playcambria/tiled-map-type-guard",
   "author": "Forked From: workadventure/tiled-map-type-guard",
   "license": "MIT",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "",
@@ -42,8 +42,12 @@
     "zod": "3.23.8"
   },
   "exports": {
-    "default": {
+    ".": {
       "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }
