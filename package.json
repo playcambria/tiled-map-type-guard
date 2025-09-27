@@ -2,7 +2,7 @@
   "name": "@playcambria/tiled-map-type-guard",
   "author": "Forked From: workadventure/tiled-map-type-guard",
   "license": "MIT",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "",
