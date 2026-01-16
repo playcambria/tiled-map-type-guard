@@ -30,14 +30,14 @@ export interface TiledMapGroupLayer extends Partial<TiledMapGroupLayerOptional> 
 }
 
 // need lazy evaluation to allow for recursive types for ITiledMapLayer
-export const ITiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(
-  () => z.object({
+export const ITiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
+  z.object({
     name: z.string(),
     opacity: z.number(),
     type: z.literal('group'),
     layers: ITiledMapLayer.array(),
     visible: z.boolean(),
-  
+
     height: z.number().optional(),
     draworder: z.string().optional(),
     id: z.number().optional(),
@@ -53,7 +53,7 @@ export const ITiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(
     width: z.number().optional(),
     x: z.number().optional(),
     y: z.number().optional(),
-  })
+  }),
 );
 export type ITiledMapGroupLayer = z.infer<typeof ITiledMapGroupLayer>;
 
@@ -64,7 +64,7 @@ export type ITiledMapGroupLayer = z.infer<typeof ITiledMapGroupLayer>;
 //     type: z.literal('group'),
 //     layers: ITiledMapLayer.array(),
 //     visible: z.boolean(),
-  
+
 //     height: z.number().optional(),
 //     draworder: z.string().optional(),
 //     id: z.number().optional(),
