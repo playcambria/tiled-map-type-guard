@@ -39,7 +39,7 @@
     "typescript": "5.9.3"
   },
   "dependencies": {
-    "zod": "3.23.8"
+    "zod": "3.25.76"
   },
   "exports": {
     ".": {
