@@ -31,29 +31,31 @@ export interface TiledMapGroupLayer extends Partial<TiledMapGroupLayerOptional> 
 
 // need lazy evaluation to allow for recursive types for ITiledMapLayer
 export const ITiledMapGroupLayer: z.ZodType<TiledMapGroupLayer> = z.lazy(() =>
-  z.object({
-    name: z.string(),
-    opacity: z.number(),
-    type: z.literal('group'),
-    layers: ITiledMapLayer.array(),
-    visible: z.boolean(),
+  z
+    .object({
+      name: z.string(),
+      opacity: z.number(),
+      type: z.literal('group'),
+      layers: ITiledMapLayer.array(),
+      visible: z.boolean(),
 
-    height: z.number().optional(),
-    draworder: z.string().optional(),
-    id: z.number().optional(),
-    class: z.string().optional(),
-    offsetx: z.number().optional(),
-    offsety: z.number().optional(),
-    parallaxx: z.number().optional(),
-    parallaxy: z.number().optional(),
-    properties: ITiledMapProperty.array().optional(),
-    startx: z.number().optional(),
-    starty: z.number().optional(),
-    tintcolor: z.string().optional(),
-    width: z.number().optional(),
-    x: z.number().optional(),
-    y: z.number().optional(),
-  }),
+      height: z.number().optional(),
+      draworder: z.string().optional(),
+      id: z.number().optional(),
+      class: z.string().optional(),
+      offsetx: z.number().optional(),
+      offsety: z.number().optional(),
+      parallaxx: z.number().optional(),
+      parallaxy: z.number().optional(),
+      properties: ITiledMapProperty.array().optional(),
+      startx: z.number().optional(),
+      starty: z.number().optional(),
+      tintcolor: z.string().optional(),
+      width: z.number().optional(),
+      x: z.number().optional(),
+      y: z.number().optional(),
+    })
+    .passthrough(),
 );
 export type ITiledMapGroupLayer = z.infer<typeof ITiledMapGroupLayer>;
 
