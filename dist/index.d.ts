@@ -27419,6 +27419,37 @@ declare const Position: z.ZodObject<{
 type Position = z.infer<typeof Position>;
 
 declare const MapConfigSchema: z.ZodObject<{
+    mapSize: z.ZodObject<{
+        width: z.ZodNumber;
+        height: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+    }, {
+        height: number;
+        width: number;
+    }>;
+    mapChunkSize: z.ZodObject<{
+        width: z.ZodNumber;
+        height: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+    }, {
+        height: number;
+        width: number;
+    }>;
+    minimapChunkSize: z.ZodObject<{
+        width: z.ZodNumber;
+        height: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+    }, {
+        height: number;
+        width: number;
+    }>;
+    objectTypes: z.ZodArray<z.ZodString, "many">;
     tilesets: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
         name: z.ZodString;
         image: z.ZodString;
@@ -29961,37 +29992,6 @@ declare const MapConfigSchema: z.ZodObject<{
             }[] | undefined;
         }[] | undefined;
     }>, "many">;
-    nbChunks: z.ZodObject<{
-        x: z.ZodNumber;
-        y: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        x: number;
-        y: number;
-    }, {
-        x: number;
-        y: number;
-    }>;
-    chunkSize: z.ZodObject<{
-        width: z.ZodNumber;
-        height: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
-    }, {
-        height: number;
-        width: number;
-    }>;
-    mapSize: z.ZodObject<{
-        width: z.ZodNumber;
-        height: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
-    }, {
-        height: number;
-        width: number;
-    }>;
-    objectTypes: z.ZodArray<z.ZodString, "many">;
     tileLayersDepth: z.ZodRecord<z.ZodString, z.ZodNativeEnum<typeof LayerDepth>>;
 }, "strip", z.ZodTypeAny, {
     tilesets: {
@@ -30341,15 +30341,15 @@ declare const MapConfigSchema: z.ZodObject<{
             }[] | undefined;
         }[] | undefined;
     }[];
-    nbChunks: {
-        x: number;
-        y: number;
-    };
-    chunkSize: {
+    mapSize: {
         height: number;
         width: number;
     };
-    mapSize: {
+    mapChunkSize: {
+        height: number;
+        width: number;
+    };
+    minimapChunkSize: {
         height: number;
         width: number;
     };
@@ -30703,15 +30703,15 @@ declare const MapConfigSchema: z.ZodObject<{
             }[] | undefined;
         }[] | undefined;
     }[];
-    nbChunks: {
-        x: number;
-        y: number;
-    };
-    chunkSize: {
+    mapSize: {
         height: number;
         width: number;
     };
-    mapSize: {
+    mapChunkSize: {
+        height: number;
+        width: number;
+    };
+    minimapChunkSize: {
         height: number;
         width: number;
     };

@@ -387,11 +387,11 @@ const Position = z.object({
 });
 
 const MapConfigSchema = z.object({
-  tilesets: z.array(ITiledMapEmbeddedTileset),
-  nbChunks: Position,
-  chunkSize: Size,
   mapSize: Size,
+  mapChunkSize: Size,
+  minimapChunkSize: Size,
   objectTypes: z.array(z.string()),
+  tilesets: z.array(ITiledMapEmbeddedTileset),
   tileLayersDepth: z.record(z.nativeEnum(LayerDepth))
 });
 
@@ -435,6 +435,9 @@ function isEmbeddedTileset(tileset) {
 }
 
 const ITiledMapInfiniteLayer = z.union([ITiledMapInfiniteTileLayer, ITiledMapObjectLayer]);
-const ITiledMapRestrictedLayer = z.union([ITiledMapRestrictedTileLayer, ITiledMapObjectLayer]);
+const ITiledMapRestrictedLayer = z.union([
+  ITiledMapRestrictedTileLayer,
+  ITiledMapObjectLayer
+]);
 
 export { ITiledInfiniteMap, ITiledMap, ITiledMapChunk, ITiledMapEmbeddedTileset, ITiledMapExternalTileset, ITiledMapExternalTilesetReference, ITiledMapFrame, ITiledMapGrid, ITiledMapGroupLayer, ITiledMapImageLayer, ITiledMapInfiniteLayer, ITiledMapInfiniteTileLayer, ITiledMapLayer, ITiledMapObject, ITiledMapObjectLayer, ITiledMapOffset, ITiledMapPoint, ITiledMapProperty, ITiledMapRestrictedLayer, ITiledMapRestrictedTileLayer, ITiledMapTerrain, ITiledMapText, ITiledMapTile, ITiledMapTileLayer, ITiledMapTileset, ITiledMapTilesetReference, ITiledMapTransformations, ITiledMapWangColor, ITiledMapWangSet, ITiledMapWangTile, ITiledRestrictedMap, ITiledWorld, LayerDepth, MapConfigSchema, Position, Size, isEmbeddedTileset, isExternalTilesetReference, isFloorLayer, isGroupLayer, isInfiniteMap, isInfiniteTileLayer, isObjectLayer, isTileLayer };
