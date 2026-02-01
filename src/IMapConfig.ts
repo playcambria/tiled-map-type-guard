@@ -6,6 +6,7 @@ export const MapConfigSchema = z.object({
   mapSize: Size,
   mapChunkSize: Size,
   minimapChunkSize: Size,
+  minimapRatio: z.number(),
   objectTypes: z.array(z.string()),
   tilesets: z.array(ITiledMapEmbeddedTileset),
   tileLayersDepth: z.record(z.nativeEnum(LayerDepth)),

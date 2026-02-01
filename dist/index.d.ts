@@ -27449,6 +27449,7 @@ declare const MapConfigSchema: z.ZodObject<{
         height: number;
         width: number;
     }>;
+    minimapRatio: z.ZodNumber;
     objectTypes: z.ZodArray<z.ZodString, "many">;
     tilesets: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
         name: z.ZodString;
@@ -30353,6 +30354,7 @@ declare const MapConfigSchema: z.ZodObject<{
         height: number;
         width: number;
     };
+    minimapRatio: number;
     objectTypes: string[];
     tileLayersDepth: Record<string, LayerDepth>;
 }, {
@@ -30715,6 +30717,7 @@ declare const MapConfigSchema: z.ZodObject<{
         height: number;
         width: number;
     };
+    minimapRatio: number;
     objectTypes: string[];
     tileLayersDepth: Record<string, LayerDepth>;
 }>;
