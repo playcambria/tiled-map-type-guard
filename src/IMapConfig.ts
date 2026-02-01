@@ -7,6 +7,8 @@ export const MapConfigSchema = z.object({
   mapChunkSize: Size,
   minimapChunkSize: Size,
   minimapRatio: z.number(),
+  worldmapRatio: z.number(),
+  travelPlannerMapRatio: z.number(),
   objectTypes: z.array(z.string()),
   tilesets: z.array(ITiledMapEmbeddedTileset),
   tileLayersDepth: z.record(z.nativeEnum(LayerDepth)),
