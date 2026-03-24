@@ -1,5 +1,12 @@
 import { z } from 'zod';
 
+export enum MapSegment {
+  DuelArena = "duelArena",
+  Goldrush = "goldrush",
+  Depths = "depths",
+  Islands = "islands"
+}
+
 const mapDataSchema = z.object({
   fileName: z.string(),
   height: z.number(),
@@ -8,9 +15,17 @@ const mapDataSchema = z.object({
   y: z.number(),
 });
 
+const processedMapDataSchema = mapDataSchema.extend({
+  mapSegment: z.nativeEnum(MapSegment),
+  objectIdOffset: z.number(),
+});
+
 export const ITiledWorld = z.object({
   maps: z.array(mapDataSchema),
-  // onlyShowAdjacentMaps: z.boolean(),
-  // type: z.literal("world"),
 });
 export type ITiledWorld = z.infer<typeof ITiledWorld>;
+
+export const IProcessedTiledWorld = z.object({
+  maps: z.array(processedMapDataSchema),
+});
+export type IProcessedTiledWorld = z.infer<typeof IProcessedTiledWorld>;

@@ -398,6 +398,13 @@ const MapConfigSchema = z.object({
   tileLayersDepth: z.record(z.nativeEnum(LayerDepth))
 });
 
+var MapSegment = /* @__PURE__ */ ((MapSegment2) => {
+  MapSegment2["DuelArena"] = "duelArena";
+  MapSegment2["Goldrush"] = "goldrush";
+  MapSegment2["Depths"] = "depths";
+  MapSegment2["Islands"] = "islands";
+  return MapSegment2;
+})(MapSegment || {});
 const mapDataSchema = z.object({
   fileName: z.string(),
   height: z.number(),
@@ -405,10 +412,15 @@ const mapDataSchema = z.object({
   x: z.number(),
   y: z.number()
 });
+const processedMapDataSchema = mapDataSchema.extend({
+  mapSegment: z.nativeEnum(MapSegment),
+  objectIdOffset: z.number()
+});
 const ITiledWorld = z.object({
   maps: z.array(mapDataSchema)
-  // onlyShowAdjacentMaps: z.boolean(),
-  // type: z.literal("world"),
+});
+const IProcessedTiledWorld = z.object({
+  maps: z.array(processedMapDataSchema)
 });
 
 function isFloorLayer(layer) {
@@ -443,4 +455,4 @@ const ITiledMapRestrictedLayer = z.union([
   ITiledMapObjectLayer
 ]);
 
-export { ITiledInfiniteMap, ITiledMap, ITiledMapChunk, ITiledMapEmbeddedTileset, ITiledMapExternalTileset, ITiledMapExternalTilesetReference, ITiledMapFrame, ITiledMapGrid, ITiledMapGroupLayer, ITiledMapImageLayer, ITiledMapInfiniteLayer, ITiledMapInfiniteTileLayer, ITiledMapLayer, ITiledMapObject, ITiledMapObjectLayer, ITiledMapOffset, ITiledMapPoint, ITiledMapProperty, ITiledMapRestrictedLayer, ITiledMapRestrictedTileLayer, ITiledMapTerrain, ITiledMapText, ITiledMapTile, ITiledMapTileLayer, ITiledMapTileset, ITiledMapTilesetReference, ITiledMapTransformations, ITiledMapWangColor, ITiledMapWangSet, ITiledMapWangTile, ITiledRestrictedMap, ITiledWorld, LayerDepth, MapConfigSchema, Position, Size, isEmbeddedTileset, isExternalTilesetReference, isFloorLayer, isGroupLayer, isInfiniteMap, isInfiniteTileLayer, isObjectLayer, isTileLayer };
+export { IProcessedTiledWorld, ITiledInfiniteMap, ITiledMap, ITiledMapChunk, ITiledMapEmbeddedTileset, ITiledMapExternalTileset, ITiledMapExternalTilesetReference, ITiledMapFrame, ITiledMapGrid, ITiledMapGroupLayer, ITiledMapImageLayer, ITiledMapInfiniteLayer, ITiledMapInfiniteTileLayer, ITiledMapLayer, ITiledMapObject, ITiledMapObjectLayer, ITiledMapOffset, ITiledMapPoint, ITiledMapProperty, ITiledMapRestrictedLayer, ITiledMapRestrictedTileLayer, ITiledMapTerrain, ITiledMapText, ITiledMapTile, ITiledMapTileLayer, ITiledMapTileset, ITiledMapTilesetReference, ITiledMapTransformations, ITiledMapWangColor, ITiledMapWangSet, ITiledMapWangTile, ITiledRestrictedMap, ITiledWorld, LayerDepth, MapConfigSchema, MapSegment, Position, Size, isEmbeddedTileset, isExternalTilesetReference, isFloorLayer, isGroupLayer, isInfiniteMap, isInfiniteTileLayer, isObjectLayer, isTileLayer };

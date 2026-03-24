@@ -30729,6 +30729,12 @@ declare const MapConfigSchema: z.ZodObject<{
 }>;
 type MapConfig = z.infer<typeof MapConfigSchema>;
 
+declare enum MapSegment {
+    DuelArena = "duelArena",
+    Goldrush = "goldrush",
+    Depths = "depths",
+    Islands = "islands"
+}
 declare const ITiledWorld: z.ZodObject<{
     maps: z.ZodArray<z.ZodObject<{
         fileName: z.ZodString;
@@ -30767,6 +30773,55 @@ declare const ITiledWorld: z.ZodObject<{
     }[];
 }>;
 type ITiledWorld = z.infer<typeof ITiledWorld>;
+declare const IProcessedTiledWorld: z.ZodObject<{
+    maps: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
+        fileName: z.ZodString;
+        height: z.ZodNumber;
+        width: z.ZodNumber;
+        x: z.ZodNumber;
+        y: z.ZodNumber;
+    }, {
+        mapSegment: z.ZodNativeEnum<typeof MapSegment>;
+        objectIdOffset: z.ZodNumber;
+    }>, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }[];
+}, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }[];
+}>;
+type IProcessedTiledWorld = z.infer<typeof IProcessedTiledWorld>;
 
 declare function isFloorLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer;
 declare function isObjectLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer;
@@ -32210,4 +32265,4 @@ declare const ITiledMapRestrictedLayer: z.ZodUnion<[z.ZodObject<{
     draworder?: string | undefined;
 }>]>;
 
-export { ITiledInfiniteMap, ITiledMap, ITiledMapChunk, ITiledMapEmbeddedTileset, ITiledMapExternalTileset, ITiledMapExternalTilesetReference, ITiledMapFrame, ITiledMapGrid, ITiledMapGroupLayer, ITiledMapImageLayer, ITiledMapInfiniteLayer, ITiledMapInfiniteTileLayer, ITiledMapLayer, ITiledMapObject, ITiledMapObjectLayer, ITiledMapOffset, ITiledMapPoint, ITiledMapProperty, ITiledMapRestrictedLayer, ITiledMapRestrictedTileLayer, ITiledMapTerrain, ITiledMapText, ITiledMapTile, ITiledMapTileLayer, ITiledMapTileset, ITiledMapTilesetReference, ITiledMapTransformations, ITiledMapWangColor, ITiledMapWangSet, ITiledMapWangTile, ITiledRestrictedMap, ITiledWorld, type Json, LayerDepth, type MapConfig, MapConfigSchema, Position, Size, isEmbeddedTileset, isExternalTilesetReference, isFloorLayer, isGroupLayer, isInfiniteMap, isInfiniteTileLayer, isObjectLayer, isTileLayer };
+export { IProcessedTiledWorld, ITiledInfiniteMap, ITiledMap, ITiledMapChunk, ITiledMapEmbeddedTileset, ITiledMapExternalTileset, ITiledMapExternalTilesetReference, ITiledMapFrame, ITiledMapGrid, ITiledMapGroupLayer, ITiledMapImageLayer, ITiledMapInfiniteLayer, ITiledMapInfiniteTileLayer, ITiledMapLayer, ITiledMapObject, ITiledMapObjectLayer, ITiledMapOffset, ITiledMapPoint, ITiledMapProperty, ITiledMapRestrictedLayer, ITiledMapRestrictedTileLayer, ITiledMapTerrain, ITiledMapText, ITiledMapTile, ITiledMapTileLayer, ITiledMapTileset, ITiledMapTilesetReference, ITiledMapTransformations, ITiledMapWangColor, ITiledMapWangSet, ITiledMapWangTile, ITiledRestrictedMap, ITiledWorld, type Json, LayerDepth, type MapConfig, MapConfigSchema, MapSegment, Position, Size, isEmbeddedTileset, isExternalTilesetReference, isFloorLayer, isGroupLayer, isInfiniteMap, isInfiniteTileLayer, isObjectLayer, isTileLayer };
