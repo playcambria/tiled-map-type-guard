@@ -27418,6 +27418,100 @@ declare const Position: z.ZodObject<{
 }>;
 type Position = z.infer<typeof Position>;
 
+declare enum MapSegment {
+    DuelArena = "duelArena",
+    Goldrush = "goldrush",
+    Depths = "depths",
+    Islands = "islands"
+}
+declare const ITiledWorld: z.ZodObject<{
+    maps: z.ZodArray<z.ZodObject<{
+        fileName: z.ZodString;
+        height: z.ZodNumber;
+        width: z.ZodNumber;
+        x: z.ZodNumber;
+        y: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }[];
+}, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }[];
+}>;
+type ITiledWorld = z.infer<typeof ITiledWorld>;
+declare const IProcessedTiledWorld: z.ZodObject<{
+    maps: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
+        fileName: z.ZodString;
+        height: z.ZodNumber;
+        width: z.ZodNumber;
+        x: z.ZodNumber;
+        y: z.ZodNumber;
+    }, {
+        mapSegment: z.ZodNativeEnum<typeof MapSegment>;
+        objectIdOffset: z.ZodNumber;
+    }>, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }[];
+}, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }[];
+}>;
+type IProcessedTiledWorld = z.infer<typeof IProcessedTiledWorld>;
+
 declare const MapConfigSchema: z.ZodObject<{
     mapSize: z.ZodObject<{
         width: z.ZodNumber;
@@ -29996,832 +30090,766 @@ declare const MapConfigSchema: z.ZodObject<{
         }[] | undefined;
     }>, "many">;
     tileLayersDepth: z.ZodRecord<z.ZodString, z.ZodNativeEnum<typeof LayerDepth>>;
-}, "strip", z.ZodTypeAny, {
-    tilesets: {
-        name: string;
-        image: string;
-        tilecount: number;
-        firstgid: number;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
-        id?: number | undefined;
-        properties?: ({
-            type: "string" | "color" | "file";
-            name: string;
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "object" | "int";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "float";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "bool";
-            name: string;
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "class";
-            name: string;
-            value?: Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        imageheight?: number | undefined;
-        imagewidth?: number | undefined;
-        backgroundcolor?: string | undefined;
-        columns?: number | undefined;
-        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
-        grid?: {
-            height: number;
-            width: number;
-            orientation: "orthogonal" | "isometric";
-        } | undefined;
-        margin?: number | undefined;
-        objectalignment?: string | undefined;
-        spacing?: number | undefined;
-        terrains?: {
-            name: string;
-            tile: number;
-            properties?: ({
-                type: "string" | "color" | "file";
-                name: string;
-                value?: string | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "object" | "int";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "float";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "bool";
-                name: string;
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "class";
-                name: string;
-                value?: Json | undefined;
-                propertytype?: string | undefined;
-            })[] | undefined;
-        }[] | undefined;
-        tiledversion?: string | undefined;
-        tileheight?: number | undefined;
-        tileoffset?: {
-            x: number;
-            y: number;
-        } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
-        tiles?: {
-            id: number;
-            height?: number | undefined;
-            width?: number | undefined;
-            x?: number | undefined;
-            y?: number | undefined;
-            type?: string | undefined;
-            class?: string | undefined;
-            image?: string | undefined;
-            properties?: ({
-                type: "string" | "color" | "file";
-                name: string;
-                value?: string | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "object" | "int";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "float";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "bool";
-                name: string;
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "class";
-                name: string;
-                value?: Json | undefined;
-                propertytype?: string | undefined;
-            })[] | undefined;
-            objectgroup?: {
-                type: "objectgroup";
-                name: string;
-                opacity: number;
-                visible: boolean;
-                objects: {
-                    x: number;
-                    y: number;
-                    name: string;
-                    visible: boolean;
-                    id: number;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    properties?: ({
-                        type: "string" | "color" | "file";
-                        name: string;
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "object" | "int";
-                        name: string;
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "float";
-                        name: string;
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "bool";
-                        name: string;
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "class";
-                        name: string;
-                        value?: Json | undefined;
-                        propertytype?: string | undefined;
-                    })[] | undefined;
-                    text?: {
-                        text: string;
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                    } | undefined;
-                    ellipse?: boolean | undefined;
-                    gid?: number | undefined;
-                    point?: boolean | undefined;
-                    polygon?: {
-                        x: number;
-                        y: number;
-                    }[] | undefined;
-                    polyline?: {
-                        x: number;
-                        y: number;
-                    }[] | undefined;
-                    rotation?: number | undefined;
-                    template?: string | undefined;
-                }[];
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                class?: string | undefined;
-                id?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    type: "string" | "color" | "file";
-                    name: string;
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "object" | "int";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "float";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "bool";
-                    name: string;
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "class";
-                    name: string;
-                    value?: Json | undefined;
-                    propertytype?: string | undefined;
-                })[] | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
-                name: string;
-                tile: number;
-                properties?: ({
-                    type: "string" | "color" | "file";
-                    name: string;
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "object" | "int";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "float";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "bool";
-                    name: string;
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "class";
-                    name: string;
-                    value?: Json | undefined;
-                    propertytype?: string | undefined;
-                })[] | undefined;
-            }[] | undefined;
-        }[] | undefined;
-        tilewidth?: number | undefined;
-        transformations?: {
-            hflip?: boolean | undefined;
-            vflip?: boolean | undefined;
-            rotate?: boolean | undefined;
-            preferuntransformed?: boolean | undefined;
-        } | undefined;
-        transparentcolor?: string | undefined;
-        version?: string | number | undefined;
-        wangsets?: {
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
-            class?: string | undefined;
-            properties?: ({
-                type: "string" | "color" | "file";
-                name: string;
-                value?: string | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "object" | "int";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "float";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "bool";
-                name: string;
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "class";
-                name: string;
-                value?: Json | undefined;
-                propertytype?: string | undefined;
-            })[] | undefined;
-            colors?: {
-                name: string;
-                color: string;
-                tile: number;
-                probability: number;
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    type: "string" | "color" | "file";
-                    name: string;
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "object" | "int";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "float";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "bool";
-                    name: string;
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "class";
-                    name: string;
-                    value?: Json | undefined;
-                    propertytype?: string | undefined;
-                })[] | undefined;
-            }[] | undefined;
-            wangtiles?: {
-                tileid: number;
-                wangid: number[];
-            }[] | undefined;
-        }[] | undefined;
-    }[];
-    mapSize: {
-        height: number;
-        width: number;
-    };
-    mapChunkSize: {
-        height: number;
-        width: number;
-    };
-    minimapChunkSize: {
-        height: number;
-        width: number;
-    };
-    minimapRatio: number;
-    worldmapRatio: number;
-    travelPlannerMapRatio: number;
-    objectTypes: string[];
-    tileLayersDepth: Record<string, LayerDepth>;
-}, {
-    tilesets: {
-        name: string;
-        image: string;
-        tilecount: number;
-        firstgid: number;
-        type?: "tileset" | undefined;
-        class?: string | undefined;
-        id?: number | undefined;
-        properties?: ({
-            type: "string" | "color" | "file";
-            name: string;
-            value?: string | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "object" | "int";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "float";
-            name: string;
-            value?: number | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "bool";
-            name: string;
-            value?: boolean | undefined;
-            propertytype?: string | undefined;
-        } | {
-            type: "class";
-            name: string;
-            value?: Json | undefined;
-            propertytype?: string | undefined;
-        })[] | undefined;
-        imageheight?: number | undefined;
-        imagewidth?: number | undefined;
-        backgroundcolor?: string | undefined;
-        columns?: number | undefined;
-        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
-        grid?: {
-            height: number;
-            width: number;
-            orientation: "orthogonal" | "isometric";
-        } | undefined;
-        margin?: number | undefined;
-        objectalignment?: string | undefined;
-        spacing?: number | undefined;
-        terrains?: {
-            name: string;
-            tile: number;
-            properties?: ({
-                type: "string" | "color" | "file";
-                name: string;
-                value?: string | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "object" | "int";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "float";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "bool";
-                name: string;
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "class";
-                name: string;
-                value?: Json | undefined;
-                propertytype?: string | undefined;
-            })[] | undefined;
-        }[] | undefined;
-        tiledversion?: string | undefined;
-        tileheight?: number | undefined;
-        tileoffset?: {
-            x: number;
-            y: number;
-        } | undefined;
-        tilerendersize?: "tile" | "grid" | undefined;
-        tiles?: {
-            id: number;
-            height?: number | undefined;
-            width?: number | undefined;
-            x?: number | undefined;
-            y?: number | undefined;
-            type?: string | undefined;
-            class?: string | undefined;
-            image?: string | undefined;
-            properties?: ({
-                type: "string" | "color" | "file";
-                name: string;
-                value?: string | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "object" | "int";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "float";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "bool";
-                name: string;
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "class";
-                name: string;
-                value?: Json | undefined;
-                propertytype?: string | undefined;
-            })[] | undefined;
-            objectgroup?: {
-                type: "objectgroup";
-                name: string;
-                opacity: number;
-                visible: boolean;
-                objects: {
-                    x: number;
-                    y: number;
-                    name: string;
-                    visible: boolean;
-                    id: number;
-                    height?: number | undefined;
-                    width?: number | undefined;
-                    type?: string | undefined;
-                    class?: string | undefined;
-                    properties?: ({
-                        type: "string" | "color" | "file";
-                        name: string;
-                        value?: string | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "object" | "int";
-                        name: string;
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "float";
-                        name: string;
-                        value?: number | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "bool";
-                        name: string;
-                        value?: boolean | undefined;
-                        propertytype?: string | undefined;
-                    } | {
-                        type: "class";
-                        name: string;
-                        value?: Json | undefined;
-                        propertytype?: string | undefined;
-                    })[] | undefined;
-                    text?: {
-                        text: string;
-                        color?: string | undefined;
-                        bold?: boolean | undefined;
-                        fontfamily?: string | undefined;
-                        halign?: "center" | "right" | "justify" | "left" | undefined;
-                        italic?: boolean | undefined;
-                        kerning?: boolean | undefined;
-                        pixelsize?: number | undefined;
-                        strikeout?: boolean | undefined;
-                        underline?: boolean | undefined;
-                        valign?: "center" | "bottom" | "top" | undefined;
-                        wrap?: boolean | undefined;
-                    } | undefined;
-                    ellipse?: boolean | undefined;
-                    gid?: number | undefined;
-                    point?: boolean | undefined;
-                    polygon?: {
-                        x: number;
-                        y: number;
-                    }[] | undefined;
-                    polyline?: {
-                        x: number;
-                        y: number;
-                    }[] | undefined;
-                    rotation?: number | undefined;
-                    template?: string | undefined;
-                }[];
-                height?: number | undefined;
-                width?: number | undefined;
-                x?: number | undefined;
-                y?: number | undefined;
-                class?: string | undefined;
-                id?: number | undefined;
-                offsetx?: number | undefined;
-                offsety?: number | undefined;
-                parallaxx?: number | undefined;
-                parallaxy?: number | undefined;
-                properties?: ({
-                    type: "string" | "color" | "file";
-                    name: string;
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "object" | "int";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "float";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "bool";
-                    name: string;
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "class";
-                    name: string;
-                    value?: Json | undefined;
-                    propertytype?: string | undefined;
-                })[] | undefined;
-                startx?: number | undefined;
-                starty?: number | undefined;
-                tintcolor?: string | undefined;
-                draworder?: string | undefined;
-            } | undefined;
-            animation?: {
-                duration: number;
-                tileid: number;
-            }[] | undefined;
-            imageheight?: number | undefined;
-            imagewidth?: number | undefined;
-            probability?: number | undefined;
-            terrain?: {
-                name: string;
-                tile: number;
-                properties?: ({
-                    type: "string" | "color" | "file";
-                    name: string;
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "object" | "int";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "float";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "bool";
-                    name: string;
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "class";
-                    name: string;
-                    value?: Json | undefined;
-                    propertytype?: string | undefined;
-                })[] | undefined;
-            }[] | undefined;
-        }[] | undefined;
-        tilewidth?: number | undefined;
-        transformations?: {
-            hflip?: boolean | undefined;
-            vflip?: boolean | undefined;
-            rotate?: boolean | undefined;
-            preferuntransformed?: boolean | undefined;
-        } | undefined;
-        transparentcolor?: string | undefined;
-        version?: string | number | undefined;
-        wangsets?: {
-            type: "corner" | "edge" | "mixed";
-            name: string;
-            tile: number;
-            class?: string | undefined;
-            properties?: ({
-                type: "string" | "color" | "file";
-                name: string;
-                value?: string | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "object" | "int";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "float";
-                name: string;
-                value?: number | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "bool";
-                name: string;
-                value?: boolean | undefined;
-                propertytype?: string | undefined;
-            } | {
-                type: "class";
-                name: string;
-                value?: Json | undefined;
-                propertytype?: string | undefined;
-            })[] | undefined;
-            colors?: {
-                name: string;
-                color: string;
-                tile: number;
-                probability: number;
-                type?: string | undefined;
-                class?: string | undefined;
-                properties?: ({
-                    type: "string" | "color" | "file";
-                    name: string;
-                    value?: string | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "object" | "int";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "float";
-                    name: string;
-                    value?: number | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "bool";
-                    name: string;
-                    value?: boolean | undefined;
-                    propertytype?: string | undefined;
-                } | {
-                    type: "class";
-                    name: string;
-                    value?: Json | undefined;
-                    propertytype?: string | undefined;
-                })[] | undefined;
-            }[] | undefined;
-            wangtiles?: {
-                tileid: number;
-                wangid: number[];
-            }[] | undefined;
-        }[] | undefined;
-    }[];
-    mapSize: {
-        height: number;
-        width: number;
-    };
-    mapChunkSize: {
-        height: number;
-        width: number;
-    };
-    minimapChunkSize: {
-        height: number;
-        width: number;
-    };
-    minimapRatio: number;
-    worldmapRatio: number;
-    travelPlannerMapRatio: number;
-    objectTypes: string[];
-    tileLayersDepth: Record<string, LayerDepth>;
-}>;
-type MapConfig = z.infer<typeof MapConfigSchema>;
-
-declare enum MapSegment {
-    DuelArena = "duelArena",
-    Goldrush = "goldrush",
-    Depths = "depths",
-    Islands = "islands"
-}
-declare const ITiledWorld: z.ZodObject<{
-    maps: z.ZodArray<z.ZodObject<{
-        fileName: z.ZodString;
-        height: z.ZodNumber;
-        width: z.ZodNumber;
+    mapSegmentBounds: z.ZodRecord<z.ZodNativeEnum<typeof MapSegment>, z.ZodObject<{
         x: z.ZodNumber;
         y: z.ZodNumber;
+        width: z.ZodNumber;
+        height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         height: number;
         width: number;
         x: number;
         y: number;
-        fileName: string;
     }, {
         height: number;
         width: number;
         x: number;
         y: number;
-        fileName: string;
-    }>, "many">;
+    }>>;
 }, "strip", z.ZodTypeAny, {
-    maps: {
+    tilesets: {
+        name: string;
+        image: string;
+        tilecount: number;
+        firstgid: number;
+        type?: "tileset" | undefined;
+        class?: string | undefined;
+        id?: number | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        imageheight?: number | undefined;
+        imagewidth?: number | undefined;
+        backgroundcolor?: string | undefined;
+        columns?: number | undefined;
+        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        grid?: {
+            height: number;
+            width: number;
+            orientation: "orthogonal" | "isometric";
+        } | undefined;
+        margin?: number | undefined;
+        objectalignment?: string | undefined;
+        spacing?: number | undefined;
+        terrains?: {
+            name: string;
+            tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+        }[] | undefined;
+        tiledversion?: string | undefined;
+        tileheight?: number | undefined;
+        tileoffset?: {
+            x: number;
+            y: number;
+        } | undefined;
+        tilerendersize?: "tile" | "grid" | undefined;
+        tiles?: {
+            id: number;
+            height?: number | undefined;
+            width?: number | undefined;
+            x?: number | undefined;
+            y?: number | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            image?: string | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            objectgroup?: {
+                type: "objectgroup";
+                name: string;
+                opacity: number;
+                visible: boolean;
+                objects: {
+                    x: number;
+                    y: number;
+                    name: string;
+                    visible: boolean;
+                    id: number;
+                    height?: number | undefined;
+                    width?: number | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
+                    text?: {
+                        text: string;
+                        color?: string | undefined;
+                        bold?: boolean | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    ellipse?: boolean | undefined;
+                    gid?: number | undefined;
+                    point?: boolean | undefined;
+                    polygon?: {
+                        x: number;
+                        y: number;
+                    }[] | undefined;
+                    polyline?: {
+                        x: number;
+                        y: number;
+                    }[] | undefined;
+                    rotation?: number | undefined;
+                    template?: string | undefined;
+                }[];
+                height?: number | undefined;
+                width?: number | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+                class?: string | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                draworder?: string | undefined;
+            } | undefined;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
+            probability?: number | undefined;
+            terrain?: {
+                name: string;
+                tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+            }[] | undefined;
+        }[] | undefined;
+        tilewidth?: number | undefined;
+        transformations?: {
+            hflip?: boolean | undefined;
+            vflip?: boolean | undefined;
+            rotate?: boolean | undefined;
+            preferuntransformed?: boolean | undefined;
+        } | undefined;
+        transparentcolor?: string | undefined;
+        version?: string | number | undefined;
+        wangsets?: {
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
+            class?: string | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            colors?: {
+                name: string;
+                color: string;
+                tile: number;
+                probability: number;
+                type?: string | undefined;
+                class?: string | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+            }[] | undefined;
+            wangtiles?: {
+                tileid: number;
+                wangid: number[];
+            }[] | undefined;
+        }[] | undefined;
+    }[];
+    mapSize: {
+        height: number;
+        width: number;
+    };
+    mapChunkSize: {
+        height: number;
+        width: number;
+    };
+    minimapChunkSize: {
+        height: number;
+        width: number;
+    };
+    minimapRatio: number;
+    worldmapRatio: number;
+    travelPlannerMapRatio: number;
+    objectTypes: string[];
+    tileLayersDepth: Record<string, LayerDepth>;
+    mapSegmentBounds: Partial<Record<MapSegment, {
         height: number;
         width: number;
         x: number;
         y: number;
-        fileName: string;
-    }[];
+    }>>;
 }, {
-    maps: {
+    tilesets: {
+        name: string;
+        image: string;
+        tilecount: number;
+        firstgid: number;
+        type?: "tileset" | undefined;
+        class?: string | undefined;
+        id?: number | undefined;
+        properties?: ({
+            type: "string" | "color" | "file";
+            name: string;
+            value?: string | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "object" | "int";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "float";
+            name: string;
+            value?: number | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "bool";
+            name: string;
+            value?: boolean | undefined;
+            propertytype?: string | undefined;
+        } | {
+            type: "class";
+            name: string;
+            value?: Json | undefined;
+            propertytype?: string | undefined;
+        })[] | undefined;
+        imageheight?: number | undefined;
+        imagewidth?: number | undefined;
+        backgroundcolor?: string | undefined;
+        columns?: number | undefined;
+        fillmode?: "stretch" | "preserve-aspect-fit" | undefined;
+        grid?: {
+            height: number;
+            width: number;
+            orientation: "orthogonal" | "isometric";
+        } | undefined;
+        margin?: number | undefined;
+        objectalignment?: string | undefined;
+        spacing?: number | undefined;
+        terrains?: {
+            name: string;
+            tile: number;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+        }[] | undefined;
+        tiledversion?: string | undefined;
+        tileheight?: number | undefined;
+        tileoffset?: {
+            x: number;
+            y: number;
+        } | undefined;
+        tilerendersize?: "tile" | "grid" | undefined;
+        tiles?: {
+            id: number;
+            height?: number | undefined;
+            width?: number | undefined;
+            x?: number | undefined;
+            y?: number | undefined;
+            type?: string | undefined;
+            class?: string | undefined;
+            image?: string | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            objectgroup?: {
+                type: "objectgroup";
+                name: string;
+                opacity: number;
+                visible: boolean;
+                objects: {
+                    x: number;
+                    y: number;
+                    name: string;
+                    visible: boolean;
+                    id: number;
+                    height?: number | undefined;
+                    width?: number | undefined;
+                    type?: string | undefined;
+                    class?: string | undefined;
+                    properties?: ({
+                        type: "string" | "color" | "file";
+                        name: string;
+                        value?: string | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "object" | "int";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "float";
+                        name: string;
+                        value?: number | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "bool";
+                        name: string;
+                        value?: boolean | undefined;
+                        propertytype?: string | undefined;
+                    } | {
+                        type: "class";
+                        name: string;
+                        value?: Json | undefined;
+                        propertytype?: string | undefined;
+                    })[] | undefined;
+                    text?: {
+                        text: string;
+                        color?: string | undefined;
+                        bold?: boolean | undefined;
+                        fontfamily?: string | undefined;
+                        halign?: "center" | "right" | "justify" | "left" | undefined;
+                        italic?: boolean | undefined;
+                        kerning?: boolean | undefined;
+                        pixelsize?: number | undefined;
+                        strikeout?: boolean | undefined;
+                        underline?: boolean | undefined;
+                        valign?: "center" | "bottom" | "top" | undefined;
+                        wrap?: boolean | undefined;
+                    } | undefined;
+                    ellipse?: boolean | undefined;
+                    gid?: number | undefined;
+                    point?: boolean | undefined;
+                    polygon?: {
+                        x: number;
+                        y: number;
+                    }[] | undefined;
+                    polyline?: {
+                        x: number;
+                        y: number;
+                    }[] | undefined;
+                    rotation?: number | undefined;
+                    template?: string | undefined;
+                }[];
+                height?: number | undefined;
+                width?: number | undefined;
+                x?: number | undefined;
+                y?: number | undefined;
+                class?: string | undefined;
+                id?: number | undefined;
+                offsetx?: number | undefined;
+                offsety?: number | undefined;
+                parallaxx?: number | undefined;
+                parallaxy?: number | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+                startx?: number | undefined;
+                starty?: number | undefined;
+                tintcolor?: string | undefined;
+                draworder?: string | undefined;
+            } | undefined;
+            animation?: {
+                duration: number;
+                tileid: number;
+            }[] | undefined;
+            imageheight?: number | undefined;
+            imagewidth?: number | undefined;
+            probability?: number | undefined;
+            terrain?: {
+                name: string;
+                tile: number;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+            }[] | undefined;
+        }[] | undefined;
+        tilewidth?: number | undefined;
+        transformations?: {
+            hflip?: boolean | undefined;
+            vflip?: boolean | undefined;
+            rotate?: boolean | undefined;
+            preferuntransformed?: boolean | undefined;
+        } | undefined;
+        transparentcolor?: string | undefined;
+        version?: string | number | undefined;
+        wangsets?: {
+            type: "corner" | "edge" | "mixed";
+            name: string;
+            tile: number;
+            class?: string | undefined;
+            properties?: ({
+                type: "string" | "color" | "file";
+                name: string;
+                value?: string | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "object" | "int";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "float";
+                name: string;
+                value?: number | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "bool";
+                name: string;
+                value?: boolean | undefined;
+                propertytype?: string | undefined;
+            } | {
+                type: "class";
+                name: string;
+                value?: Json | undefined;
+                propertytype?: string | undefined;
+            })[] | undefined;
+            colors?: {
+                name: string;
+                color: string;
+                tile: number;
+                probability: number;
+                type?: string | undefined;
+                class?: string | undefined;
+                properties?: ({
+                    type: "string" | "color" | "file";
+                    name: string;
+                    value?: string | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "object" | "int";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "float";
+                    name: string;
+                    value?: number | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "bool";
+                    name: string;
+                    value?: boolean | undefined;
+                    propertytype?: string | undefined;
+                } | {
+                    type: "class";
+                    name: string;
+                    value?: Json | undefined;
+                    propertytype?: string | undefined;
+                })[] | undefined;
+            }[] | undefined;
+            wangtiles?: {
+                tileid: number;
+                wangid: number[];
+            }[] | undefined;
+        }[] | undefined;
+    }[];
+    mapSize: {
+        height: number;
+        width: number;
+    };
+    mapChunkSize: {
+        height: number;
+        width: number;
+    };
+    minimapChunkSize: {
+        height: number;
+        width: number;
+    };
+    minimapRatio: number;
+    worldmapRatio: number;
+    travelPlannerMapRatio: number;
+    objectTypes: string[];
+    tileLayersDepth: Record<string, LayerDepth>;
+    mapSegmentBounds: Partial<Record<MapSegment, {
         height: number;
         width: number;
         x: number;
         y: number;
-        fileName: string;
-    }[];
+    }>>;
 }>;
-type ITiledWorld = z.infer<typeof ITiledWorld>;
-declare const IProcessedTiledWorld: z.ZodObject<{
-    maps: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
-        fileName: z.ZodString;
-        height: z.ZodNumber;
-        width: z.ZodNumber;
-        x: z.ZodNumber;
-        y: z.ZodNumber;
-    }, {
-        mapSegment: z.ZodNativeEnum<typeof MapSegment>;
-        objectIdOffset: z.ZodNumber;
-    }>, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    maps: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }[];
-}, {
-    maps: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }[];
-}>;
-type IProcessedTiledWorld = z.infer<typeof IProcessedTiledWorld>;
+type MapConfig = z.infer<typeof MapConfigSchema>;
 
 declare function isFloorLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer;
 declare function isObjectLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer;
