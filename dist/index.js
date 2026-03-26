@@ -386,6 +386,18 @@ const Position = z.object({
   y: z.number()
 });
 
+const MapConfigSchema = z.object({
+  mapSize: Size,
+  mapChunkSize: Size,
+  minimapChunkSize: Size,
+  minimapRatio: z.number(),
+  worldmapRatio: z.number(),
+  travelPlannerMapRatio: z.number(),
+  objectTypes: z.array(z.string()),
+  tilesets: z.array(ITiledMapEmbeddedTileset),
+  tileLayersDepth: z.record(z.nativeEnum(LayerDepth))
+});
+
 var MapSegment = /* @__PURE__ */ ((MapSegment2) => {
   MapSegment2["DuelArena"] = "duelArena";
   MapSegment2["Goldrush"] = "goldrush";
@@ -409,19 +421,6 @@ const ITiledWorld = z.object({
 });
 const IProcessedTiledWorld = z.object({
   maps: z.array(processedMapDataSchema)
-});
-
-const MapConfigSchema = z.object({
-  mapSize: Size,
-  mapChunkSize: Size,
-  minimapChunkSize: Size,
-  minimapRatio: z.number(),
-  worldmapRatio: z.number(),
-  travelPlannerMapRatio: z.number(),
-  objectTypes: z.array(z.string()),
-  tilesets: z.array(ITiledMapEmbeddedTileset),
-  tileLayersDepth: z.record(z.nativeEnum(LayerDepth)),
-  mapSegmentBounds: z.record(z.nativeEnum(MapSegment), z.object({ x: z.number(), y: z.number(), width: z.number(), height: z.number() }))
 });
 
 function isFloorLayer(layer) {

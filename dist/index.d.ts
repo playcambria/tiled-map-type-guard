@@ -27418,100 +27418,6 @@ declare const Position: z.ZodObject<{
 }>;
 type Position = z.infer<typeof Position>;
 
-declare enum MapSegment {
-    DuelArena = "duelArena",
-    Goldrush = "goldrush",
-    Depths = "depths",
-    Islands = "islands"
-}
-declare const ITiledWorld: z.ZodObject<{
-    maps: z.ZodArray<z.ZodObject<{
-        fileName: z.ZodString;
-        height: z.ZodNumber;
-        width: z.ZodNumber;
-        x: z.ZodNumber;
-        y: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-    }, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    maps: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-    }[];
-}, {
-    maps: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-    }[];
-}>;
-type ITiledWorld = z.infer<typeof ITiledWorld>;
-declare const IProcessedTiledWorld: z.ZodObject<{
-    maps: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
-        fileName: z.ZodString;
-        height: z.ZodNumber;
-        width: z.ZodNumber;
-        x: z.ZodNumber;
-        y: z.ZodNumber;
-    }, {
-        mapSegment: z.ZodNativeEnum<typeof MapSegment>;
-        objectIdOffset: z.ZodNumber;
-    }>, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    maps: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }[];
-}, {
-    maps: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        fileName: string;
-        mapSegment: MapSegment;
-        objectIdOffset: number;
-    }[];
-}>;
-type IProcessedTiledWorld = z.infer<typeof IProcessedTiledWorld>;
-
 declare const MapConfigSchema: z.ZodObject<{
     mapSize: z.ZodObject<{
         width: z.ZodNumber;
@@ -30090,22 +29996,6 @@ declare const MapConfigSchema: z.ZodObject<{
         }[] | undefined;
     }>, "many">;
     tileLayersDepth: z.ZodRecord<z.ZodString, z.ZodNativeEnum<typeof LayerDepth>>;
-    mapSegmentBounds: z.ZodRecord<z.ZodNativeEnum<typeof MapSegment>, z.ZodObject<{
-        x: z.ZodNumber;
-        y: z.ZodNumber;
-        width: z.ZodNumber;
-        height: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }>>;
 }, "strip", z.ZodTypeAny, {
     tilesets: {
         name: string;
@@ -30471,12 +30361,6 @@ declare const MapConfigSchema: z.ZodObject<{
     travelPlannerMapRatio: number;
     objectTypes: string[];
     tileLayersDepth: Record<string, LayerDepth>;
-    mapSegmentBounds: Partial<Record<MapSegment, {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-    }>>;
 }, {
     tilesets: {
         name: string;
@@ -30842,14 +30726,102 @@ declare const MapConfigSchema: z.ZodObject<{
     travelPlannerMapRatio: number;
     objectTypes: string[];
     tileLayersDepth: Record<string, LayerDepth>;
-    mapSegmentBounds: Partial<Record<MapSegment, {
+}>;
+type MapConfig = z.infer<typeof MapConfigSchema>;
+
+declare enum MapSegment {
+    DuelArena = "duelArena",
+    Goldrush = "goldrush",
+    Depths = "depths",
+    Islands = "islands"
+}
+declare const ITiledWorld: z.ZodObject<{
+    maps: z.ZodArray<z.ZodObject<{
+        fileName: z.ZodString;
+        height: z.ZodNumber;
+        width: z.ZodNumber;
+        x: z.ZodNumber;
+        y: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
         height: number;
         width: number;
         x: number;
         y: number;
-    }>>;
+        fileName: string;
+    }, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }[];
+}, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+    }[];
 }>;
-type MapConfig = z.infer<typeof MapConfigSchema>;
+type ITiledWorld = z.infer<typeof ITiledWorld>;
+declare const IProcessedTiledWorld: z.ZodObject<{
+    maps: z.ZodArray<z.ZodObject<z.objectUtil.extendShape<{
+        fileName: z.ZodString;
+        height: z.ZodNumber;
+        width: z.ZodNumber;
+        x: z.ZodNumber;
+        y: z.ZodNumber;
+    }, {
+        mapSegment: z.ZodNativeEnum<typeof MapSegment>;
+        objectIdOffset: z.ZodNumber;
+    }>, "strip", z.ZodTypeAny, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }, {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }[];
+}, {
+    maps: {
+        height: number;
+        width: number;
+        x: number;
+        y: number;
+        fileName: string;
+        mapSegment: MapSegment;
+        objectIdOffset: number;
+    }[];
+}>;
+type IProcessedTiledWorld = z.infer<typeof IProcessedTiledWorld>;
 
 declare function isFloorLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer;
 declare function isObjectLayer(layer: ITiledMapLayer): layer is ITiledMapObjectLayer;
