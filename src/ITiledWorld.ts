@@ -16,7 +16,7 @@ const mapDataSchema = z.object({
 });
 
 const processedMapDataSchema = mapDataSchema.extend({
-  mapSegment: z.nativeEnum(MapSegment),
+  mapSegment: z.enum(MapSegment),
   objectIdOffset: z.number(),
 });
 

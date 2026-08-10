@@ -21,7 +21,7 @@ const ITiledMapGrid = z.object({
 
 const literalSchema = z.union([z.string(), z.number(), z.boolean(), z.null()]);
 const jsonSchema = z.lazy(
-  () => z.union([literalSchema, z.array(jsonSchema), z.record(jsonSchema)])
+  () => z.union([literalSchema, z.array(jsonSchema), z.record(z.string(), jsonSchema)])
 );
 const ITiledMapStringProperty = z.object({
   name: z.string(),
@@ -333,10 +333,10 @@ const ITiledMapTileset = z.union([
   ITiledMapExternalTilesetReference
 ]);
 
-const ITiledMapTilesetReference = z.object({
+const ITiledMapTilesetReference = z.strictObject({
   firstgid: z.number(),
   source: z.string()
-}).strict();
+});
 
 const ITiledMap = z.object({
   layers: ITiledMapLayer.array(),
@@ -395,7 +395,7 @@ const MapConfigSchema = z.object({
   travelPlannerMapRatio: z.number(),
   objectTypes: z.array(z.string()),
   tilesets: z.array(ITiledMapEmbeddedTileset),
-  tileLayersDepth: z.record(z.nativeEnum(LayerDepth))
+  tileLayersDepth: z.record(z.string(), z.enum(LayerDepth))
 });
 
 var MapSegment = /* @__PURE__ */ ((MapSegment2) => {
@@ -413,7 +413,7 @@ const mapDataSchema = z.object({
   y: z.number()
 });
 const processedMapDataSchema = mapDataSchema.extend({
-  mapSegment: z.nativeEnum(MapSegment),
+  mapSegment: z.enum(MapSegment),
   objectIdOffset: z.number()
 });
 const ITiledWorld = z.object({

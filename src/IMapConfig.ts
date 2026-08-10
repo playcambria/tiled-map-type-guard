@@ -11,7 +11,7 @@ export const MapConfigSchema = z.object({
   travelPlannerMapRatio: z.number(),
   objectTypes: z.array(z.string()),
   tilesets: z.array(ITiledMapEmbeddedTileset),
-  tileLayersDepth: z.record(z.nativeEnum(LayerDepth)),
+  tileLayersDepth: z.record(z.string(), z.enum(LayerDepth)),
 });
 
 export type MapConfig = z.infer<typeof MapConfigSchema>;
